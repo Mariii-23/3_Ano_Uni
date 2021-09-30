@@ -1,0 +1,15 @@
+#+TITLE: 3 year 😆
+
+* Almost in the end !!!
+* Introduction
+Nothing important. Just things related to the 3 year :)
+* Notes
+Rust is beatiful
+#+begin_src rust
+fn main() {
+    println!("3 Yearrrrr 😆");
+}
+#+end_src
+
+#+RESULTS:
+: 3 Yearrrrr 😆
