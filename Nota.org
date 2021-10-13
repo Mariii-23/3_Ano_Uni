@@ -1,0 +1,22 @@
+#+TITLE: Nota
+* CC
+** Avaliação:
+- teste :    11 janeiro
+  nota min: 8
+- trabalhos: ---
+  nota min: 10
+
+Nota final = 50% + 50%
+Exame de recurso: 4 fevereiro
+* SD
+** Avaliaçao
+- test : 19 janeiro
+  nota min 8
+- trabalho 12 janeiro
+  nota min 10
+
+Nota final = 70% + 30%
+Exame de recurso: 20 a 26 janeiro
+
+* MNOL
+** Avaliaçao
