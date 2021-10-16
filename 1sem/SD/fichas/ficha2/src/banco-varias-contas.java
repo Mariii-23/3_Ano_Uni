@@ -77,11 +77,15 @@ class Bank {
     return av[id].withdraw(value);
   }
 
+  // pode dar valores errados
   public boolean transfer(int from, int to,int value) {
-    if ( to>= slots || !this.withdraw(from, value))
+    if ( to<0 || from <0 || to>= slots || from>= slots || value<=0 )
       return false;
-   this.deposit(to, value);
-   return true;
+
+    if ( !this.withdraw(from, value))
+      return false;
+    // problema entre estas 2 operacoes
+    return this.deposit(to, value);
   }
 
   public int totalBalance() {

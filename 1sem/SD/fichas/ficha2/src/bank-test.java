@@ -12,7 +12,7 @@ class Watcher implements Runnable{
   @Override
   public void run() {
     int i=0 ;
-    int N = 10;
+    int N = 100;
 
     //while(true) {
     while(i < N){
