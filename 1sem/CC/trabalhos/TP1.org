@@ -1,0 +1,10 @@
+#+TITLE: T P1
+*  2.1 Ping
+A partida fazendo ping ao servidor1, atraves do grilo1 e do pc1.
+No pc1 os packages chegam mais rápido ao seu destino, podemos ter em atencao o tipo de cabo "usado".
+
+* 2.2 SFTP
+Aqui vamos baixar o  file1 atraves deste protocolo.
+Supostamente no pc1 é mais rapido do q no grilo1.
+
+* 2.3 FTP
