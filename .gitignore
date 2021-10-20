@@ -4,9 +4,6 @@ notas/*
 1sem/DSS/fichas/ficha1/Turmas3L-21.04-alunos/*
 
 ## SD
-1sem/SD/fichas/ficha1/.idea/*
-1sem/SD/fichas/ficha1/out/*
-1sem/SD/fichas/ficha1/ficha1.iml
-1sem/SD/fichas/ficha2/.idea/*
-1sem/SD/fichas/ficha2/out/*
-1sem/SD/fichas/ficha2/ficha1.iml
+1sem/SD/fichas/ficha*/out/*
+1sem/SD/fichas/ficha*/.idea/*
+1sem/SD/fichas/ficha*/ficha*.iml

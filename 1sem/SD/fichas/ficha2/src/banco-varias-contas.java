@@ -77,22 +77,41 @@ class Bank {
     return av[id].withdraw(value);
   }
 
-  // pode dar valores errados
   public boolean transfer(int from, int to,int value) {
     if ( to<0 || from <0 || to>= slots || from>= slots || value<=0 )
       return false;
-
-    if ( !this.withdraw(from, value))
-      return false;
-    // problema entre estas 2 operacoes
-    return this.deposit(to, value);
+    Account cfrom = av[from];
+    Account cto = av[to];
+    if(from > to){
+      cto.l.lock();
+      cfrom.l.lock();
+    } else {
+      cfrom.l.lock();
+      cto.l.lock();
+    }
+    try {
+      try {
+        if ( !this.withdraw(from, value)) {
+          return false;
+        }
+      } finally {
+        cfrom.l.unlock();
+      }
+      return this.deposit(to, value);
+    } finally {
+        cto.l.unlock();
+    }
   }
 
   public int totalBalance() {
       int result = 0;
-      for (int elem=0; elem < slots; elem++){
+    for (int elem=0; elem < slots; elem++){
+        av[elem].l.lock();
         result += this.balance(elem);
-      }
-      return result;
+    }
+    for (int elem=0; elem < slots; elem++){
+        av[elem].l.unlock();
+    }
+    return result;
   }
 }

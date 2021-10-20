@@ -60,6 +60,7 @@ class BankTest {
     t1.start(); t2.start(); t1.join(); t2.join();
     t3.join();
 
+    System.out.println("Transferencias feitas.");
     System.out.println("No fim: "+b.totalBalance());
   }
 }
