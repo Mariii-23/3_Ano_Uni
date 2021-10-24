@@ -1,0 +1,35 @@
+#+TITLE: Aulas
+
+* 22 de outubro
+** Aula
++ *Power Point:*
+  - Use Cases
+  - Diagramas de Use Cases
+
+** Projetos
++ *Validacao:*
+  - Completude
+  - Consistenci+  nada de contradições
+  - Correção: B+  explicito o que o cliente quer
+
+
++ *A especificação deve ser:*
+  - realista
+  - verificav+  (ter a certeza que podemos atingir todos os objetivos)
+  - ...
+
++ *Visão  orientada*
+  - imaginar cenários
+  - identificar e espe+ ficar casos d+ uso
+  - ...
+
+** Use case (+ sos possiveis)
+ + Descrição
+ + Cenários+ + Pre condição
+ + Pos condição
+ + Fluxo normal
+ + Fluxo alternativo
+ + Fluxo de excepções
+
+** Notas
++ O UML nãp especifica *use cases*
