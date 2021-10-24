@@ -10,7 +10,7 @@ Nota final = 50% + 50%
 Exame de recurso: 4 fevereiro
 * SD
 ** Avaliaçao
-- test : 19 janeiro
+- teste : 19 janeiro
   nota min 8
 - trabalho 12 janeiro
   nota min 10
@@ -20,3 +20,37 @@ Exame de recurso: 20 a 26 janeiro
 
 * MNOL
 ** Avaliaçao
+- teste :
+  + *MN*  6 valores -> 3 ou 4 Dezembro
+  + *ONL* 6 valores -> 17 Janeiro
+  + *Atenção:* soma de 6 valores obrigatórios nos testes presenciais
+
+- mini-projeto em Matlab *3 valores*
+
+- 4 mini testes a realizar na aula
+  *1.25 cada - 5 valores*
+  + 29 Outubro
+  + 26 Novembro
+  + 17 Dezembro
+  + 14 Janeiro
+
+* IA
+- teste: 14 Dezembro
+  nota min 8
+- trabaho : 10 a 15 de Janeiro
+
+Nota final = 50% + 50%
+
+* DSS
+- teste: 10 de Janeiro
+  nota min 9
+- trabaho:
+  1. Entrega intermédia -> 3 de novembro
+  2. Entrega final      -> 17 de dezembro
+
+  nota min 10
+
+Nota final = 45% *Teste* + 45% *Trabalho* + 10% *Avaliação contínua*
+
+* LI4
+ *Perdidos estamos*
