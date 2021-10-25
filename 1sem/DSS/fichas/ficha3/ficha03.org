@@ -1,0 +1,135 @@
+#+TITLE: 03
+* Notas:
+*** Cenário X
++ *Use case*
+  - *Descrição:*
+  - *Cenário:*
+  - *Pré-condição:*
+  - *Pós-condição:*
+  - *Fluxo normal:*
+  - *Fluxo de excepção:*
+
+*  Portagens
+** 1ª Etapa
+Identificar os atores e use case do sistema.
+Através de texto, tabelas, ...
+
+*Atores:*
+    - Cliente
+    - Pórtico
+    - Gestor
+
+|-----------+------------------------------|
+| *Ator*    | *Use Case*                   |
+|-----------+------------------------------|
+| *Cliente* | Pesquisar movimentos         |
+|           | Listar movimentos            |
+|           | Obter extrato mensal         |
+|-----------+------------------------------|
+| *Pórtico* | Registar passagem do veículo |
+|-----------+------------------------------|
+| *Gestor*  | Alterar tabela de preços     |
+|-----------+------------------------------|
+
+** 2ª Etapa
+(1ª versao) do diagrama U.C
+
+Realizado através do *Visual Paradgma*
+[[./portagens.png]]
+
+** 3ª Etapa
+Descrever cada um dos use cases.
+
+*** Cenário 1
+*Use case* Registar passagem de viatura
+
+  - *Cenário:*
+    Cenário 1 -Numa viagem Mindelo-Valença a uzana fez o percurso pela A 28, uma ex-SCUT ...
+
+  - *Pré-condição:*
+    True (Não tem pré-condição).
+
+  - *Pós-condição:*
+    O Sistema fica com mais um registo de passagem na  base de dados.
+
+  - *Fluxo normal:*
+
+    *1.* O pórtico comunica o *identificador* da viatura (~e o número pórtico~)
+
+    *2.* O Sistema de portagens valida que o identificador encontra-se registado.
+
+    *3.* Cria o registo (~identificador~, ~hora~, ~local~ e o ~número pórtico~).
+
+  - *Fluxo Alternativo 1* ~[identificador não reconhecido](passo 2)~
+
+    *2.1* O Sistema comunica que o identificador não consta na base de dados.
+
+    *2.2* Pórtico envia fotografia do veículo para posterior análise.
+
+    *2.3* Sistema cria um registo (~fotografia~, ~identificador~, ~hora~, ~local~ e o ~número pórtico~).
+
+  - *Fluxo Alternativo 2* ~[pórtico não conseguiu ler o identificador](passo 1)~
+
+    *1.1* O Pórtico envia um identificador errado.
+
+    *1.2* O Sistema comunica que o identificador não consta na base de dados.
+
+    *1.3* Pórtico envia fotografia do veículo para posterior análise.
+
+    *1.4* Sistema cria um registo (~fotografia~, ~identificador~, ~hora~, ~local~ e o ~número pórtico~).
+
+* Biblioteca
+** 1ª Etapa
+*Atores:*
+    - Utilizador
+    - Funcionário
+
+|---------------+----------------------------------|
+| *Ator*        | *Use Case*                       |
+|---------------+----------------------------------|
+| *Utilizador*  | Pesquisar um livro               |
+|               | Requisitar livro                 |
+|---------------+----------------------------------|
+| *Funcionário* | Registar requisição de livro     |
+|               | Registar devolução de livro      |
+|               | Renovar a requisição de um livro |
+|               | Passar multas???                 |
+|               | ...                              |
+|---------------+----------------------------------|
+
+** 2ª Etapa
+Fazer diagrama...
+** 3ª Etapa
+
+*** Cenário 1
++ *Use case:* Registar requisição de um livro.
+  - *Cenário:*
+    O josé requisita um dado livro.
+
+  - *Pré-condição:*
+    Funcionário encontra-se registado.
+
+  - *Pós-condição:*
+    O sistema fica com mais um registo de requisição de um livro.
+
+  - *Fluxo normal:*
+
+    *1.* Funcionário indica o código do utent e o código do livro.
+
+    *2.* Sistema verifica que o utente é válido.
+
+    *3.* Sistema verifica que o utente não tem multas pra pagar ou se tem livros com entrega em atraso.
+
+    *4.* Sistema verifica disponibilidade do livro.
+
+    *5.* Sistema calcula data prevista de entrega para devolução.
+
+    *6.* Sistema regista requisição do livro pelo utente.o livro pode ser requisitado e atualiza estado do livro em questão.
+
+    *7.* Sistema imprime o comprovativo de requisição
+
+   TODO Fazer fluxo de excepção
+  - *Fluxo de excepção:*
+    - O utente pode nao existir
+    - livro nao tem disponibilidade
+    - ....

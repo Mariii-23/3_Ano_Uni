@@ -37,7 +37,7 @@ Exame de recurso: 20 a 26 janeiro
 * IA
 - teste: 14 Dezembro
   nota min 8
-- trabaho : 10 a 15 de Janeiro
+- trabalho : 10 a 15 de Janeiro
 
 Nota final = 50% + 50%
 
