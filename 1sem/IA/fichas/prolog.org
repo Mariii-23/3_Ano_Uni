@@ -1,0 +1,33 @@
+#+TITLE: Prolog
+* Commands
+** listing
+Observar coisas na base de dados
+
+*Ex ->* listing(funcao)
+** findall
+- Procurar todas as soluções possíveis
+- *findall(X,Q,L)*
+   ~L~ is the list of ~X~ tha attend ~Q~, if no solution findall succeds with ~L=[]~.
+** bagof
+- ??
+- *bagof(X,Q,L)*
+    ~L~ is a list of ~X~ that attend ~Q~, if no solution, it fails.
+** setof
+- ??
+- *setof(X,Q,L)*
+   ~L~ is the list of ~X~ that attend  ~Q~, ~L~ is ordered, repeated elements removed, if no
+solution, it fails.
+
+** assert
+- *assert*: stor fiz pra nao usar
+- *asserta*: insere à cabeça
+- *assertz*: insere à cauda
+** retract
+- *retract*: retira um elemento a base de dados
+- *retractall*: retira todos os elementos da base de dados
+
+** Insert
+- insert record
+** Consult
+- consult record
+- consultarP(REs, U):- odbC_query('prolog','SELECT * FROM users WHERE user=w')

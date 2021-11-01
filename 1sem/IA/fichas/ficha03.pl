@@ -35,57 +35,76 @@ diff(_,[],0).
 diff(A,[A|T],N):- diff(A,T,N).
 diff(A,[_|T],N):- diff(A,T,X), N is X+1.
 
-% és tone, isto ta mal e tem erros
-accListaDiff([X],L,N):- N is 1.
-accListaDiff([],L,N):- N is len(L,N).
-accListaDiff([A|T],L,N):- member(A,T), accListaDiff(T,L,N).
-accListaDiff([A|T],L,N):- accListaDiff(T,[A|L],X), N is X+1.
-lDiff(L,N):- accListaDiff(L,[],0).
+nPred(_,[],0).
+nPred([],_,0).
+nPred([A|T],[A1|T1],N):-
+    A \= A1,
+    N is 0.
+nPred([A|T],[A|T1],N):-
+    nPred(T,T1,X),
+    N is X+1.
 
 %--------------------------------- - - - - - - - - - -  -  -  -  -   -
 % Extensao do predicado apagar: Elemento,Lista,Resultado -> {V,F}
 
-% - tem erro
-accDel(_,[],L).
-% -  aqui devia returnar o L ++ T
-accDel(X,[X|T],L):- accDel(X,T,L).
-accDel(X,[X1|T],L):- accDel(X,T,N), L is [X1|N].
-del(X,L):- accDel(X,L,[]).
+apaga1(_, [], []).
+apaga1(X, [X|T], T).
+apaga1(X, [H|T], [H|R]) :-
+    X \= H,
+    apaga1(X, T, R).
 
 %--------------------------------- - - - - - - - - - -  -  -  -  -   -
 % Extensao do predicado apagatudo: Elemento,Lista,Resultado -> {V,F}
 
-
-
-
+apagaTudo(_, [], []).
+apagaTudo(X, [X|T], R) :-
+    apagaTudo(X, T, R).
+apagaTudo(X, [H|T], [H|R]) :-
+    X \= H,
+    apagaTudo(X, T, R).
 
 %--------------------------------- - - - - - - - - - -  -  -  -  -   -
 % Extensao do predicado adicionar: Elemento,Lista,Resultado -> {V,F}
 
+add_cauda(X,L,L):- member(X,L).
+add_cauda(X,L,[X|L]).
 
-
-
+adicionar(X, [], [X]).
+adicionar(X,[X1|T], [X1|R] ):-
+    X \= X1,
+    adicionar(X, T, R).
+adicionar(_,L,L).
 
 %--------------------------------- - - - - - - - - - -  -  -  -  -   -
 % Extensao do predicado concatenar: Lista1,Lista2,Resultado -> {V,F}
 
-
-
-
+concatenar(L1,[],L1).
+concatenar(L1,[A|T],R):-
+    adicionar(A,L1,R1),
+    concatenar(R1,T,R).
 
 %--------------------------------- - - - - - - - - - -  -  -  -  -   -
 % Extensao do predicado inverter: Lista,Resultado -> {V,F}
 
+%- com auxiliar
 accReverse([],L,L).
 accReverse([H|T],Acc,Rev):- accReverse(T,[H|Acc],Rev).
+
+%- sem auxiliar
 reverse(L1,L2):- accReverse(L1,[],L2).
+rev([X],[X]).
+rev([A|T],[A|L2]):- rev(T,L2).
 
 %--------------------------------- - - - - - - - - - -  -  -  -  -   -
 % Extensao do predicado sublista: SubLista,Lista -> {V,F}
 
+prefixo([],_).
+% prefixo([A|_],[A1|_]):- A\=A1, fail.
+prefixo([A|T],[A|T1]):- prefixo(T,T1).
 
-
-
+sublista([],_).
+sublista(L,L1):-  prefixo(L,L1).
+sublista(L,[A|T]):-  sublista(L,T).
 
 %--------------------------------- - - - - - - - - - -  -  -  -  -   -
 % Extensao do meta-predicado nao: Questao -> {V,F}

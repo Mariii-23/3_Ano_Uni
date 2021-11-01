@@ -27,12 +27,12 @@ Exame de recurso: 20 a 26 janeiro
 
 - mini-projeto em Matlab *3 valores*
 
-- 4 mini testes a realizar na aula
+- 4 mini testes a realizar na aula [1/4]
   *1.25 cada - 5 valores*
-  + 29 Outubro
-  + 26 Novembro
-  + 17 Dezembro
-  + 14 Janeiro
+  + [X] 29 Outubro -> (10/14)
+  + [ ] 26 Novembro
+  + [ ] 17 Dezembro
+  + [ ] 14 Janeiro
 
 * IA
 - teste: 14 Dezembro
@@ -45,7 +45,7 @@ Nota final = 50% + 50%
 - teste: 10 de Janeiro
   nota min 9
 - trabaho:
-  1. Entrega intermédia -> 3 de novembro
+  1. Entrega intermédia -> 13 de novembro
   2. Entrega final      -> 17 de dezembro
 
   nota min 10
