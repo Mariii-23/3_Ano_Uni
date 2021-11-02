@@ -77,6 +77,8 @@ adicionar(_,L,L).
 
 %--------------------------------- - - - - - - - - - -  -  -  -  -   -
 % Extensao do predicado concatenar: Lista1,Lista2,Resultado -> {V,F}
+append([],L,L).
+append([H|L1],L2,[H|L3]) :- append(L1,L2,L3).
 
 concatenar(L1,[],L1).
 concatenar(L1,[A|T],R):-
@@ -98,9 +100,22 @@ rev([A|T],[A|L2]):- rev(T,L2).
 %--------------------------------- - - - - - - - - - -  -  -  -  -   -
 % Extensao do predicado sublista: SubLista,Lista -> {V,F}
 
+prefix(P,L):- append(P,_,L).
+suffix(S,L):- append(_,S,L).
+
+% ou
+
 prefixo([],_).
 % prefixo([A|_],[A1|_]):- A\=A1, fail.
 prefixo([A|T],[A|T1]):- prefixo(T,T1).
+
+% ----
+
+sublist(Sub,List):-
+    suffix(Suffix,List),
+    prefix(Sub,Suffix).
+
+% ou
 
 sublista([],_).
 sublista(L,L1):-  prefixo(L,L1).
