@@ -1,0 +1,9 @@
+#+TITLE: Notas
+
+* fichas
+** debug no prolog
+#+begin_src bash
+trace,bfs(G,F,Cam).
+
+notrace.
+#+end_src

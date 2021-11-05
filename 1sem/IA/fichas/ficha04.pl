@@ -2,7 +2,7 @@
 % SIST. REPR. CONHECIMENTO E RACIOCINIO - 3/MiEI
 
 %--------------------------------- - - - - - - - - - -  -  -  -  -   -
-% Programacao em logica 
+% Programacao em logica
 % Grafos (Ficha 9)
 
 %--------------------------------- - - - - - - - - - -  -  -  -  -   -
@@ -18,7 +18,7 @@
 
 %---------------------------------
 
-g( grafo([madrid, cordoba, braga, guimaraes, vilareal, viseu, lamego, coimbra, guarda],
+g1( grafo([madrid, cordoba, braga, guimaraes, vilareal, viseu, lamego, coimbra, guarda],
   [aresta(madrid, corboda, a4, 400),
    aresta(braga, guimaraes,a11, 25),
    aresta(braga, vilareal, a11, 107),
@@ -29,37 +29,39 @@ g( grafo([madrid, cordoba, braga, guimaraes, vilareal, viseu, lamego, coimbra, g
    aresta(viseu,guarda, a25, 75)]
  )).
 
-%--------------------------------- 
+%---------------------------------
 %alinea 1)
 
 adjacente(X,Y,K,E, grafo(_,Es)) :- member(aresta(X,Y,K,E),Es).
 adjacente(X,Y,K,E, grafo(_,Es)) :- member(aresta(Y,X,K,E),Es).
 
-%--------------------------------- 
+%---------------------------------
 %alinea 2)
 
 % caminho acíclico P, que comeca no nó A para o nó B no grafo G
 
-caminho(G,A,B,P):- ve se é adjacente? - yeii
-                     caso contrario
+caminho(G,A,B,P):- caminho1(G,A,[B],P).
+caminho1(_,A,[A|P1],[A|P1]).
+caminho1(G,A,[Y|P1],P):-
+   adjacente(X,Y,_,_,G), nao(membro(X,[Y|P1])), caminho1(G,A,[X,Y|P1],P).
 
-auxiliar G,A, B,P , adjacentes -> ir aos seus adjacentes
-  [adjacente|cauda] -> ias 1 a um ver se algum deles era adjacente ao B
-  se adjacentes = [] -> vais procurar nos adjacentes dos adjacentes
-
-
-
-%--------------------------------- 
+%---------------------------------
 % alinea 3)
 
+%Todo verificar
+% acho q ta mal
+ciclo(G,A,P):- aux_ciclo(G,A,[],P).
 
+aux_ciclo(_,A,[A|P],[A|P]).
+aux_ciclo(G,A,[Y|P1],P):-
+  adjacente(X,Y,_,_,G), caminho1(G,A,[X,Y|P1],P).
 
-%--------------------------------- 
+%---------------------------------
 %alinea 4)
 
 
 
-%--------------------------------- 
+%---------------------------------
 %alinea 5)
 
 
