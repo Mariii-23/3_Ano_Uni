@@ -1,0 +1,101 @@
+#+TITLE: Data Base
+
+#+LATEX: \newpage
+* Caso de estudo
+Com base na minha localizacao -> encontrar estacoes de comboio (transporte)
+
+Neste caso faremos apenas em braga.
+
+** Caracterizar estacao (Propriedades)
+- identificador
+- designacao
+- caracterizavao
+- endereco
+- horario
+- lista de partidas e chegadas
+- lista de opinioes
+- lista de fotografias
+- servicos disponiveis (bares, restaurantes, quiosques, ...)
+- ...
+
+#+LATEX: \newpage
+
+* Mysql
+** TABELAS
+Fazer as tabelas direito e gerar codigo (ou la o q é)
+*** ESTACOES
+|----------------+--------------+---------|
+| Id             | CHAR(5)      | PC & NN |
+|----------------+--------------+---------|
+| Designação     | VARCHAR(5)   | NN      |
+|----------------+--------------+---------|
+| Caracterização | TEXT         | NN      |
+|----------------+--------------+---------|
+| Categoria      | INT          | NN      |
+|----------------+--------------+---------|
+| Rua            | VARCHAR(100) | NN      |
+|----------------+--------------+---------|
+| Localidade     | VARCHAR(75)  | NN      |
+|----------------+--------------+---------|
+| Coordenadas    | VARCHAR(50)  | NN      |
+|----------------+--------------+---------|
+
+
+~Teriamos que ligar as estacoes as categorias~
+
+
+*** CATEGORIAS
+|------------+-------------+---------|
+| Id         | INT         | NN & PC |
+|------------+-------------+---------|
+| Designação | VARCHAR(75) | NN      |
+|------------+-------------+---------|
+
+
+*** SERVICOS
+|------------+-------------+---------|
+| Id         | INT         | NN & PC |
+|------------+-------------+---------|
+| Designação | VARCHAR(75) | NN      |
+|------------+-------------+---------|
+
+
+~Ligamos as EstacoesServicos aos SERVICOS~
+
+~Ligamos as EstacoesServicos as ESTACOES~
+
+
+*** EstacoesServicos
+|---------+---------+---------|
+| Estacao | CHAR(5) | NN & PC |
+|---------+---------+---------|
+| Servico | INT     | NN & PC |
+|---------+---------+---------|
+
+
+*** NOTAS::
++ NN -> :: Nao nulo
++ PC -> :: Nao podem existir id iguais?!
+
++ CHAR(N) -> :: guarda sempre espaco para os N
++ VARCHAR(N) -> :: nao guarda sempre espaco para os N.
+
+  No caso de a string ter N/2 só guarda o espaco para esses N/2 caracteres
+** SQL file
+FILE::
+
+#+begin_src sql +n 
+use Comboios;
+SELECT * from ESTACOES;
+#+end_src
+
+Other example
+#+begin_src sql +n -r
+use Sakila;
+SELECT DISTINCT store_id (ref:distinct)
+      FROM Customer
+      ORDER BY store_id;
+#+end_src
+
+Na linha [[(distinct)]] só ira apresentar os distintos.
+Se optarmos por colocar ~COUNT(DISTINCT store_id)~ irá apresentar o número de resultados obtidos

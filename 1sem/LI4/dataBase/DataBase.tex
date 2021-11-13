@@ -1,0 +1,159 @@
+% Created 2021-11-10 Wed 17:23
+% Intended LaTeX compiler: pdflatex
+\documentclass[11pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{graphicx}
+\usepackage{longtable}
+\usepackage{wrapfig}
+\usepackage{rotating}
+\usepackage[normalem]{ulem}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{capt-of}
+\usepackage{hyperref}
+\author{Mari§}
+\date{\today}
+\title{Data Base}
+\hypersetup{
+ pdfauthor={Mari§},
+ pdftitle={Data Base},
+ pdfkeywords={},
+ pdfsubject={},
+ pdfcreator={Emacs 27.2 (Org mode 9.6)}, 
+ pdflang={English}}
+\begin{document}
+
+\maketitle
+\tableofcontents
+
+\newpage
+\section{Caso de estudo}
+\label{sec:orgf2ee6a8}
+Com base na minha localizacao -> encontrar estacoes de comboio (transporte)
+
+Neste caso faremos apenas em braga.
+
+\subsection{Caracterizar estacao (Propriedades)}
+\label{sec:org86664be}
+\begin{itemize}
+\item identificador
+\item designacao
+\item caracterizavao
+\item endereco
+\item horario
+\item lista de partidas e chegadas
+\item lista de opinioes
+\item lista de fotografias
+\item servicos disponiveis (bares, restaurantes, quiosques, \ldots{})
+\item \ldots{}
+\end{itemize}
+
+\newpage
+
+\section{Mysql}
+\label{sec:orgb771d8a}
+\subsection{TABELAS}
+\label{sec:org59b4924}
+Fazer as tabelas direito e gerar codigo (ou la o q é)
+\subsubsection{ESTACOES}
+\label{sec:org909e4db}
+\begin{center}
+\begin{tabular}{lll}
+\hline
+Id & CHAR(5) & PC \& NN\\
+\hline
+Designação & VARCHAR(5) & NN\\
+\hline
+Caracterização & TEXT & NN\\
+\hline
+Categoria & INT & NN\\
+\hline
+Rua & VARCHAR(100) & NN\\
+\hline
+Localidade & VARCHAR(75) & NN\\
+\hline
+Coordenadas & VARCHAR(50) & NN\\
+\hline
+\end{tabular}
+\end{center}
+
+
+\texttt{Teriamos que ligar as estacoes as categorias}
+
+
+\subsubsection{CATEGORIAS}
+\label{sec:org97d05f2}
+\begin{center}
+\begin{tabular}{lll}
+\hline
+Id & INT & NN \& PC\\
+\hline
+Designação & VARCHAR(75) & NN\\
+\hline
+\end{tabular}
+\end{center}
+
+
+\subsubsection{SERVICOS}
+\label{sec:org50641cc}
+\begin{center}
+\begin{tabular}{lll}
+\hline
+Id & INT & NN \& PC\\
+\hline
+Designação & VARCHAR(75) & NN\\
+\hline
+\end{tabular}
+\end{center}
+
+
+\texttt{Ligamos as EstacoesServicos aos SERVICOS}
+
+\texttt{Ligamos as EstacoesServicos as ESTACOES}
+
+
+\subsubsection{EstacoesServicos}
+\label{sec:org9ff61d2}
+\begin{center}
+\begin{tabular}{lll}
+\hline
+Estacao & CHAR(5) & NN \& PC\\
+\hline
+Servico & INT & NN \& PC\\
+\hline
+\end{tabular}
+\end{center}
+
+
+\subsubsection{NOTAS::}
+\label{sec:org09de3e4}
+\begin{description}
+\item[{NN ->}] Nao nulo
+\item[{PC ->}] Nao podem existir id iguais?!
+
+\item[{CHAR(N) ->}] guarda sempre espaco para os N
+\item[{VARCHAR(N) ->}] nao guarda sempre espaco para os N.
+
+No caso de a string ter N/2 só guarda o espaco para esses N/2 caracteres
+\end{description}
+\subsection{SQL file}
+\label{sec:org627005a}
+FILE::
+
+\begin{verbatim}
+1  use Comboios;
+2  SELECT * from ESTACOES;
+\end{verbatim}
+
+Other example
+\begin{verbatim}
+3  use Sakila;
+4  SELECT DISTINCT store_id
+5        FROM Customer
+6        ORDER BY store_id;
+\end{verbatim}
+
+Na linha 4 só ira apresentar os distintos.
+Se optarmos por colocar \texttt{COUNT(DISTINCT store\_id)} irá apresentar o número de resultados obtidos
+\end{document}
