@@ -1,0 +1,17 @@
+#+TITLE: Notes
+
+| A |  -> classe A
+
+| a:A | -> objeto a instância
+
+| :A | -> um objeto que é instância de A |
+
+
+* Todos os registos sao relativos a Parques registadas no sistema
+
+- context :: GesPark
+- inv :: ParquesRegistados:
+            self.todos_registos -> forAll( r |
+                    self.todos_parques -> includes(r.parque)
+             )
+(nas ecpressões OCL vamos considerar os Maps como collections)

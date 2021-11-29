@@ -15,6 +15,7 @@ public class EchoClient {
             BufferedReader systemIn = new BufferedReader(new InputStreamReader(System.in));
 
             String userInput;
+            System.out.println("Introduza numeros:");
             while ((userInput = systemIn.readLine()) != null) {
                 try {
                     Double.valueOf(userInput).doubleValue();
@@ -74,12 +75,8 @@ public class EchoClient {
     }
 
     public static void main(String[] args) {
-        byte ola = (byte) 42;
-        byte o1 = (byte) (ola >> 4);
-        byte o2 = (byte) (ola >> 6);
-        byte o3 = byte ((byte) (ola << 6)) >> 6;
 
-        //System.out.println("Exercicio 3 -> 1");
-        //ex3_1();
+        System.out.println("Exercicio 3 -> 1");
+        ex3_1();
     }
 }
