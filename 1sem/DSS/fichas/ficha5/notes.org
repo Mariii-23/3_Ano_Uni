@@ -15,3 +15,24 @@
                     self.todos_parques -> includes(r.parque)
              )
 (nas ecpressões OCL vamos considerar os Maps como collections)
+
+
+* Diagrama de sequencia
+
+** 4. A operação deverá ter como pré-condição que o identificador existe e como pós-condição que o resultado é não negativo.
+
+   - context :: GesPark:: totalParquesVisitados(id:String):Integer
+
+   - pre :: PreExisteID:
+           self.identificadores -> exists( ojbIdent |
+               objIdent.getId() == id
+           )
+
+   - pos :: PosResPositivo:
+           resutl >= 0
+** 5.
+
+- context :.GesPark::
+  montanteGlobalAPagar(nif:Integer, dataInicio: Date, dataFim: Date)
+
+  .....
