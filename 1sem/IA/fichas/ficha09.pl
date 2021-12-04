@@ -1,5 +1,5 @@
 
-:- dynamic -\1.
+:- dynamic -/1.
 
 -voo(X):- nao(voo(X)),
           nao(excecao(-voo(X))).
