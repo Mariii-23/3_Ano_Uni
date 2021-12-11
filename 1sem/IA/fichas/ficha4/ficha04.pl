@@ -48,29 +48,64 @@ caminho1(G,A,[Y|P1],P):-
 %---------------------------------
 % alinea 3)
 
-%Todo verificar
-% acho q ta mal
-ciclo(G,A,P):- aux_ciclo(G,A,[],P).
+% A B A -> é possivel
+% A B C B A -> não é possivel
 
-aux_ciclo(_,A,[A|P],[A|P]).
-aux_ciclo(G,A,[Y|P1],P):-
-  adjacente(X,Y,_,_,G), caminho1(G,A,[X,Y|P1],P).
+ciclo(G,A,[A,X|Y]) :- adjacente(A,X,_,_,G), caminho(G,X,A,P), P = [X|Y].
+
+% Outra versao
+
+%ciclo(G,A,P):- aux_ciclo(G,A,[A],P).
+
+%aux_ciclo(_,A,[A,P|T],[A,P|T]).
+%aux_ciclo(G,A,[Y|P1],[A,Y|P1]):-
+%  adjacente(A,Y,_,_,G).
+%aux_ciclo(G,A,[Y|P1],P):-
+%  adjacente(X,Y,_,_,G), nao(membro(X,[Y|P1])), aux_ciclo(G,A,[X,Y|P1],P).
 
 %---------------------------------
 %alinea 4)
 
+caminhoK(G,A,B,P,Km,Es) :- caminhoK_aux(G,A,[B],P,0,Km,[],Es).
+
+caminhoK_aux(_,A,[A|P1],[A|P1],Km,Km,Es,Es).
+
+caminhoK_aux(G,A,[Y|P1],P ,Km_agora, Km, Es_T ,Es ):-
+    adjacente(X,Y,Estrada,Km1,G), nao(membro(X,[Y|P1])),
+    Km2 is Km_agora + Km1,
+    caminhoK_aux(G,A,[X,Y|P1],P,Km2, Km , [ Estrada|Es_T] , Es)
+.
 
 
 %---------------------------------
 %alinea 5)
 
+cicloK(G,A,[A,X|Y], Km , [Estrada_i|Es2] ) :-
+    adjacente(A,X,Estrada_i,Km_i,G),
+    caminhoK(G,X,A,P, Km2, Es2 ) , P = [X|Y],
+    Km is Km_i + Km2
+.
+
+% Outra versao
+
+%cicloK(G,A,P,Km,Es):- aux_cicloK(G,A,[A],P,0,Km,[],Es).
+
+%aux_cicloK(_,A,[A,P|T],[A,P|T],Km,Km,Es,Es).
+%aux_cicloK(G,A,[Y|P1],[A,Y|P1],Km1, Km, Es , [Estrada|Es]):-
+%    adjacente(A,Y,Estrada,Km2,G),
+%    Km is Km1 + Km2.
+%aux_cicloK(G,A,[Y|P1],P,Km_atual,Km, Es_T ,Es):-
+%    adjacente(X,Y,Estrada,Km1,G),
+%    nao(membro(X,[Y|P1])),
+%    Km2 is Km1 + Km_atual,
+%    aux_cicloK(G,A,[X,Y|P1],P, Km2, Km, [Estrada|Es_T] ,Es).
 
 %--------------------------------- - - - - - - - - - -  -  -  -  -   -
 % Extensao do meta-predicado nao: Questao -> {V,F}
 
 nao( Questao ) :-
     Questao, !, fail.
-nao( Questao ).
+nao( _ ).
 
 membro(X, [X|_]).
 membro(X, [_|Xs]):-
