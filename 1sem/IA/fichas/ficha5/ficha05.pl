@@ -32,7 +32,11 @@ transicao(jarros(V1,V2),encher(2,1),jarros(NV1,NV2)):-
 transicao(jarros(V1,V2),vazio(1),jarros(0,V2)):- V1>0.
 transicao(jarros(V1,V2),vazio(2),jarros(V1,0)):- V2>0.
 
+%------------------------------------------------
+% Questao 3
 
+%%%%%%%%%%%%%%%%%%%
+% Depth first
 dfs2(X, X, Cam, S):- reverse(Cam,S).
 dfs2(X, Y, Cam, S):-
   transicao(X, _, Novo),
@@ -41,16 +45,26 @@ dfs2(X, Y, Cam, S):-
 
 dfs(X, Y, S):-  dfs2(X, Y, [X], S).
 
-resolf(S):-
-  dfs(jarros(0,0), jarros(_,4), S).
+%%%%%%%%%%%%%%%%%%%
+% Breadth first
 
-resolf1(S):-
-  dfs(jarros(0,0), jarros(4,_), S).
+bfs(Orig, Dest, Cam):- bfs2(Dest,[[Orig]],Cam).
 
-%------------------------------------------------
-% Questao 3
+bfs2(X,[[X|T]|_],Solucao)  :- reverse([X|T],Solucao).
 
+bfs2(EstadoF,[EstadoA|Outros],Solucao) :-
+    EstadoA = [Act|_],
+    findall([X|EstadoA],
+            (EstadoF\==Act,
+            transicao(Act,_,X),
+            not(member(X,EstadoA))),
+            Novos),
+    append(Outros,Novos,Todos),
+    bfs2(EstadoF,Todos,Solucao).
 
+%%%% Testes
+resolf(S):- dfs(jarros(0,0), jarros(_,4), S).
+resolf1(S):- dfs(jarros(0,0), jarros(4,_), S).
 
-
-
+resolf2(S):- bfs(jarros(0,0),jarros(4,_),S).
+resolf3(S):- bfs(jarros(0,0),jarros(_,4),S).
