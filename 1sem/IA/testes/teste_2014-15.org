@@ -1,0 +1,92 @@
+#+TITLE: Teste 2014 15
+
+*  Grupo 1
+a) Caracterize e explique as decisões tomadas ao nível da representação do conhecimento;
+
+  #+begin_src prolog
+  aluno :: Id, Nome, Curso, Ano, Ects, Propina -> {V,F}
+
+  id :: Id -> {V,F}
+  nome :: Nome -> {V,F,Desconhecido}
+  curso :: Curso -> {V,F,Desconhecido}
+  ano :: Ano -> {V,F,Desconhecido}
+  ects :: Ects -> {V,F,Desconhecido}
+  propina :: Propina -> {V,F,Desconhecido}
+  #+end_src
+
+  Um aluno é caracterizado por ter :
+   - um id
+   - nome
+   - frequentar um curso
+   - andar num certo ano
+   - ter ECTS
+   - algo que identifique se ele já pagou a propina
+
+b) Conhecimento
+
+   + Definir o conhecimento falso
+        #+begin_src prolog :noweb yes
+-aluno(Id,N,C,A,E,P):-
+    not(aluno(Id,N,C,A,E,P)),
+    not(exception(aluno(Id,N,C,A,E,P))).
+        #+end_src
+
+   + Valores nulos do tipo interdito
+
+        #+begin_src prolog :noweb yes
+nulo(interdito).
+        #+end_src
+
+   + Excepcoes
+         #+begin_src prolog :noweb yes
+ exception(aluno(I,_,C,A,E,P)):- aluno(I,nulo,C,A,E,P).
+ exception(aluno(I,_,C,A,E,P)):- aluno(I,nulo,C,A,E,P).
+ exception(aluno(I,N,_,A,E,P)):- aluno(I,N,nulo,A,E,P).
+ exception(aluno(I,N,_,A,E,P)):- aluno(I,N,incerto,A,E,P).
+ exception(aluno(I,N,_,A,E,P)):- aluno(I,N,interdito,A,E,P).
+ exception(aluno(I,N,C,_,E,P)):- aluno(I,N,C,incerto,E,P).
+ exception(aluno(I,N,C,A,_,P)):- aluno(I,N,C,A,incerto,P).
+ exception(aluno(I,N,C,A,_,P)):- aluno(I,N,C,A,nulo,P).
+ exception(aluno(I,N,C,A,E,_)):- aluno(I,N,C,A,E,incerto).
+ exception(aluno(3456,carlos,mdi,1,Ects,sim)):-
+     Ects < 45, (-1) < Ects .
+ exception(aluno(45678,duarte,miec,A,180,sim)):-
+     A < 6, 2 < A.
+ exception(aluno(67890,filipe,C,1,E,nao)):-
+     ( C == lfis ; C == lefis ),
+     ( E == 45 ; E == 54).
+ exception(aluno(78901,N,lcc,3,180,sim)):-
+     N == gisela ; N == gisele; N == gabriel.
+     #+end_src
+
+   + Conhecimento
+
+        #+begin_src prolog :noweb yes
+aluno(12345,ana,lei,1,60,sim).
+aluno(23456,beatriz,lcc,2,60,nao).
+aluno(56789,eva,miec,4,240,incerto).
+aluno(89012,heitor,interdito,1,10,nao).
+aluno(90123,ivo,incerto,2,180,sim).
+        #+end_src
+
+c) Invariantes
+    #+begin_src prolog :noweb yes
++aluno(_,_,_,_,_,_):: (
+     findall(Id, (aluno(Id,_,_,A,E,_), (A > 5 ; E > 300)), S ),
+     length(S,0)).
+    #+end_src
+d) Inserir conhecimento
+  #+begin_src prolog
+%% Inserir conhecimento
+inserir(New):- assert(New).
+inserir(New):- retract(New), !, fail.
+
+%% Adicionar um novo predicado obedecendo os invariantes
+new_predicado(New):-
+    findall(X,New::+X,S),
+    inserir(New),
+    valid(S).
+
+%% Adicionar um novo aluno
+add_aluno(Id,N,C,A,E,P):- new_predicado(aluno(Id,N,C,A,E,P)).
+  #+end_src
