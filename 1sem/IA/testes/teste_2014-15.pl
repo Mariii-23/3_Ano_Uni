@@ -73,5 +73,6 @@ remover_predicado(P):-
     findall(X,-P::X,R),
     remover(P),
     valid(R).
-%%
+
+%% Adicionar um novo aluno
 add_aluno(Id,N,C,A,E,P):- new_predicado(aluno(Id,N,C,A,E,P)).

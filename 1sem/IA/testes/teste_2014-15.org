@@ -90,3 +90,53 @@ new_predicado(New):-
 %% Adicionar um novo aluno
 add_aluno(Id,N,C,A,E,P):- new_predicado(aluno(Id,N,C,A,E,P)).
   #+end_src
+
+* Grupo 2
+
+1. Na linguagem de programação em lógica PROLOG, a expressão 'A=..B' representa a comparação dos valores decimais de A e B.
+
+   Falso, representa o funtor de um dado termo, colocando numa lista o nome do termo e os seus respetivos arguemtos.
+
+   Exemplo:
+  #+begin_src prolog
+amigos(arroz,batata(2)) =.. L.
+  #+end_src
+
+  :Result:
+  #+begin_src prolog
+L = [amigos, arroz, batata(2)]
+  #+end_src
+
+2. Na linguagem de programação prolog, o operador '=:=/2' representa a comparação dos valores aritméticos calculados de cada operando.
+
+   Verdadeiro. Em oposicao ao operador '==\2', o '=:=\2' calcula primeiro os valores aritmeticos e só depois compara o resultado obtido de ambos os lados.
+
+   Exemplo:
+  #+begin_src prolog
+3 == 2 + 1.
+
+Falso
+
+3 =:= 2 + 1.
+
+Verdadeiro
+  #+end_src
+
+3. 'negação forte' e 'negação explicta' são duas designações para identificar a negação por falha de prova.
+
+   ???
+
+   Falso, a 'negacao explicita' acontece por falha na prova, ja a 'negação forte' acontece devido a falha de predicados
+
+4. Em termos da representação de conhecimento imperfeito, os valores nulos tanto podem assumir a representação de conhecimento positivo como de conhecimento negativo.
+
+   ???
+
+5. Invariantes denotam regras de teste à consistência do conhecimento, com os quais se representa conhecimento positivo ou conhecimento negativo.
+
+   Verdadeiro, invariantes servem para termos a garantia que certas regras são aplicadas quando queremos inserir novo conhecimento (conhecimento positivo) e quando queremos remover um dado conhecimento (conhecimento negativo). Nao permitindo a sua adicao, ou remoçao, no caso de algum dos invariantes falhar.
+
+* Grupo 3
+1. Questão
+
+   V, V, F, F, V.
