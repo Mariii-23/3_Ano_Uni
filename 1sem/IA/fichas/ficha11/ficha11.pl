@@ -5,14 +5,6 @@
 :- op(900,xfy,'::').
 
 
-+servico(_,_) :: (
-         findall(S1, (servico(S1,zulmira),not(nulo(S1))) ,R),
-         length(R,0)).
-
-+ato(_,_,_,_) :: (
-         findall(A, ato(A,_,_,feriado) ,R),
-         length(R,0)).
-
 -servico(S,E):-
     not(servico(S,E)),
     not(exception(servico(S,E))).
@@ -21,14 +13,16 @@
     not(ato(A,E,U,D)),
     not(exception(ato(A,E,U,D))).
 
++servico(_,_) :: (
+         findall(S1, (servico(S1,zulmira),not(nulo(S1))) ,R),
+         length(R,0)).
 
-%%-enfermeiro(N) :: (
-%%    findall(N, ato(N,_,_,_) ,R),
-%%    length(R,0)).
++ato(_,_,_,_) :: (
+         findall(A, ato(A,_,_,feriado) ,R),
+         length(R,0)).
 
-% TODO trocar para remover servico
--enfermeiro(N) :: (
-    findall(N, servico(_,N) ,R),
+-servico(_,E) :: (
+    findall(E, ato(_,E,_,_) ,R),
     length(R,0)).
 
 exception(servico(_,E)):- servico(incerto,E).
@@ -112,4 +106,4 @@ remover_predicado(P):-
 new_servico(S,E):- not(servico(S,E)) ,new_predicado(servico(S,E)).
 new_ato(A,E,U,D):- not(ato(A,E,U,D)) , new_predicado(ato(A,E,U,D)).
 
-remove_enfermerio(N):-  remover_predicado(enfermeiro(N)).
+remove_enfermeiro(N):-  remover_predicado(servico(S,N)).
