@@ -10,7 +10,27 @@
 +jogo(J,A,_) :: (
          findall(Custos, (jogo(J,A,Custos),not(nulo(Custos))) ,R),
          length(R,0)
-                  ).
+ ).
+
+% nao poder exister mais do que um arbito nomeado para um mesmo jogo
++jogo(J,A,_) :: (
+         findall(J, (jogo(J,A1,_), A1\=A ) ,R),
+         length(R,0)
+).
+
+% um arbito nao pode apitar mais do que 3 partidas do campeonato
++jogo(_,A,_) :: (
+         findall(J, jogo(J,A,_) ,R),
+         length(R,N), N<4
+).
+
+% o mesmo arbito nao pode apitar duas partidas consecutivas
++jogo(_,A,_) :: (
+         findall(A , jogo(J,A,_), jogo(J+1,A,_),R),
+         length(R,0)
+).
+
+
 
 -jogo(J,A,C):-
     not(jogo(J,A,C)),
