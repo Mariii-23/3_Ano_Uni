@@ -44,6 +44,8 @@ exception(ato(sutura,maria,josefa,D)):-
 exception(ato(sutura,mariana,josefa,D)):-
     D==terca;
     D==sexta.
+exception(ato(domicilio,susana,U,segunda)):-
+    U == joao ; U == jose.
 
 enfermeira(amelia).
 enfermeira(ana).
@@ -66,8 +68,6 @@ ato(penso,ana,joana,sabado).
 ato(gesso,amélia,josé,domingo).
 ato(incerto,mariana,joaquina,domingo).
 ato(domicilio,maria,incerto,incerto).
-ato(domicilio,susana,joao,segunda).
-ato(domicilio,susana,jose,segunda).
 ato(sutura,incerto,josue,segunda).
 
 nulo(interdito).
@@ -106,4 +106,4 @@ remover_predicado(P):-
 new_servico(S,E):- not(servico(S,E)) ,new_predicado(servico(S,E)).
 new_ato(A,E,U,D):- not(ato(A,E,U,D)) , new_predicado(ato(A,E,U,D)).
 
-remove_enfermeiro(N):-  remover_predicado(servico(S,N)).
+remove_enfermeiro(N):- servico(S,N), remover_predicado(servico(S,N)).

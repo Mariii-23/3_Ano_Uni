@@ -31,6 +31,7 @@ caminho2(I,F,Cam,S):-
 
 caminho(I,F,S):- caminho2(I,F,[I],S).
 
+goal(t).
 
 %% caminho mais curto
 

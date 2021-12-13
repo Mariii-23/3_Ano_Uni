@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2021-12-12 Sun 11:51 -->
+<!-- 2021-12-13 Mon 17:24 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Teste 2014 15</title>
@@ -201,13 +201,19 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org2fdb78d">1. Grupo 1</a></li>
+<li><a href="#org293700c">1. Grupo 1</a>
+<ul>
+<li><a href="#orgdbc8756">1.1. Questao 2</a></li>
+</ul>
+</li>
+<li><a href="#org8f78206">2. Grupo 2</a></li>
+<li><a href="#orgf2a95ad">3. Grupo 3</a></li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-org2fdb78d" class="outline-2">
-<h2 id="org2fdb78d"><span class="section-number-2">1.</span> Grupo 1</h2>
+<div id="outline-container-org293700c" class="outline-2">
+<h2 id="org293700c"><span class="section-number-2">1.</span> Grupo 1</h2>
 <div class="outline-text-2" id="text-1">
 <ol class="org-ol">
 <li><p>
@@ -306,13 +312,22 @@ Invariantes
 <pre class="src src-prolog">+aluno(<span style="color: #e95678;">_</span>,<span style="color: #e95678;">_</span>,<span style="color: #e95678;">_</span>,<span style="color: #e95678;">_</span>,<span style="color: #e95678;">_</span>,<span style="color: #e95678;">_</span>):: (
      findall(<span style="color: #e95678;">Id</span>, (aluno(<span style="color: #e95678;">Id</span>,<span style="color: #e95678;">_</span>,<span style="color: #e95678;">_</span>,<span style="color: #e95678;">A</span>,<span style="color: #e95678;">E</span>,<span style="color: #e95678;">_</span>), (<span style="color: #e95678;">A</span> &gt; <span style="color: #f09383; font-weight: bold;">5</span> <span style="color: #b877db;">;</span> <span style="color: #e95678;">E</span> &gt; <span style="color: #f09383; font-weight: bold;">300</span>)), <span style="color: #e95678;">S</span> ),
      length(<span style="color: #e95678;">S</span>,<span style="color: #f09383; font-weight: bold;">0</span>)).
+
++aluno(<span style="color: #f09383; font-weight: bold;">89012</span>,<span style="color: #e95678;">_</span>,<span style="color: #e95678;">_</span>,<span style="color: #e95678;">_</span>,<span style="color: #e95678;">_</span>,<span style="color: #e95678;">_</span>)::(
+     findall(<span style="color: #e95678;">A</span>, (aluno(<span style="color: #f09383; font-weight: bold;">89012</span>,<span style="color: #e95678;">A</span>,<span style="color: #e95678;">X</span>,<span style="color: #e95678;">_</span>,<span style="color: #e95678;">_</span>,<span style="color: #e95678;">_</span>), not(nulo(<span style="color: #e95678;">X</span>))), <span style="color: #e95678;">R</span>),
+     length(<span style="color: #e95678;">R</span>,<span style="color: #f09383; font-weight: bold;">0</span>)
+ ).
 </pre>
 </div></li>
 <li><p>
 Inserir conhecimento
 </p>
 <div class="org-src-container">
-<pre class="src src-prolog"><span style="color: #4e5059;">%% </span><span style="color: #4e5059;">Inserir conhecimento</span>
+<pre class="src src-prolog"><span style="color: #4e5059;">%% </span><span style="color: #4e5059;">validar conhecimento</span>
+<span style="color: #21bfc2;">valid</span>(<span style="color: #b877db;">[]</span>).
+<span style="color: #21bfc2;">valid</span>(<span style="color: #b877db;">[</span><span style="color: #e95678;">A</span><span style="color: #b877db;">|</span><span style="color: #e95678;">T</span><span style="color: #b877db;">]</span>):- <span style="color: #e95678;">A</span>, valid(<span style="color: #e95678;">T</span>).
+
+<span style="color: #4e5059;">%% </span><span style="color: #4e5059;">Inserir conhecimento</span>
 <span style="color: #21bfc2;">inserir</span>(<span style="color: #e95678;">New</span>):- assert(<span style="color: #e95678;">New</span>).
 <span style="color: #21bfc2;">inserir</span>(<span style="color: #e95678;">New</span>):- retract(<span style="color: #e95678;">New</span>), <span style="color: #b877db;">!</span>, fail.
 
@@ -328,11 +343,168 @@ Inserir conhecimento
 </div></li>
 </ol>
 </div>
+<div id="outline-container-orgdbc8756" class="outline-3">
+<h3 id="orgdbc8756"><span class="section-number-3">1.1.</span> Questao 2</h3>
+<div class="outline-text-3" id="text-1-1">
+<div class="org-src-container">
+<pre class="src src-prolog"><span style="color: #21bfc2;">si</span>(<span style="color: #e95678;">Questao</span>,verdadeiro):- <span style="color: #e95678;">Questao</span>.
+<span style="color: #21bfc2;">si</span>(<span style="color: #e95678;">Questao</span>,falso):- -<span style="color: #e95678;">Questao</span>.
+<span style="color: #21bfc2;">si</span>(<span style="color: #e95678;">Questao</span>,desconhecido):- not(<span style="color: #e95678;">Questao</span>), not(-<span style="color: #e95678;">Questao</span>).
+<span style="color: #4e5059;">%</span><span style="color: #4e5059;">- - - - - - - - - - - - - - - - - - - - - - - - - - -  -  -  -  -   -</span>
+<span style="color: #4e5059;">% </span><span style="color: #4e5059;">Extensao do predicado queryConjuncao: [Questao],Resposta -&gt; {V,F,D}</span>
+<span style="color: #4e5059;">% </span><span style="color: #4e5059;">capaz de fazer a conjun&#231;&#227;o de uma lista de quest&#245;es</span>
+<span style="color: #4e5059;">% </span><span style="color: #4e5059;">produzindo um resultado final</span>
+<span style="color: #21bfc2;">queryConjuncao</span>(<span style="color: #b877db;">[]</span>,<span style="color: #e95678;">R</span>).
+<span style="color: #21bfc2;">queryConjuncao</span>(<span style="color: #b877db;">[</span><span style="color: #e95678;">Q</span><span style="color: #b877db;">]</span>,<span style="color: #e95678;">R</span>) :- si(<span style="color: #e95678;">Q</span>,<span style="color: #e95678;">R</span>).
+<span style="color: #21bfc2;">queryConjuncao</span>(<span style="color: #b877db;">[</span><span style="color: #e95678;">Q</span><span style="color: #b877db;">|</span><span style="color: #e95678;">Qs</span><span style="color: #b877db;">]</span>, <span style="color: #e95678;">R</span>) :- si(<span style="color: #e95678;">Q</span>, <span style="color: #e95678;">R1</span>), queryConjuncao(<span style="color: #e95678;">Qs</span>,<span style="color: #e95678;">R2</span>), conjuncao(<span style="color: #e95678;">R1</span>,<span style="color: #e95678;">R2</span>,<span style="color: #e95678;">R</span>).
+
+<span style="color: #4e5059;">% </span><span style="color: #4e5059;">Extensao do predicado queryDisjuncao: [Questao],Resposta -&gt; {V,F,D}</span>
+<span style="color: #4e5059;">% </span><span style="color: #4e5059;">capaz de fazer a disjun&#231;&#227;o de uma lista de quest&#245;es</span>
+<span style="color: #4e5059;">% </span><span style="color: #4e5059;">produzindo um resultado final</span>
+<span style="color: #21bfc2;">queryDisjuncao</span>(<span style="color: #b877db;">[]</span>,<span style="color: #e95678;">R</span>).
+<span style="color: #21bfc2;">queryDisjuncao</span>(<span style="color: #b877db;">[</span><span style="color: #e95678;">Q</span><span style="color: #b877db;">]</span>,<span style="color: #e95678;">R</span>) :- si(<span style="color: #e95678;">Q</span>,<span style="color: #e95678;">R</span>).
+<span style="color: #21bfc2;">queryDisjuncao</span>(<span style="color: #b877db;">[</span><span style="color: #e95678;">Q</span><span style="color: #b877db;">|</span><span style="color: #e95678;">Qs</span><span style="color: #b877db;">]</span>, <span style="color: #e95678;">R</span>) :- si(<span style="color: #e95678;">Q</span>, <span style="color: #e95678;">R1</span>), queryDisjuncao(<span style="color: #e95678;">Qs</span>,<span style="color: #e95678;">R2</span>), disjuncao(<span style="color: #e95678;">R1</span>,<span style="color: #e95678;">R2</span>,<span style="color: #e95678;">R</span>).
+
+<span style="color: #4e5059;">%</span><span style="color: #4e5059;">- - - - - - - - - - - - - - - - - - - - - - - - - - -  -  -  -  -   -</span>
+<span style="color: #4e5059;">% </span><span style="color: #4e5059;">Extensao do predicado query: (Operador, Questao1, Questao2),Resposta -&gt; {V,F,D}</span>
+<span style="color: #4e5059;">% </span><span style="color: #4e5059;">capaz de fazer a conjun&#231;&#227;o ou a disjun&#231;&#227;o de duas quest&#245;es</span>
+<span style="color: #4e5059;">% </span><span style="color: #4e5059;">produzindo um resultado final</span>
+<span style="color: #21bfc2;">query</span>((<span style="color: #fab795;">'OR'</span>,<span style="color: #e95678;">Q1</span>,<span style="color: #e95678;">Q2</span>),<span style="color: #e95678;">R</span>) :- query(<span style="color: #e95678;">Q1</span>,<span style="color: #e95678;">R1</span>), query(<span style="color: #e95678;">Q2</span>,<span style="color: #e95678;">R2</span>), disjuncao(<span style="color: #e95678;">R1</span>,<span style="color: #e95678;">R2</span>,<span style="color: #e95678;">R</span>).
+<span style="color: #21bfc2;">query</span>((<span style="color: #fab795;">'AND'</span>,<span style="color: #e95678;">Q1</span>,<span style="color: #e95678;">Q2</span>),<span style="color: #e95678;">R</span>) :- query(<span style="color: #e95678;">Q1</span>,<span style="color: #e95678;">R1</span>), query(<span style="color: #e95678;">Q2</span>,<span style="color: #e95678;">R2</span>), conjuncao(<span style="color: #e95678;">R1</span>,<span style="color: #e95678;">R2</span>,<span style="color: #e95678;">R</span>).
+<span style="color: #21bfc2;">query</span>(<span style="color: #e95678;">Q</span>,<span style="color: #e95678;">R</span>) :- si(<span style="color: #e95678;">Q</span>,<span style="color: #e95678;">R</span>).
+
+<span style="color: #4e5059;">%</span><span style="color: #4e5059;">- - - - - - - - - - - - - - - - - - - - - - - - - - -  -  -  -  -   -</span>
+<span style="color: #4e5059;">% </span><span style="color: #4e5059;">Extensao do meta-predicado queries: [Questao], Resposta -&gt; {V,F,D}</span>
+<span style="color: #4e5059;">% </span><span style="color: #4e5059;">capaz de fazer a conjun&#231;&#227;o e/ou disjun&#231;&#227;o de uma lista de quest&#245;es</span>
+<span style="color: #4e5059;">% </span><span style="color: #4e5059;">produzindo um resultado final</span>
+<span style="color: #21bfc2;">queries</span>(<span style="color: #b877db;">[]</span>,verdadeiro).
+<span style="color: #21bfc2;">queries</span>(<span style="color: #b877db;">[</span><span style="color: #e95678;">Q</span><span style="color: #b877db;">]</span>,<span style="color: #e95678;">R</span>) :- si(<span style="color: #e95678;">Q</span>,<span style="color: #e95678;">R</span>).
+<span style="color: #21bfc2;">queries</span>(<span style="color: #b877db;">[</span><span style="color: #e95678;">Q1</span>,<span style="color: #fab795;">'AND'</span><span style="color: #b877db;">|</span><span style="color: #e95678;">Qs</span><span style="color: #b877db;">]</span>,<span style="color: #e95678;">R</span>) :- si(<span style="color: #e95678;">Q1</span>,<span style="color: #e95678;">R1</span>),
+                            queries(<span style="color: #e95678;">Qs</span>,<span style="color: #e95678;">R2</span>),
+                            conjuncao(<span style="color: #e95678;">R1</span>,<span style="color: #e95678;">R2</span>,<span style="color: #e95678;">R</span>).
+<span style="color: #21bfc2;">queries</span>(<span style="color: #b877db;">[</span><span style="color: #e95678;">Q1</span>,<span style="color: #fab795;">'OR'</span><span style="color: #b877db;">|</span><span style="color: #e95678;">Qs</span><span style="color: #b877db;">]</span>,<span style="color: #e95678;">R</span>) :- si(<span style="color: #e95678;">Q1</span>,<span style="color: #e95678;">R1</span>),
+                           queries(<span style="color: #e95678;">Qs</span>,<span style="color: #e95678;">R2</span>),
+                           disjuncao(<span style="color: #e95678;">R1</span>,<span style="color: #e95678;">R2</span>,<span style="color: #e95678;">R</span>).
+
+<span style="color: #4e5059;">%</span><span style="color: #4e5059;">- - - - - - - - - - - - - - - - - - - - - - - - - - -  -  -  -  -   -</span>
+<span style="color: #4e5059;">% </span><span style="color: #4e5059;">Extensao do predicado conjuncao: X,Y -&gt; {V,F,D}</span>
+<span style="color: #21bfc2;">conjuncao</span>(verdadeiro,verdadeiro,verdadeiro).
+<span style="color: #21bfc2;">conjuncao</span>(verdadeiro,desconhecido,desconhecido).
+<span style="color: #21bfc2;">conjuncao</span>(desconhecido,verdadeiro,desconhecido).
+<span style="color: #21bfc2;">conjuncao</span>(desconhecido,desconhecido,desconhecido).
+<span style="color: #21bfc2;">conjuncao</span>(falso,<span style="color: #e95678;">_</span>,falso).
+<span style="color: #21bfc2;">conjuncao</span>(<span style="color: #e95678;">_</span>,falso,falso).
+
+<span style="color: #4e5059;">% </span><span style="color: #4e5059;">Extensao do predicado disjuncao: X,Y -&gt; {V,F,D}</span>
+<span style="color: #21bfc2;">disjuncao</span>(verdadeiro,<span style="color: #e95678;">_</span>,verdadeiro).
+<span style="color: #21bfc2;">disjuncao</span>(<span style="color: #e95678;">_</span>,verdadeiro,verdadeiro).
+<span style="color: #21bfc2;">disjuncao</span>(falso,falso,falso).
+<span style="color: #21bfc2;">disjuncao</span>(falso,desconhecido,desconhecido).
+<span style="color: #21bfc2;">disjuncao</span>(desconhecido,falso,desconhecido).
+<span style="color: #21bfc2;">disjuncao</span>(desconhecido,desconhecido,desconhecido).
+</pre>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org8f78206" class="outline-2">
+<h2 id="org8f78206"><span class="section-number-2">2.</span> Grupo 2</h2>
+<div class="outline-text-2" id="text-2">
+<ol class="org-ol">
+<li><p>
+Na linguagem de programação em lógica PROLOG, a expressão &rsquo;A=..B&rsquo; representa a comparação dos valores decimais de A e B.
+</p>
+
+<p>
+Falso, representa o funtor de um dado termo, colocando numa lista o nome do termo e os seus respetivos arguemtos.
+</p>
+
+<p>
+Exemplo:
+</p>
+<div class="org-src-container">
+<pre class="src src-prolog"><span style="color: #21bfc2;">amigos</span>(arroz,batata(<span style="color: #f09383; font-weight: bold;">2</span>)) =.. <span style="color: #e95678;">L</span>.
+</pre>
+</div>
+
+<p>
+:Result:
+</p>
+<div class="org-src-container">
+<pre class="src src-prolog"><span style="color: #e95678;">L</span> = <span style="color: #b877db;">[</span>amigos, arroz, batata(<span style="color: #f09383; font-weight: bold;">2</span>)<span style="color: #b877db;">]</span>
+</pre>
+</div></li>
+
+<li><p>
+Na linguagem de programação prolog, o operador &rsquo;=:=/2&rsquo; representa a comparação dos valores aritméticos calculados de cada operando.
+</p>
+
+<p>
+Verdadeiro. Em oposicao ao operador &rsquo;<code>=\2', o '</code>:=\2&rsquo; calcula primeiro os valores aritmeticos e só depois compara o resultado obtido de ambos os lados.
+</p>
+
+<p>
+Exemplo:
+</p>
+<div class="org-src-container">
+<pre class="src src-prolog"><span style="color: #f09383; font-weight: bold;">3</span> == <span style="color: #f09383; font-weight: bold;">2</span> + <span style="color: #f09383; font-weight: bold;">1</span>.
+
+<span style="color: #e95678;">Falso</span>
+
+<span style="color: #f09383; font-weight: bold;">3</span> =:= <span style="color: #f09383; font-weight: bold;">2</span> + <span style="color: #f09383; font-weight: bold;">1</span>.
+
+<span style="color: #e95678;">Verdadeiro</span>
+</pre>
+</div></li>
+
+<li><p>
+&rsquo;negação forte&rsquo; e &rsquo;negação explicta&rsquo; são duas designações para identificar a negação por falha de prova.
+</p>
+
+<p>
+???
+</p>
+
+<p>
+Falso, a &rsquo;negacao explicita&rsquo; acontece por falha na prova, ja a &rsquo;negação forte&rsquo; acontece devido a falha de predicados
+</p></li>
+
+<li><p>
+Em termos da representação de conhecimento imperfeito, os valores nulos tanto podem assumir a representação de conhecimento positivo como de conhecimento negativo.
+</p>
+
+<p>
+Falso.
+</p></li>
+
+<li>Invariantes denotam regras de teste à consistência do conhecimento, com os quais se representa conhecimento positivo ou conhecimento negativo.
+
+<ul class="org-ul">
+<li>Falso, porque os invariantes apenas servem para garantir que a base de conhecimento continua válida após a remoção ou adicição de um dado conhecimento.</li>
+</ul></li>
+</ol>
+</div>
+</div>
+
+<div id="outline-container-orgf2a95ad" class="outline-2">
+<h2 id="orgf2a95ad"><span class="section-number-2">3.</span> Grupo 3</h2>
+<div class="outline-text-2" id="text-3">
+<ol class="org-ol">
+<li><p>
+Questão
+</p>
+
+<p>
+V, V, V, F, V.
+</p></li>
+</ol>
+</div>
 </div>
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: Mari§</p>
-<p class="date">Created: 2021-12-12 Sun 11:51</p>
+<p class="date">Created: 2021-12-13 Mon 17:24</p>
 </div>
 </body>
 </html>

@@ -9,11 +9,17 @@
      length(S,0)
  ).
 
++aluno(89012,_,_,_,_,_)::(
+     findall(A, (aluno(89012,A,X,_,_,_), not(nulo(X))), R),
+     length(R,0)
+ ).
+
 % Representar o falso
 -aluno(Id,N,C,A,E,P):-
     not(aluno(Id,N,C,A,E,P)),
     not(exception(aluno(Id,N,C,A,E,P))).
 
+-par(1).
 
 % Representar valores nulos do tipo interdito
 nulo(interdito).
@@ -76,3 +82,7 @@ remover_predicado(P):-
 
 %% Adicionar um novo aluno
 add_aluno(Id,N,C,A,E,P):- new_predicado(aluno(Id,N,C,A,E,P)).
+
+% Para testar a questao 2
+par(0).
+par(succ(succ(X))):- par(X).

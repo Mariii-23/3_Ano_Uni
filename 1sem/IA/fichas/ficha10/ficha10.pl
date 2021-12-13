@@ -7,8 +7,15 @@
 :- dynamic jogo/3.
 :- op(900,xfy,'::').
 
+%% generalizado , o stor nao gosta
 +jogo(J,A,_) :: (
-         findall(Custos, (jogo(J,A,Custos),not(nulo(Custos))) ,R),
+         findall(Custos, (jogo(J,A,Custos), nulo(Custos)) ,R),
+         length(R,0),
+ ).
+
+% prefere assim
++jogo(5,'Edgar Esteves',_) :: (
+         findall(Custos, (jogo(5,'Edgar Esteves',Custos),not(nulo(Custos))) ,R),
          length(R,0)
  ).
 

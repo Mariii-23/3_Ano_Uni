@@ -74,9 +74,18 @@ c) Invariantes
 +aluno(_,_,_,_,_,_):: (
      findall(Id, (aluno(Id,_,_,A,E,_), (A > 5 ; E > 300)), S ),
      length(S,0)).
+
++aluno(89012,_,_,_,_,_)::(
+     findall(A, (aluno(89012,A,X,_,_,_), not(nulo(X))), R),
+     length(R,0)
+ ).
     #+end_src
 d) Inserir conhecimento
   #+begin_src prolog
+%% validar conhecimento
+valid([]).
+valid([A|T]):- A, valid(T).
+
 %% Inserir conhecimento
 inserir(New):- assert(New).
 inserir(New):- retract(New), !, fail.
@@ -90,6 +99,64 @@ new_predicado(New):-
 %% Adicionar um novo aluno
 add_aluno(Id,N,C,A,E,P):- new_predicado(aluno(Id,N,C,A,E,P)).
   #+end_src
+** Questao 2
+#+begin_src prolog
+si(Questao,verdadeiro):- Questao.
+si(Questao,falso):- -Questao.
+si(Questao,desconhecido):- not(Questao), not(-Questao).
+%- - - - - - - - - - - - - - - - - - - - - - - - - - -  -  -  -  -   -
+% Extensao do predicado queryConjuncao: [Questao],Resposta -> {V,F,D}
+% capaz de fazer a conjunção de uma lista de questões
+% produzindo um resultado final
+queryConjuncao([],R).
+queryConjuncao([Q],R) :- si(Q,R).
+queryConjuncao([Q|Qs], R) :- si(Q, R1), queryConjuncao(Qs,R2), conjuncao(R1,R2,R).
+
+% Extensao do predicado queryDisjuncao: [Questao],Resposta -> {V,F,D}
+% capaz de fazer a disjunção de uma lista de questões
+% produzindo um resultado final
+queryDisjuncao([],R).
+queryDisjuncao([Q],R) :- si(Q,R).
+queryDisjuncao([Q|Qs], R) :- si(Q, R1), queryDisjuncao(Qs,R2), disjuncao(R1,R2,R).
+
+%- - - - - - - - - - - - - - - - - - - - - - - - - - -  -  -  -  -   -
+% Extensao do predicado query: (Operador, Questao1, Questao2),Resposta -> {V,F,D}
+% capaz de fazer a conjunção ou a disjunção de duas questões
+% produzindo um resultado final
+query(('OR',Q1,Q2),R) :- query(Q1,R1), query(Q2,R2), disjuncao(R1,R2,R).
+query(('AND',Q1,Q2),R) :- query(Q1,R1), query(Q2,R2), conjuncao(R1,R2,R).
+query(Q,R) :- si(Q,R).
+
+%- - - - - - - - - - - - - - - - - - - - - - - - - - -  -  -  -  -   -
+% Extensao do meta-predicado queries: [Questao], Resposta -> {V,F,D}
+% capaz de fazer a conjunção e/ou disjunção de uma lista de questões
+% produzindo um resultado final
+queries([],verdadeiro).
+queries([Q],R) :- si(Q,R).
+queries([Q1,'AND'|Qs],R) :- si(Q1,R1),
+                            queries(Qs,R2),
+                            conjuncao(R1,R2,R).
+queries([Q1,'OR'|Qs],R) :- si(Q1,R1),
+                           queries(Qs,R2),
+                           disjuncao(R1,R2,R).
+
+%- - - - - - - - - - - - - - - - - - - - - - - - - - -  -  -  -  -   -
+% Extensao do predicado conjuncao: X,Y -> {V,F,D}
+conjuncao(verdadeiro,verdadeiro,verdadeiro).
+conjuncao(verdadeiro,desconhecido,desconhecido).
+conjuncao(desconhecido,verdadeiro,desconhecido).
+conjuncao(desconhecido,desconhecido,desconhecido).
+conjuncao(falso,_,falso).
+conjuncao(_,falso,falso).
+
+% Extensao do predicado disjuncao: X,Y -> {V,F,D}
+disjuncao(verdadeiro,_,verdadeiro).
+disjuncao(_,verdadeiro,verdadeiro).
+disjuncao(falso,falso,falso).
+disjuncao(falso,desconhecido,desconhecido).
+disjuncao(desconhecido,falso,desconhecido).
+disjuncao(desconhecido,desconhecido,desconhecido).
+#+end_src
 
 * Grupo 2
 
@@ -107,7 +174,7 @@ amigos(arroz,batata(2)) =.. L.
 L = [amigos, arroz, batata(2)]
   #+end_src
 
-2. Na linguagem de programação prolog, o operador '=:=/2' representa a comparação dos valores aritméticos calculados de cada operando.
+1. Na linguagem de programação prolog, o operador '=:=/2' representa a comparação dos valores aritméticos calculados de cada operando.
 
    Verdadeiro. Em oposicao ao operador '==\2', o '=:=\2' calcula primeiro os valores aritmeticos e só depois compara o resultado obtido de ambos os lados.
 
@@ -122,21 +189,21 @@ Falso
 Verdadeiro
   #+end_src
 
-3. 'negação forte' e 'negação explicta' são duas designações para identificar a negação por falha de prova.
+2. 'negação forte' e 'negação explicta' são duas designações para identificar a negação por falha de prova.
 
    ???
 
    Falso, a 'negacao explicita' acontece por falha na prova, ja a 'negação forte' acontece devido a falha de predicados
 
-4. Em termos da representação de conhecimento imperfeito, os valores nulos tanto podem assumir a representação de conhecimento positivo como de conhecimento negativo.
+3. Em termos da representação de conhecimento imperfeito, os valores nulos tanto podem assumir a representação de conhecimento positivo como de conhecimento negativo.
 
-   ???
+   Falso.
 
-5. Invariantes denotam regras de teste à consistência do conhecimento, com os quais se representa conhecimento positivo ou conhecimento negativo.
+4. Invariantes denotam regras de teste à consistência do conhecimento, com os quais se representa conhecimento positivo ou conhecimento negativo.
 
-   Verdadeiro, invariantes servem para termos a garantia que certas regras são aplicadas quando queremos inserir novo conhecimento (conhecimento positivo) e quando queremos remover um dado conhecimento (conhecimento negativo). Nao permitindo a sua adicao, ou remoçao, no caso de algum dos invariantes falhar.
+   + Falso, porque os invariantes apenas servem para garantir que a base de conhecimento continua válida após a remoção ou adicição de um dado conhecimento.
 
 * Grupo 3
 1. Questão
 
-   V, V, F, F, V.
+   V, V, V, F, V.
