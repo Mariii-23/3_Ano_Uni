@@ -44,7 +44,7 @@ public class ex6 {
                 aVacinar++;
                 System.out.println(Thread.currentThread().getName() + " -> Espera da vacina -> "+ ticketPessoa);
                 c.signalAll();
-                while (vacinas <= 0 ||  NUM > aVacinar || (  ticketPessoa > (vacinados +NUM ))) {
+                while (vacinas <= 0 || ( ticketPessoa > (vacinados + NUM))) {
                     c.await();
                 }
                 System.out.println(Thread.currentThread().getName() + " -> Fui VACINADO.");
