@@ -30,9 +30,9 @@ Exame de recurso: 20 a 26 janeiro
 - 4 mini testes a realizar na aula [1/4]
   *1.25 cada - 5 valores*
   + [X] 29 Outubro -> (10/14)
-  + [ ] 26 Novembro
-  + [ ] 17 Dezembro
-  + [ ] 14 Janeiro
+  + [X] 26 Novembro
+  + [X] 17 Dezembro
+  + [X] 14 Janeiro
 
 * IA
 - teste: 14 Dezembro
