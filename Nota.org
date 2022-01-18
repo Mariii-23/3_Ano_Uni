@@ -27,7 +27,7 @@ Exame de recurso: 20 a 26 janeiro
 
 - mini-projeto em Matlab *3 valores*
 
-- 4 mini testes a realizar na aula [1/4]
+- 4 mini testes a realizar na aula [4/4]
   *1.25 cada - 5 valores*
   + [X] 29 Outubro -> (10/14)
   + [X] 26 Novembro
