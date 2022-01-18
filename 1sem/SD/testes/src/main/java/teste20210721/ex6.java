@@ -111,10 +111,65 @@ public class ex6 {
             }
         }
     }
+    public static class ControloVacinasImpl implements ControloVacinas {
 
+        final int NUM = 3;
+        int ticket = 0;
+        int turn = 0;
+        ReentrantLock l = new ReentrantLock(true);
+        Condition haFrascosDisponiveis = l.newCondition();
+        Condition haNumUtentes = l.newCondition();
+        Condition nextTurn = l.newCondition();
+        int slotFrascosDisponiveis = 0;
+        int aVacinar = 0;
+
+        private boolean haUtentesParaComecar() {
+            int aEspera = ticket - turn;
+            return aEspera >= NUM ;
+        }
+
+        public void pedirParaVacinar() throws InterruptedException {
+            l.lock();
+            int myTicket = ticket++;
+            System.out.println(Thread.currentThread().getName() + " -> Espera da vacina -> "+ myTicket);
+            //utentesAguardar++;
+            if(haUtentesParaComecar()) {
+                aVacinar += NUM;
+                haNumUtentes.signalAll();
+            }
+
+            while(myTicket > turn || aVacinar == 0
+                    || (slotFrascosDisponiveis/NUM) < 1 ){
+                if(aVacinar == 0) {
+                    haNumUtentes.await();
+                }
+                else if(myTicket > turn) {
+                    nextTurn.await();
+                }
+                else {
+                    haFrascosDisponiveis.await();
+                }
+            }
+            turn++;
+            aVacinar--;
+            slotFrascosDisponiveis--;
+            System.out.println(Thread.currentThread().getName() + " -> Fui VACINADO.");
+            nextTurn.signalAll();
+            l.unlock();
+        }
+
+        public void fornecerFrascos(int frascos){
+            l.lock();
+            System.out.println(Thread.currentThread().getName() + " -> Forneci vacinas: " + frascos*NUM);
+            slotFrascosDisponiveis += frascos*NUM;
+            haFrascosDisponiveis.signalAll();
+            l.unlock();
+        }
+    }
 
     public static void main(String[] args) {
-        ControloVacinas gestaoVacinas = new gestaoVacinas(2);
+        ControloVacinas gestaoVacinas = new gestaoVacinas(3);
+        //ControloVacinas gestaoVacinas = new ControloVacinasImpl();
         //ControloVacinas gestaoVacinas = new CentroVacinacaoPires(10);
         int pedidos = 9;
         int frascos = 1;
