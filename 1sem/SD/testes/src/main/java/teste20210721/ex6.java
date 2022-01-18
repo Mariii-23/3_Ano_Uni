@@ -10,14 +10,17 @@ public class ex6 {
     }
 
     public static class gestaoVacinas implements ControloVacinas {
-        private int vacinas = 0;
+        private float vacinas = 0;
         private int ticket = 0;
+        private int vacinados = 0;
         private int aVacinar = 0;
+        private final int NUM;
 
         private final ReentrantLock l = new ReentrantLock();
         private final Condition c = l.newCondition();
 
-        public gestaoVacinas() {
+        public gestaoVacinas(int NUM) {
+            this.NUM = NUM;
         }
 
         @Override
@@ -25,7 +28,7 @@ public class ex6 {
             try {
                 l.lock();
                 System.out.println(Thread.currentThread().getName() + " -> Forneci vacinas: " + frascos);
-                this.vacinas += frascos;
+                this.vacinas += frascos*NUM;
                 c.signalAll();
 
             } finally {
@@ -38,14 +41,16 @@ public class ex6 {
             try {
                 l.lock();
                 int ticketPessoa = ticket++;
+                aVacinar++;
                 System.out.println(Thread.currentThread().getName() + " -> Espera da vacina -> "+ ticketPessoa);
                 c.signalAll();
-                while (vacinas <= 0 || ticketPessoa != aVacinar) {
+                while (vacinas <= 0 ||  NUM > aVacinar || (  ticketPessoa > (vacinados +NUM ))) {
                     c.await();
                 }
                 System.out.println(Thread.currentThread().getName() + " -> Fui VACINADO.");
                 vacinas--;
-                aVacinar++;
+                aVacinar--;
+                vacinados++;
                 c.signalAll();
 
             } finally {
@@ -109,11 +114,11 @@ public class ex6 {
 
 
     public static void main(String[] args) {
-        ControloVacinas gestaoVacinas = new gestaoVacinas();
+        ControloVacinas gestaoVacinas = new gestaoVacinas(2);
         //ControloVacinas gestaoVacinas = new CentroVacinacaoPires(10);
-        int pedidos = 10;
-        int frascos = 2;
-        int entregas = 5;
+        int pedidos = 9;
+        int frascos = 1;
+        int entregas = 2;
         int N = pedidos+entregas;
 
         Thread[] t = new Thread[N*2+1];
@@ -140,13 +145,19 @@ public class ex6 {
                     }
                 });
             } else if (i == N-1) {
-                t[i+N] = new Thread(() -> gestaoVacinas.fornecerFrascos(frascos));
+                t[i+N] = new Thread(() -> gestaoVacinas.fornecerFrascos(pedidos*2));
             } else {
                 t[i+N] = new Thread(() -> gestaoVacinas.fornecerFrascos(frascos));
             }
         }
 
-        t[N*2] = new Thread(() -> gestaoVacinas.fornecerFrascos(pedidos*2));
+        t[N*2] = new Thread(() -> {
+            try {
+                gestaoVacinas.pedirParaVacinar();
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        });
 
         for (int i = 0; i < 2*N; i++)
             t[i].start();
