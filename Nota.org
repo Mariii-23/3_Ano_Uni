@@ -53,4 +53,3 @@ Nota final = 50% + 50%
 Nota final = 45% *Teste* + 45% *Trabalho* + 10% *Avaliação contínua*
 
 * LI4
- *Perdidos estamos*

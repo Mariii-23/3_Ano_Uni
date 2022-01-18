@@ -1,0 +1,32 @@
+#+TITLE: Testes
+
+* Grupo 1
+1. Opcoes
+   - da duração em absoluto de cada uma das secções críticas
+   - da probabilidade de diferentes threads tentarem usar a mesma seccao critica ao mesmo tempo
+   - da eficiência das primitivas de sincronização usadas para exclusão mútua
+
+2. Opcoes
+   - funciona melhor quando os atrasos na rede entre os servidores envolvidos sao simetricos
+   - torna dispensável a existência de uma referência de tempo fiável
+
+3. Opcoes
+   - é indispensável para a transparencia de acesso
+   - contribui principalmente para a reducao de latencia percebida pelo utilizador
+   - resulta num compromisso entre a eficiencia de execucao do codigo migrado e a seguranca do servidor
+
+4. Opcoes
+   - o coordenador falha depois de enviar a proposta no início da primeira fase
+   - o coordenador falha antes de enviar a decisão no início da segunda fase
+
+5. Questao
+   - Primeiro temos que decidir se pretendemos ter 1 thread por cliente ou por pedido.
+
+   - Cliente :: Executa um pedido do cliente de cada vez, ou seja vários pedidos vao ter q ficar a espera ate o anterior ter sido resolvido
+
+   - Pedido :: Teremos um overhead  muito grande.
+
+    Neste caso, um possível solução seria:
+     - o servidor teria uma thread principal, que apenas receberia pedidos e adicionava esses a uma queue de pedidos a serem tratados.
+
+     - fora isso, inicialmente seriam iniciadas X threads, que ficariam responsáveis por irem buscar a queue, pedidos a serem tratados, no caso de não existirem pedidos nessa queue ficariam em modo ~.await()~.
