@@ -169,7 +169,7 @@ final class Main {
             planes[i] = new Thread( () -> {
                 boolean takeOff = true;
                 int track ;
-                if ( finalI / 2 == 0)
+                if ( finalI % 2 == 0)
                     track = airTrafficCtrl.pedirParaDescolar();
                 else {
                     track = airTrafficCtrl.pedirParaAterrar();
