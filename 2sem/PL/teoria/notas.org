@@ -1,0 +1,26 @@
+#+TITLE: Notas
+
+* 22 fevereiro
+
+** Expressões regulares
++ a :: pesquisar a
++ a.b :: a seguido de b
++ a|b :: a ou b
++ () :: agrupar
+
+  Exemplo:
+  (0|..|9) -> número entre 0 e 9
++ a? :: opcional ter a
++ * :: 0 ou mais vezes o q vier antes
++ + :: 1 ou mais vezes o q vier antes
++ [] ::
+
+#+begin_src python
+Int = ('-'|'+')?('0'|..|'9')+
+binario = (0|1)*
+
+binário sem conter o 011
+Nao funciona mas ta peryo
+1*(00[0|1]|(1[0|1]*))*
+1*(000)*
+#+end_src

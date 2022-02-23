@@ -1,0 +1,93 @@
+#+TITLE: Notas
+
+palavras chaves: trafico de rede, intrusos
+
++ Forensic network is a branch of digital forensic science that involves monitoring and analyzing network traffic
+
++ seguranca
+  Also security is needed in case of networks which maintain or transfer data belonging to a particular organization
+
+  Attacks and hackers who intend to manipule things on the network
+
+* varios ataques
+** procol attacks
+Every software that is built has an underlying protocol associated with it. Most of the times
+there might be certain flaws in the protocol itself or the implementation of the software. By
+making use of these flaws an attacker could break into the software.
+
+
+** malware
+This includes the software which uses extreme measure to get itself executed on a machine.
+
+* Forensics
+Forensics refers to the usage of the evidence left after an attack to determine how the attack was
+carried out and what the attacker did
+
+** uses of network forensic
++ to gain information about how computer systems work for the puposes of debugging them, optimizing their performance, oor reverse engineering them
++ to recover data in case of hardware or software failure
++ collect evidence for various uses
++ analuze live data packets to detect and prevent a malicious attack
++
++ analyze computer systems of defendants
+
+** NOTE
+Network forensic is not to protect a system, is to analysis and investigayion of the attack in many cases.
+
+The main goal of network forensics is to ensure that the attacker spends more time and
+energy to cover his tracks making the attack costly.
+
+** Types of network Forensic Systems
+*** Catch it as you can Systems
++ batch mode
++ low end processor
++ large amounts of storage
+*** Stop look and listen systems
++ high end processor
+
+** Network forensic process models
++ preparation
++ detection
++ incident response
++ collection
++ preservation
++ examination
++ analysis
++ investigation
++ presentation
+** Network forensic Frameworks
+Implements teh process models.
+There are various frameworks which can be categorized as follows
+*** Distributed System Based Frameworks
+This is the most popular framework as this represents the LANs and Internet wherein these
+networks are distributed as the servers and clients are present at different physical locations.
+
+*** Soft Computing based framework
+This framework has two functionalities; one is to analyze the captured data while the other is to
+classify the attack data.
+
+*** Honeypot based framework
+Honeypot frameworks are used to attack the attackers which could allow them to analyze the attack
+process methodology so that defense mechanism could be improved.
+
+*** Attack graph-based framework
+This graph model has the advantage of facilitating evidence presentation and automated reasoning
+
+*** Aggregation framework
+Aggregation frameworks are provided so that they can be deployed to improve the strength of the tools already existing rather than developing new tools from the scratch
+
+* relatorio
+** introducao
+Falar mais geral
+Dizer q vamos especificar um dado exemplo
+** Contextualizacao do problema escolhido
+** Forensics
+Explicar melhor o q é e focar no problema mais a fundo
+
+O q é?
+Porque existe? / para q serve
+Usos
+** Modelo
+** frameworks
+mostrar 3 -> especificar 1 delas
+** tools
