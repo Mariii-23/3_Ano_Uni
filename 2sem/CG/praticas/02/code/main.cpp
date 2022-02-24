@@ -6,12 +6,17 @@
 
 #include <math.h>
 
-float angle = 0;
+const float angle = 1.5;
+float angleX = 0;
+float angleY = 0;
+float angleZ = 0;
 
+const float translate = 0.1;
 float translateX = 0.1;
 float translateY = 0.1;
 float translateZ = 0.1;
 
+const float scale = 0.1;
 float scaleX = 1.0;
 float scaleY = 1.0;
 float scaleZ = 1.0;
@@ -48,7 +53,7 @@ void renderScene(void) {
 
   // set the camera
   glLoadIdentity();
-  gluLookAt(5.0, 5.0, 5.0, 0.0, 0.0, 0.0, 0.0f, 1.0f, 0.0f);
+  gluLookAt(5.0, 5.0, 5.0, 0.0, 0.0, 0.0, 0.0f, 0.0f, 1.0f);
 
   // Axis
   glBegin(GL_LINES);
@@ -68,40 +73,43 @@ void renderScene(void) {
 
   // put the geometric transformations here
   glTranslated(translateX, translateY, translateZ);
-  glRotated(angle, 0.0, 1.0, 0.0);
+  glRotated(angleX, 1.0, 0.0, 0.0);
+  glRotated(angleY, 0.0, 1.0, 0.0);
+  glRotated(angleZ, 0.0, 0.0, 1.0);
   glScalef(scaleX, scaleY, scaleZ);
 
   // put drawing instructions here
   glBegin(GL_TRIANGLES);
 
-  glColor3f(1.0f, 0.0f, 1.0f);
-  glVertex3f(-1.0f, 0.0f, -1.0f);
-  glVertex3f(1.0f, 0.0f, -2.0f);
-  glVertex3f(1.0f, 0.0f, 1.0f);
+  glColor3f(0.2f, 0.4f, 1.0f);
+  glVertex3f(-1.0f, 1.0f, 0.0f);
+  glVertex3f(1.0f, 1.0f, 0.0f);
+  glVertex3f(1.0f, -1.0f, 0.0f);
 
-  glVertex3f(-1.0f, 0.0f, -1.0f);
-  glVertex3f(1.0f, 0.0f, 2.0f);
-  glVertex3f(-1.0f, 0.0f, -1.0f);
+  glColor3f(0.2f, 0.4f, 1.0f);
+  glVertex3f(-1.0f, 1.0f, 0.0f);
+  glVertex3f(-1.0f, -1.0f, 0.0f);
+  glVertex3f(1.0f, -1.0f, 0.0f);
 
-  glColor3f(1.0f, 0.0f, 0.0f);
-  glVertex3f(1.0f, 0.0f, -1.0f);
-  glVertex3f(0.0f, 1.0f, 0.0f);
-  glVertex3f(1.0f, 0.0f, 1.0f);
+  glColor3f(0.2f, 0.44f, 0.54f);
+  glVertex3f(1.0f, 1.0f, 0.0f);
+  glVertex3f(-1.0f, 1.0f, 0.0f);
+  glVertex3f(0.0f, 0.0f, 1.0f);
 
-  glColor3f(0.0f, 1.0f, 0.0f);
-  glVertex3f(-1.0f, 0.0f, 1.0f);
-  glVertex3f(1.0f, 0.0f, 1.0f);
-  glVertex3f(0.0f, 1.0f, 0.0f);
+  glColor3f(0.2f, 0.44f, 0.8f);
+  glVertex3f(0.0f, 0.0f, 1.0f);
+  glVertex3f(1.0f, -1.0f, 0.0f);
+  glVertex3f(1.0f, 1.0f, 0.0f);
 
-  glColor3f(0.0f, 0.0f, 1.0f);
-  glVertex3f(-1.0f, 0.0f, -1.0f);
-  glVertex3f(-1.0f, 0.0f, 1.0f);
-  glVertex3f(0.0f, 1.0f, 0.0f);
+  glColor3f(0.2f, 0.44f, 0.54f);
+  glVertex3f(-1.0f, -1.0f, 0.0f);
+  glVertex3f(1.0f, -1.0f, 0.0f);
+  glVertex3f(0.0f, 0.0f, 1.0f);
 
-  glColor3f(1.0f, 1.0f, 0.0f);
-  glVertex3f(1.0f, 0.0f, -1.0f);
-  glVertex3f(-1.0f, 0.0f, -1.0f);
-  glVertex3f(0.0f, 1.0f, 0.0f);
+  glColor3f(0.2f, 0.44f, 0.8f);
+  glVertex3f(-1.0f, -1.0f, 0.0f);
+  glVertex3f(0.0f, 0.0f, 1.0f);
+  glVertex3f(-1.0f, 1.0f, 0.0f);
 
   glEnd();
 
@@ -121,58 +129,74 @@ void controlKeyInput(unsigned char key, int x, int y) {
   switch (key) {
   // change X scale
   case 'q':
-    scaleX += 0.1;
+    scaleX += scale;
     break;
   case 'a':
-    scaleX -= 0.1;
+    scaleX -= scale;
     break;
 
   // change Z scale
   case 'w':
-    scaleZ += 0.1;
+    scaleZ += scale;
     break;
   case 's':
-    scaleZ -= 0.1;
+    scaleZ -= scale;
     break;
 
   // change y scale
   case 'e':
-    scaleY += 0.1;
+    scaleY += scale;
     break;
   case 'd':
-    scaleY -= 0.1;
+    scaleY -= scale;
     break;
 
-  // change angle
-  case 'h':
-    angle += 0.5;
+  // change X angle
+  case 'r':
+    angleX += angle;
     break;
-  case 'l':
-    angle -= 0.5;
+  case 'f':
+    angleX -= angle;
+    break;
+
+  // change Y angle
+  case 't':
+    angleY += angle;
+    break;
+  case 'g':
+    angleY -= angle;
+    break;
+
+  // change Z angle
+  case 'y':
+    angleZ += angle;
+    break;
+  case 'h':
+    angleZ -= angle;
     break;
 
   // translate in X
   case 'z':
-    translateX += 0.1;
+    translateX += translate;
     break;
   case 'x':
-    translateX -= 0.1;
+    translateX -= translate;
     break;
 
   // translate in Z
   case 'c':
-    translateZ += 0.1;
+    translateZ += translate;
     break;
   case 'v':
-    translateZ -= 0.1;
+    translateZ -= translate;
     break;
 
   // translate in Y
   case 'b':
-    translateY += 0.1;
+    translateY += translate;
     break;
   case 'n':
-    translateY -= 0.1;
+    translateY -= translate;
     break;
   }
 
