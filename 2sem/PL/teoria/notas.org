@@ -1,10 +1,11 @@
 #+TITLE: Notas
 
-* 22 fevereiro
+* REGEX
+Aula 22 fevereiro
 
 ** Expressões regulares
 + a :: pesquisar a
-+ a.b :: a seguido de b
++ a.b :: a seguido de b (ou seja, a qualquer coisa b)
 + a|b :: a ou b
 + () :: agrupar
 
@@ -13,14 +14,63 @@
 + a? :: opcional ter a
 + * :: 0 ou mais vezes o q vier antes
 + + :: 1 ou mais vezes o q vier antes
-+ [] ::
++ [] :: um dos caracteres dentro do array
+  #+begin_src bash
+  [ab] -> a ou b
+  (a|b) -> igual ao de cima
+  #+end_src
++ \d :: um único digito
++ \D :: um não digito
++ \w :: uma palavra
++ \s :: espaco em branco
++ . :: qualquer um caracter
++ \$ :: pesquisar carateres especiais
 
-#+begin_src python
-Int = ('-'|'+')?('0'|..|'9')+
-binario = (0|1)*
+*** Bracket expressions
++ [abc] :: a ou b ou c
++ [a-c] :: igual a cima
++ [^a-zA-Z] :: string que nao contem uma letra de a para z ou A para Z
 
-binário sem conter o 011
-Nao funciona mas ta peryo
-1*(00[0|1]|(1[0|1]*))*
-1*(000)*
-#+end_src
+*** Greedy and Lazy match
+The quantifiers **(*+{})** are greedy operators, so the expand the match as far as they can through the provided text.
+
++ <.+?> :: matches any character one or more times included inside **<** and **>**, expanding as needeed
++ <[^<>]+> :: better solution (avoid the usage of **.**)
+*** Boundaries \b and \b
++ \babc\b :: matches only lines with abc
++ \babc\B :: matches only if the pattern is fully surrounded by word characters. In this case the word **abc** will not be select
+
+*** Back-references \1
++ ([abc])\1 :: using **\1** it matches the same text **that was matched by the first capturing group**
++ ([abc])([de])\2\1 :: we can use **\2** (\3,\4,...) to identigy the same text that **was matched by the second (...) capturing group**
++ (?<foo>[abc]\k<foo>) :: we put the name **foo** to the group and we reference it later **(\k<foo>)**. The result is the same of the first regex
+
+*** Look-ahead and Look-behind (?=) and (?<=)
++ d(?=r) :: matches a **d** only if is **followed** by **r**, but r will not be a part of the overall regex match
+
++ (?<=r)d :: matches a **d** only if is **preceded** by **r**, but r will not be a part of the overall regex match
+
+
+We can use also the negation operator
+    + d(?!r) :: matches a **d** only if is **not followed by r**
+    + (?!<r)d :: matches a **d** only if is **not preceded by r**
+
+** Flags
+*** Grouping and capturing
++ a(bc) :: captura o grupo com o valor **bc**
++ a(?:bc)* :: using **?:** we disable the capturing group
++ a(?<foo>bc)* :: using **?<foo>** we put a name to the group
+
+** Exercicios
++ Inteiros e binarios
+  #+begin_src python
+  Int = ('-'|'+')?('0'|..|'9')+
+  binario = (0|1)*
+  #+end_src
+
++ binário sem conter o 011
+  #+begin_src python
+  ^1*(01|0)*$
+
+  ^1*|0*(10|1$)?
+  #+end_src
