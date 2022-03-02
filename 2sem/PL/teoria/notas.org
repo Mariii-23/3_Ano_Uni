@@ -74,3 +74,10 @@ We can use also the negation operator
 
   ^1*|0*(10|1$)?
   #+end_src
+
++ named groups
+  #+begin_src python
+  palavra = r'(?P<pal>\b\w+\b)'
+
+  m = re.search(palavra, linha)
+  #+end_src

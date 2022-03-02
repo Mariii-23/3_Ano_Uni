@@ -1,55 +1,30 @@
 #+TITLE: Nota
-* CC
+* ADI
 ** Avaliação:
-- teste :    11 janeiro
-  nota min: 8
+- teste :    17 maio
 - trabalhos: ---
-  nota min: 10
 
-Nota final = 50% + 50%
-Exame de recurso: 4 fevereiro
-* SD
-** Avaliaçao
-- teste : 19 janeiro
-  nota min 8
-- trabalho 12 janeiro
-  nota min 10
-
-Nota final = 70% + 30%
-Exame de recurso: 20 a 26 janeiro
-
-* MNOL
+Nota final = 10% + 45% + 45%
+* BD
 ** Avaliaçao
 - teste :
-  + *MN*  6 valores -> 3 ou 4 Dezembro
-  + *ONL* 6 valores -> 17 Janeiro
-  + *Atenção:* soma de 6 valores obrigatórios nos testes presenciais
+(2 testes -> pratico e teorico mesmo dia)
 
-- mini-projeto em Matlab *3 valores*
+Nota final = 100%
 
-- 4 mini testes a realizar na aula [4/4]
-  *1.25 cada - 5 valores*
-  + [X] 29 Outubro -> (10/14)
-  + [X] 26 Novembro
-  + [X] 17 Dezembro
-  + [X] 14 Janeiro
+* CG
+** Avaliaçao
+- teste :
 
-* IA
-- teste: 14 Dezembro
-  nota min 8
-- trabalho : 10 a 15 de Janeiro
+* IO
+- teste:
+- trabalhos: 2 trabalhos
 
-Nota final = 50% + 50%
+  Nota final = 70% (teste) + 0.15 * (T1 + T2)
+  T1,2 -> trabalho
 
-* DSS
-- teste: 10 de Janeiro
-  nota min 9
-- trabaho:
-  1. Entrega intermédia -> 13 de novembro
-  2. Entrega final      -> 17 de dezembro
+* POO
+- teste: 20 maio
+- trabalho: 7 maio
 
-  nota min 10
-
-Nota final = 45% *Teste* + 45% *Trabalho* + 10% *Avaliação contínua*
-
-* LI4
+  Nota final: 45% pratica + 55% teorica

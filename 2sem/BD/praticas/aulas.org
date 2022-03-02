@@ -1,0 +1,54 @@
+#+TITLE: Aulas
+
+* Aula Pratica1
+DATE: <2022-02-23 Wed>
+** Caso Prático
++ admistracao centro comerciaias
++ funcionarios por departamento
++ ocurencias
++ manutencao
++ auditorios
++ eventos
+
+** Pormenores
+*** Centro Comercial
++ tipo
+
+*** Lojas
++ localizacao
++ area
+
+*** Lojistas
++ denominacao  comercial
++ contrato
++ staf
++ gerente
++ horario
++ ramo atividade
++ vendas (valor mensal)
+
+*** Contrato
++ Lojas
++ Lojista
++ custos
++ valor mensal
+
+* Aula Pratica 2
+DATE: <2022-03-02 Wed>
+
+** Levantamento
+**** Nesta fase do desenvolvimento do sistema foram identifcadas (apenas) 3 areas:
++ contratos
++ servicos/eventos
++ gestão de pessoal
+
+**** Requisitos
+| Nr: | Data e Hora | Descricao | Area | Fonte | Analista |
+|     |             |           |      |       |          |
+|     |             |           |      |       |          |
+**** Analise e organizacao
+Verificar incoeerencias e analisar todos os requisitos levantados.
+Organica -los de acordo coma as 3 vertentes de trabalho de dados do futuro sistema, nomeadamente:
+- Descricao :: para acolher os requisitos que a referiam a criacao de objetos na base de dados
+- Manipulacao :: incluir tudo aquilo q referisse o povoamento ou  a exploracao de dados, quer fosse através de simples queries, quer fosse através de procedimentos, funcoes ou gatilhos
+- Controlo :: para saberem como é q iriam definir os diversos perfis de utilizacao (gestao de utilizadores e suas permissoes) do sistema de bases de dados
