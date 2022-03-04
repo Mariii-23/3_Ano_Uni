@@ -1,0 +1,107 @@
+#+TITLE: Regex
+* findall
+
+#+begin_SRC python
+re.findall(patern, string, flags=0)
+#+end_SRC
+
++ pattern :: is a regular expression that you want to match
++ string :: is the input string
++ flags :: is one or more regular expression flags that modify the standard behavior of the pattern
+
+  The **result** fuction is a list of strings tha match the whole pattern or if the **pattern** has multiple capturing groups, the **findall()** function returns the **tuples** of the strings that match the groups.
+
+** Example
+#+begin_SRC python
+import re
+
+s = "Black, blue and brown"
+pattern = r'(bl(\w+))'
+matches = re.findall(pattern, s, re.IGNORECASE)
+
+print(matches)
+#+end_SRC
+
+* Search
+This method stops functioning after the first match.
+
+#+begin_SRC python
+re.findall(patern, string, flags=0)
+#+end_SRC
+
+This method returns a Match object.
+The Match object has properties and methods used to retrieve information about the search, and the result:
++ .span() :: returns a tuple containing the start, and end positions of the match
++ .string :: returns the string passed into the function
++ group() :: returns the part of the string where there was a match
+
+** Example
+#+begin_SRC python
+import re
+
+txt = "The rain in Spain"
+x = re.search(r"\bS\w+", txt)
+print(x.group())
+#+end_SRC
+
+* Replace
+** Example
+*** Replace the first 2 occurrences
+#+begin_SRC python
+import re
+
+txt = "The rain in Spain"
+x = re.sub("\s", "9", txt, 2)
+print(x)
+#+end_SRC
+
+
+* Split
+Returns a list where the string has been split at each match
+
+#+begin_src python
+re.split(split, string)
+#+end_src
+** Example
+#+begin_src python
+import re
+
+str = 'foo635bar4125mango2apple21orange'
+chunks = re.split('\d+',str)
+print(chunks)
+#+end_src
+
+#+RESULTS:
+: ['foo', 'bar', 'mango', 'apple', 'orange']
+
+* Sub
+The **sub()** function replaces the matches with the text of your choice
+
+#+begin_src python
+re.sub(matches, replace, string, number of replacements(optional))
+#+end_src
+
+** Example
+
+#+begin_src python
+import re
+
+txt = "The rain in Spain"
+x = re.sub("\s", "9", txt, 2)
+print(x)
+#+end_src
+
+#+RESULTS:
+: The9rain9in Spain
+
+
+#+begin_src python
+import re
+
+txt = "The rain in Spain"
+x = re.sub("\s", "9", txt, 2)
+print(x)
+#+end_src
+
+#+RESULTS:
+: The9rain9in9Spain
