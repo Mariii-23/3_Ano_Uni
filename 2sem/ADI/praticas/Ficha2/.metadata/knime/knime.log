@@ -1,0 +1,11 @@
+2022-03-04 15:27:47,341 : WARN  : Worker-5: Downloading statistics for node recommendations. :  : WorkflowCoachView :  :  : Could not update node recommendations statistics.
+java.nio.file.NoSuchFileException: /home/mari/3_Ano_Uni/2sem/ADI/praticas/Ficha2/.metadata/knime/file_download.temp
+	at java.base/sun.nio.fs.UnixException.translateToIOException(Unknown Source)
+	at java.base/sun.nio.fs.UnixException.rethrowAsIOException(Unknown Source)
+	at java.base/sun.nio.fs.UnixException.rethrowAsIOException(Unknown Source)
+	at java.base/sun.nio.fs.UnixCopyFile.move(Unknown Source)
+	at java.base/sun.nio.fs.UnixFileSystemProvider.move(Unknown Source)
+	at java.base/java.nio.file.Files.move(Unknown Source)
+	at org.knime.workbench.workflowcoach.data.AbstractFileDownloadTripleProvider.update(AbstractFileDownloadTripleProvider.java:170)
+	at org.knime.workbench.workflowcoach.prefs.UpdateJob.run(UpdateJob.java:132)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)

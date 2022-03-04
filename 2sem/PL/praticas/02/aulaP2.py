@@ -73,49 +73,17 @@ problema1AlienUsername()
 # -> os 8 digitos estao divididos em 4 partes iguais
 # de 2 digitos por um separador ... : -
 #
-# -> o separador tem q ser sempre o mesmo
+# ->
 def matriculas_de_outro_mundo():
+    print("\nMatriculas válidas")
     f = open("matriculas.txt", "r")
 
-    p = r'(\d\d-){3}|(\d\d:){3}|(\d\d...){3}\d\d'
-    # p = r'\d\d(?<foo>(\.\.\.|-|:))\d\d\k<foo>\d\d\k<foo>\d\d'
-    matriculas = 0
+    p = re.compile(r'\d\d(\.\.\.|-|:)\d\d\3\d\d\3\d\d')
     for linha in f.readlines():
-        lista = re.findall(p,linha)
-        if lista:
-            matriculas+=len(lista)
-    print("\n\nMatriculas válidas: ", matriculas)
-    return matriculas
-
-matriculas_de_outro_mundo()
-
-def coordenadas():
-    coordenadas = r'\([+\-]?[1-9]?\d(\.\d+)?, [+\-]?(1[0-8]\d|[1-9]?\d)(\.\d+)?\)'
-    p = re.compile(coordenadas)
-    f = open("coordenadas.txt", "r")
-    for linha in f.readlines():
-        # coisas e tal
-        # TODO
-        print("LALALALALA")
+        if p.match(linha):
+            print("Válido")
+        else:
+            print ("Inválido")
     return 0
 
-# Somador on/of:
-# Criar um programa que analisa um texto e:
-# 1. Sempre que apanhar um inteiro soma-o
-# 2. Sempre que apanhar a palavra "off", para de somar,
-# pode ser maiusculas ou minusculas
-# 3. Sempre que apanhar a palavra "on", volta a somar
-# pode ser maiusculas ou minusculas
-# 4. Sempre que apanhar "=" imprime o valor da soma
-# 5. Quando chegar ao fim do ficheiro imprime o valor da soma
-def somador():
-    estado = true
-    soma = 0
-    f = open("coordenadas.txt", "r")
-
-    # on  -> ([Oo][nN])
-    # off -> ([Oo][fF]{2})
-    # num -> (\d*)
-    # =   -> (=)
-    re.finditer(r'([Oo][nN])|([Oo][fF]{2})|(\d*)|(=)')
-    return soma
+matriculas_de_outro_mundo()

@@ -1,0 +1,71 @@
+2022-03-04 14:31:11,234 : WARN  : main :  : Node : CSV Reader : 3:1 : Please specify a file
+2022-03-04 14:31:11,292 : WARN  : main :  : FontStore :  :  : Using the system default font for annotations: Font {139848436568640}
+2022-03-04 14:41:24,637 : WARN  : main :  : Node : Excel Reader : 3:2 : Please specify a file
+2022-03-04 14:41:43,152 : WARN  : main :  : Node : Excel Reader : 3:2 : The node configuration changed and the table spec will be recalculated during execution.
+2022-03-04 14:41:43,748 : WARN  : main :  : Node : Excel Reader : 3:2 : The node configuration changed and the table spec will be recalculated during execution.
+2022-03-04 15:13:05,374 : WARN  : KNIME-Worker-7-Joiner 3:3 :  : Node : Joiner : 3:3 : Node created an empty data table.
+2022-03-04 15:18:20,054 : WARN  : main :  : Node : Joiner : 3:3 : No join columns passed.
+2022-03-04 15:28:48,745 : WARN  : main :  : FontStore :  :  : Using the system default font for annotations: Font {139853004859920}
+2022-03-04 15:31:52,993 : WARN  : main :  : Node : Partitioning : 0:6 : No sampling method selected
+2022-03-04 15:32:46,987 : WARN  : main :  : Node : Decision Tree Learner : 0:7 : Guessing target column: "Phone (right)".
+2022-03-04 15:34:03,914 : WARN  : main :  : Node : Scorer : 0:9 : No columns selected yet.
+2022-03-04 15:34:50,425 : WARN  : main :  : WrappedNodeDialog : Scorer : 0:9 : failed to apply settings: First and second column cannot be the same.
+org.knime.core.node.InvalidSettingsException: First and second column cannot be the same.
+	at org.knime.base.node.mine.scorer.accuracy.AccuracyScorer2NodeDialog.saveSettingsTo(AccuracyScorer2NodeDialog.java:349)
+	at org.knime.core.node.NodeDialogPane.internalSaveSettingsTo(NodeDialogPane.java:532)
+	at org.knime.core.node.NodeDialogPane$4.run(NodeDialogPane.java:766)
+	at org.knime.core.node.util.ViewUtils$3.run(ViewUtils.java:353)
+	at org.knime.core.node.util.ViewUtils$2.run(ViewUtils.java:155)
+	at java.desktop/java.awt.event.InvocationEvent.dispatch(Unknown Source)
+	at java.desktop/java.awt.EventQueue.dispatchEventImpl(Unknown Source)
+	at java.desktop/java.awt.EventQueue$4.run(Unknown Source)
+	at java.desktop/java.awt.EventQueue$4.run(Unknown Source)
+	at java.base/java.security.AccessController.doPrivileged(Native Method)
+	at java.base/java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(Unknown Source)
+	at java.desktop/java.awt.EventQueue.dispatchEvent(Unknown Source)
+	at java.desktop/java.awt.EventDispatchThread.pumpOneEventForFilters(Unknown Source)
+	at java.desktop/java.awt.EventDispatchThread.pumpEventsForFilter(Unknown Source)
+	at java.desktop/java.awt.EventDispatchThread.pumpEventsForHierarchy(Unknown Source)
+	at java.desktop/java.awt.EventDispatchThread.pumpEvents(Unknown Source)
+	at java.desktop/java.awt.EventDispatchThread.pumpEvents(Unknown Source)
+	at java.desktop/java.awt.EventDispatchThread.run(Unknown Source)
+2022-03-04 15:37:33,763 : ERROR : KNIME-Worker-4-Decision Tree Learner 0:7 :  : Node : Decision Tree Learner : 0:7 : Execute failed: Java heap space
+java.lang.OutOfMemoryError: Java heap space
+	at org.apache.xmlbeans.impl.store.Xobj.ensureParent(Xobj.java:597)
+	at org.apache.xmlbeans.impl.store.Xobj.getNormal(Xobj.java:634)
+	at org.apache.xmlbeans.impl.store.Cur.getNormal(Cur.java:2408)
+	at org.apache.xmlbeans.impl.store.Cur.skip(Cur.java:1285)
+	at org.apache.xmlbeans.impl.store.Cur.moveNode(Cur.java:1812)
+	at org.apache.xmlbeans.impl.store.Cur.createHelper(Cur.java:350)
+	at org.apache.xmlbeans.impl.store.Cur.createElement(Cur.java:275)
+	at org.apache.xmlbeans.impl.store.Cur.createElement(Cur.java:271)
+	at org.apache.xmlbeans.impl.store.Xobj.insertElement(Xobj.java:2011)
+	at org.apache.xmlbeans.impl.store.Xobj.add_element_user(Xobj.java:2093)
+	at org.dmg.pmml.impl.NodeDocumentImpl$NodeImpl.addNewScoreDistribution(NodeDocumentImpl.java:685)
+	at org.knime.base.node.mine.decisiontree2.PMMLDecisionTreeTranslator.addTreeNode(PMMLDecisionTreeTranslator.java:354)
+	at org.knime.base.node.mine.decisiontree2.PMMLDecisionTreeTranslator.addTreeNode(PMMLDecisionTreeTranslator.java:362)
+	at org.knime.base.node.mine.decisiontree2.PMMLDecisionTreeTranslator.addTreeNode(PMMLDecisionTreeTranslator.java:362)
+	at org.knime.base.node.mine.decisiontree2.PMMLDecisionTreeTranslator.addTreeNode(PMMLDecisionTreeTranslator.java:362)
+	at org.knime.base.node.mine.decisiontree2.PMMLDecisionTreeTranslator.addTreeNode(PMMLDecisionTreeTranslator.java:362)
+	at org.knime.base.node.mine.decisiontree2.PMMLDecisionTreeTranslator.addTreeNode(PMMLDecisionTreeTranslator.java:362)
+	at org.knime.base.node.mine.decisiontree2.PMMLDecisionTreeTranslator.exportTo(PMMLDecisionTreeTranslator.java:229)
+	at org.knime.core.node.port.pmml.PMMLPortObject.addModelTranslater(PMMLPortObject.java:385)
+	at org.knime.base.node.mine.decisiontree2.learner2.DecisionTreeLearnerNodeModel2.execute(DecisionTreeLearnerNodeModel2.java:591)
+	at org.knime.core.node.NodeModel.executeModel(NodeModel.java:549)
+	at org.knime.core.node.Node.invokeFullyNodeModelExecute(Node.java:1267)
+	at org.knime.core.node.Node.execute(Node.java:1041)
+	at org.knime.core.node.workflow.NativeNodeContainer.performExecuteNode(NativeNodeContainer.java:559)
+	at org.knime.core.node.exec.LocalNodeExecutionJob.mainExecute(LocalNodeExecutionJob.java:95)
+	at org.knime.core.node.workflow.NodeExecutionJob.internalRun(NodeExecutionJob.java:201)
+	at org.knime.core.node.workflow.NodeExecutionJob.run(NodeExecutionJob.java:117)
+	at org.knime.core.util.ThreadUtils$RunnableWithContextImpl.runWithContext(ThreadUtils.java:365)
+	at org.knime.core.util.ThreadUtils$RunnableWithContext.run(ThreadUtils.java:219)
+	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Unknown Source)
+	at java.base/java.util.concurrent.FutureTask.run(Unknown Source)
+	at org.knime.core.util.ThreadPool$MyFuture.run(ThreadPool.java:123)
+2022-03-04 15:37:58,792 : WARN  : main :  : Node : Scorer : 0:9 : Column 'Prediction (Phone (right))' not found.
+2022-03-04 15:37:59,870 : WARN  : main :  : Node : Scorer : 0:9 : Column 'Prediction (Phone (right))' not found.
+2022-03-04 15:38:57,736 : ERROR : KNIME-Worker-5-Decision Tree Learner 0:7 :  : Node : Decision Tree Learner : 0:7 : Execute failed: Java heap space
+java.lang.OutOfMemoryError: Java heap space
+2022-03-04 15:39:20,782 : WARN  : main :  : Node : Scorer : 0:9 : Column 'Prediction (Churn (right))' not found.
+2022-03-04 15:39:37,075 : WARN  : KNIME-Worker-5-Scorer 0:9 :  : Node : Scorer : 0:9 : There were missing values in the reference or in the prediction class columns.

@@ -1,0 +1,8 @@
+<A sadffds> text <\A>
+<A href="adsfad"> text <\A>
+
+<A href="adsfad"> asfdasdfj <\A>
+
+<A HREF="adsf" asfd > a.com"> asfdasdfj <\A>
+
+<A href="http\\::adsf.:comad03"> asfdasdfj <\A>
