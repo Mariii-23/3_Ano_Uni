@@ -81,3 +81,64 @@ We can use also the negation operator
 
   m = re.search(palavra, linha)
   #+end_src
+
+* Aula 8 Março
+** Tokenizer
+a = 34 + 23 -7*2
+
+ID ATRIB INT OP INT OP INT
+
+#+begin_SRC python
+ID = r'[_a-zA-Z]\w*'
+ATRIB = r'='
+INT = r'\d+'
+OP = r'\[\:*\-+\/]'
+#+end_SRC
+
+*** Cod
+
+#+begin_SRC python
+def tokenize(code):
+    token_specification = [
+        ('NUM', r'\d+'), # numeros
+        ('ID', r'[_a-zA-Z]\w*'), # id
+        ('ATRIB', r'='), # numeros
+        ('OP', r'\[\:*\-+\/]'),
+        ('NEWLINE', r'\n'), # newlines
+        ('SKIP', r'[ \t]+'),
+        ('ERRO', r'.*'),
+    ]
+
+    regex = '|'.join('(?P<%s>%s)' % pair for pair in token_specification)
+
+    reconhecidos = []
+
+    mo = re.finditer(regex, code)
+    for m in mo:
+        # dic = m.groupdict()
+        # print(dic)
+       reconhecidos.append(m)
+
+    return reconhecidos
+#+end_SRC
+
+** Máquina de estados
+*** Inteiros
+[[file:./photos/maquinaEstadosInt.png][maquina de estados inteiros]]
+
++ S :: Estado inicial
++ B :: Estado final
+*** Alg
+
+#+begin_SRC python
+AFD = (S, Z, Estados, funçãoTransição)
+
+    d    _     letra
+    ------------------------
+S  B  A  A
+B  B  _  _
+A  A  A  A
+#+end_SRC
+
++ S :: Estado inicial
++ B :: Estado final
