@@ -52,3 +52,10 @@ Organica -los de acordo coma as 3 vertentes de trabalho de dados do futuro siste
 - Descricao :: para acolher os requisitos que a referiam a criacao de objetos na base de dados
 - Manipulacao :: incluir tudo aquilo q referisse o povoamento ou  a exploracao de dados, quer fosse através de simples queries, quer fosse através de procedimentos, funcoes ou gatilhos
 - Controlo :: para saberem como é q iriam definir os diversos perfis de utilizacao (gestao de utilizadores e suas permissoes) do sistema de bases de dados
+
+* Aula Pratica 3
+DATE: <2022-03-09 Wed>
+
+** Identify entity types
++ Contratos:
+  - id :: único

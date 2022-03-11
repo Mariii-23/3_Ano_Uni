@@ -142,3 +142,30 @@ A  A  A  A
 
 + S :: Estado inicial
 + B :: Estado final
+
+* Aula 09 Março
+** Expressoes Regurales - Linguagens Regulares
+Autómatos Finitos Deterministas
+Gramáticas Regulares
+ (T, N, S, P)
+
+[]
+[1]
+[1,2,3]
+
+Símbolos terminais:
+1. Sinais :: são constituídos por um caráter;
+2. Palavras reservadas ::  constantes (exemplos: while, if)
+3. Terminais variáveis :: Exemplos: identificadores, inteiros, ...
+
+
+#+begin_src python
+T = {'[',']', inteiro, ','}
+N = {S, Conteúdo, ContS, Conteúdo, Cont}
+P = {
+    S -> '[' Counteúdo ']'
+    Conteúdo -> inteiro
+            |   vazio
+    Const -> vazio | ',' inteiro Const
+}
+#+end_src

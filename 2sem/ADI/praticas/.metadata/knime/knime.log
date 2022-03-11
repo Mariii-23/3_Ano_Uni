@@ -69,3 +69,4 @@ java.lang.OutOfMemoryError: Java heap space
 java.lang.OutOfMemoryError: Java heap space
 2022-03-04 15:39:20,782 : WARN  : main :  : Node : Scorer : 0:9 : Column 'Prediction (Churn (right))' not found.
 2022-03-04 15:39:37,075 : WARN  : KNIME-Worker-5-Scorer 0:9 :  : Node : Scorer : 0:9 : There were missing values in the reference or in the prediction class columns.
+2022-03-11 14:43:07,307 : WARN  : main :  : FontStore :  :  : Using the system default font for annotations: Font {139804681608768}

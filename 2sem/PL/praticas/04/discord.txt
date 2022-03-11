@@ -1,0 +1,2 @@
+Isto está a **bold**
+Isto __está em itálico__!
