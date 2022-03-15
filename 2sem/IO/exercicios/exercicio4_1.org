@@ -1,0 +1,27 @@
+#+TITLE: Exercicios
+* Resolucao 4.1
++ fazer quadros simplex:
+  + corpo :: coeficientes
+  + colunas :: variaveis do modelo (incluindo as folgas)
+  + coluna do z ::  é sempre a mesma
+  + ultima linha :: é a funcao objetivo
+  + lado direito :: sao os termos independetes
+  + lado esquerdo :: sao as variaveis basicas
+
++ se houver coeficients negativos na ultima linha, a solucao nao é optima e por tanto deve se fazer uma iteracao no simples para tentar encontrar mais solucoes
+  1. encontrar coluna pivo
+
+     Aquela que tem o coeficiente mais negativo na ultima linha
+
+  2. divideir os coeficientes do lado direito pelos coeficientes da coluna pivo e aquele q der um valor menor sera a nova linha pivo
+
+  3. colocar a variavael da coluna pivo na base. Retirar a linha do pivo
+
+  4. usar eliminacao de gaus. aqui pretende se deixar a zero a coluna pivo
+
+  5. a coluna da variavel tem de ser uma columa da matrix identidade
+* 4.2
+** b)
+Existe uma variavel basica apenas e 4 variaveis nao basicas
+** c)
+Sera a variavel x1 (x1=90)

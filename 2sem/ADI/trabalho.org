@@ -1,0 +1,25 @@
+#+TITLE: Trabalho
+
+* Parte I
+
+1. Indique o valor de ABCDE, e apresente a rede após a devida remoção das arestas.
+
+    Maior número ~93272~
+   + remover C,E
+
+2. Apresente a formulação deste problema
+   1. Descricao
+
+   2. Objetivo
+
+   3. variaveis
+
+3. Apresente o modelo de programação linear
+
+4. Apresente o ficheiro de input
+
+5. Apresente o ficheiro de output produzido pelo programa
+
+6. Interprete a solução óptima, apresente o percurso que o drone deve efectuar, e calcule a distância total percorrida
+
+7. Descreve os procedimentos usados para validar o modelo

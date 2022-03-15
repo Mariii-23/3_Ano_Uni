@@ -231,16 +231,17 @@ void prepareData(float radius, float height, int sides) {
   // criar o vbo
   glGenBuffers(1, &vertices);
   // copiar o vector para a memória gráfica
-  // glBindBuffer(GL_ARRAY_BUFFER, vertices);
-  glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, vertices);
-  // glBufferData(
-  //     GL_ARRAY_BUFFER, // tipo do buffer, só é relevante na altura do desenho
-  //     sizeof(float) * vec.size(), // tamanho do vector em bytes
-  //     vec.data(),                 // os dados do array associado ao vector
-  //     GL_STATIC_DRAW); // indicativo da utilização (estático e para desenho)
-  glBufferData(GL_ELEMENT_ARRAY_BUFFER,
-               sizeof(unsigned int) * i.size(), //
-               i.data(), GL_STATIC_DRAW);
+  glBindBuffer(GL_ARRAY_BUFFER, vertices);
+  // glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, vertices);
+
+  glBufferData(
+      GL_ARRAY_BUFFER, // tipo do buffer, só é relevante na altura do desenho
+      sizeof(float) * vec.size(), // tamanho do vector em bytes
+      vec.data(),                 // os dados do array associado ao vector
+      GL_STATIC_DRAW); // indicativo da utilização (estático e para desenho)
+  // glBufferData(GL_ELEMENT_ARRAY_BUFFER,
+  //              sizeof(unsigned int) * i.size(), //
+  //              i.data(), GL_STATIC_DRAW);
 }
 
 void renderScene(void) {

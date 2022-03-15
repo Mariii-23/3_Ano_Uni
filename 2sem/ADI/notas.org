@@ -1,0 +1,35 @@
+#+TITLE: Notas
+
+* Modelo canónico
+Temos variaveis de:
++ decisão
++ folga
+
+No algoritmo simples, todas estas variaveis sao simplesmente tratadas como variaveis (semelhantes) de um sistema de equacoes.
+
+Vamos passar a designa-las todas indiferenciadamente por x.
+
+** Nota
+3x1 + 2x2 <= 120
+s1=0
+
+Ambas estas expressões descrevem a mesma reta.
+
+3x1 + 2x2 + s1 = 120
+
+-----------------------
+
+** Vértices
+Num  dado vertice, designa-se por:
++ variáveis não-básicas :: as que têm valor 0, e identificam as faces cuja interseção determina o vértice
++ variáveis básicas :: as restantes
+
+Um vertice de um poliedro corresponde a uma solucao do sistema de equacoes por ~solução básica (admissível)~
+
+
+ + n :: número de variaveis (inclui as variaveis x e s)
+ + m ::  número de variaveis básicas (número de restricoes)
+   restricoes do tipo x>=0 e s>=0 nao contam
+ + n - m :: número de variáveis não-basicas
+
+* Algoritmo simplex
