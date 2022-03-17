@@ -266,6 +266,10 @@ void renderScene(void) {
 void processKeys(unsigned char c, int xx, int yy) {
 
   // put code to process regular keys in here
+  switch (c) {
+  case 'q':
+    exit(0);
+  }
 }
 
 void processSpecialKeys(int key, int xx, int yy) {
