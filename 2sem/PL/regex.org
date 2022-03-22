@@ -44,6 +44,9 @@ x = re.search(r"\bS\w+", txt)
 print(x.group())
 #+end_SRC
 
+#+RESULTS:
+: None
+
 * Replace
 ** Example
 *** Replace the first 2 occurrences
@@ -54,6 +57,9 @@ txt = "The rain in Spain"
 x = re.sub("\s", "9", txt, 2)
 print(x)
 #+end_SRC
+
+#+RESULTS:
+: None
 
 
 * Split

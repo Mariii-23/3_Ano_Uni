@@ -223,3 +223,38 @@ P = {
     p3: S -> 1 S
 }
 #+end_src
+
+** Exercicio expressoes aritmeticas (soma, sub, mult, div)
+
+#+begin_src python
+T = {'+','-', '*', '/', '(', ')', num}
+N = {Exp}
+S = Exp
+P = {
+    p1: Exp -> num
+    p2: Exp -> ( Exp )
+    p3: Exp -> Exp + Exp
+    p4: Exp -> Exp - Exp
+    p5: Exp -> Exp * Exp
+    p6: Exp -> Exp / Exp
+}
+#+end_src
+
+*** Exemplo (4+5)*(2-6)
+
+Isto é feito a mão, não é a forma correta
+#+begin_example
+Exp = Exp * Exp
+  => (Exp) * (Exp)
+  => (Exp + Exp) * (Exp - Exp)
+  => (num + num) * (num - num)
+#+end_example
+
+** Algoritmos de reconhecimento /analise /Parsing
+*** Top Down
++ LL(1): dirigido por tabela
++ recursivo descendente (LL(1))
+*** Bottom Up:
++ LR(0)
++ SLR(1)
++ LALR(0)
