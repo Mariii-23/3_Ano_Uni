@@ -26,10 +26,11 @@ notas/*
 # 2 semestre
 2sem/CG/praticas/*/build
 
+2sem/ADI/praticas/*
+2sem/ADI/praticas/.metadata/*
 2sem/ADI/praticas/*/.artifacts
 2sem/ADI/praticas/*/.knimeLock
 2sem/ADI/praticas/*/.savedWithData
-2sem/ADI/praticas/*
 
 2sem/POO/fichas/.idea/*
 2sem/POO/fichas/.gradle/*

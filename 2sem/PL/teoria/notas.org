@@ -170,4 +170,56 @@ P = {
 }
 #+end_src
 
-* Aula 15 Março
+* Aula 22 Março
+** Gramaticas independentes de contexo (GIC)
++ Uma gramatica é um tuplo ~(T, N, S, P)~:
+  - T :: é o conj. de simbolos terminais ou vocabulario da linguagem
+  - N :: é o conj. de simbolos nao terminais ou estruturaes e que representam estruturas da linguagem
+  - P :: é o conj. de regras de producao com o qual se podem derivar as frases da linguagem
+  - S :: é o axioma, ou o simbolo nao terminal a partir do qual se deve comecar a derivar a frase
+** Exemplo : a linguagem dos parantesis
+Especifica uma gramatica que defina a linguagem dos parentesis :
+
+#+begin_src python
+T = {'(',')'}
+N = {S}
+S = S
+P = {
+    p1: S -> ()
+    p2: S -> S S
+    p3: S -> ( S )
+}
+#+end_src
+
+Derivacao da frase: ~()(())~ :
+
+#+begin_example
+S = p2 => SS
+  = p1 => ()S
+  = p3 => ()(S)
+  = p1=>()(())
+#+end_example
+
+Há varias formas...
+
+#+begin_src python
+T = {'(',')'}
+N = {S}
+S = S
+P = {
+    p1: S -> ( S ) S
+    p2: S -> simbolo gregro
+}
+#+end_src
+
+** Exercicio: descreve a linguagem gerada pela gramatica
+#+begin_src python
+T = {'0','1'}
+N = {S}
+S = S
+P = {
+    p1: S -> 0
+    p2: S -> 0 S
+    p3: S -> 1 S
+}
+#+end_src
