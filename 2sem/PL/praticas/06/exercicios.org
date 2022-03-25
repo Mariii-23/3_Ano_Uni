@@ -1,0 +1,37 @@
+#+TITLE: Exercicios
+* Listas
+#+begin_example
+Listas
+[]
+[2]
+[2,2,3,3]
+[2,2,[4,8],3]
+#+end_example
+
+#+begin_example
+T = {"[","]", num , "," }
+N =
+S =
+P =
+
+Lista -> [Cont] | []
+Cont -> N , Cont | N
+N -> num | Lista
+
+#+end_example
+
+Nesta solucao, se for em ~top down~  temos um conflito "["
+
+#+begin_example
+Lista  -> '[' Lista2
+Lista2 -> Cont ']'        {num, '['}
+        | ']'             {']'}
+
+
+Cont   -> N Cont2
+Cont2  -> ',' Cont        {','}
+        | E (epsilon*)    {']'}
+
+N      -> num             {num}
+        | Lista           {'['}
+#+end_example

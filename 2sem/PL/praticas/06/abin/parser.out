@@ -1,0 +1,90 @@
+Created by PLY version 3.11 (http://www.dabeaz.com/ply)
+
+Grammar
+
+Rule 0     S' -> ABin
+Rule 1     ABin -> PA PF
+Rule 2     ABin -> PA NUM ABin ABin PF
+
+Terminals, with rules where they appear
+
+NUM                  : 2
+PA                   : 1 2
+PF                   : 1 2
+error                : 
+
+Nonterminals, with rules where they appear
+
+ABin                 : 2 2 0
+
+Parsing method: LALR
+
+state 0
+
+    (0) S' -> . ABin
+    (1) ABin -> . PA PF
+    (2) ABin -> . PA NUM ABin ABin PF
+
+    PA              shift and go to state 2
+
+    ABin                           shift and go to state 1
+
+state 1
+
+    (0) S' -> ABin .
+
+
+
+state 2
+
+    (1) ABin -> PA . PF
+    (2) ABin -> PA . NUM ABin ABin PF
+
+    PF              shift and go to state 3
+    NUM             shift and go to state 4
+
+
+state 3
+
+    (1) ABin -> PA PF .
+
+    $end            reduce using rule 1 (ABin -> PA PF .)
+    PA              reduce using rule 1 (ABin -> PA PF .)
+    PF              reduce using rule 1 (ABin -> PA PF .)
+
+
+state 4
+
+    (2) ABin -> PA NUM . ABin ABin PF
+    (1) ABin -> . PA PF
+    (2) ABin -> . PA NUM ABin ABin PF
+
+    PA              shift and go to state 2
+
+    ABin                           shift and go to state 5
+
+state 5
+
+    (2) ABin -> PA NUM ABin . ABin PF
+    (1) ABin -> . PA PF
+    (2) ABin -> . PA NUM ABin ABin PF
+
+    PA              shift and go to state 2
+
+    ABin                           shift and go to state 6
+
+state 6
+
+    (2) ABin -> PA NUM ABin ABin . PF
+
+    PF              shift and go to state 7
+
+
+state 7
+
+    (2) ABin -> PA NUM ABin ABin PF .
+
+    $end            reduce using rule 2 (ABin -> PA NUM ABin ABin PF .)
+    PA              reduce using rule 2 (ABin -> PA NUM ABin ABin PF .)
+    PF              reduce using rule 2 (ABin -> PA NUM ABin ABin PF .)
+
