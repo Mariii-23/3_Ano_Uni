@@ -1,0 +1,37 @@
+#+TITLE: Notas
+
+* Data base
+
+** Criar uma tabela num dado server
+
+CREATE TABLE SERVERIP.Mecearia.Profisão (
+    ----
+)
+
+** Mercearia
+#+begin_example
+CREATE TABLE Profissão (
+    Id INT NOT NULL,
+    Descricao CHAR(75) NOT NULL,
+
+        PRIMARY KEY (Id)
+)
+    ENGINE=InnoDF
+    DEFAULT CHARSHET=utf8mb4
+
+
+CREATE TABLE Funcionário (
+    Id INT NOT NULL,
+    Nome CHAR(75) NOT NULL,
+    Função INT NULL,
+
+    Password CHAR(75) NOT NULL,
+    eMail CHAR(75) NOT NULL,
+
+        PRIMARY KEY (Id)
+        FOREIGN KEY (Função)
+            REFERENCES Função(Id)
+
+
+)
+#+end_example

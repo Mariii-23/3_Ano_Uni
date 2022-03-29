@@ -258,3 +258,99 @@ Exp = Exp * Exp
 + LR(0)
 + SLR(1)
 + LALR(0)
+
+* Aula 23 Março
+
+~a*b*c*~
+
+** Top Down
+#+begin_src python
+T = {'a','a', 'b'}
+N = {S}
+S = S
+P = {
+    P1: S -> ABC
+    P2: A -> aA
+    P3: A -> E
+    P4: B -> bB
+    P5: B -> E
+    P6: C -> cC | E
+    P7: C -> E
+}
+#+end_src
+
+** Bottom Up
+#+begin_example
+L_A(p2) = First(aA) = {a}
+L_A(p3) =  {b,c,$}
+
+L_A(p4) = {b}
+L_A(p5) = {c,$}
+
+L_A(p6) = {c}
+L_A(p7) = {}
+#+end_example
+
+* Aula 29 Março
+
+Listas:
+[]
+[2]
+[1,2,3]
+
+#+begin_example
+Lista -> '[' ']'
+       | '[' LCont ']'
+
+LCont -> num
+       | LCont ',' num
+#+end_example
+
+
+--------------------------------------------
+
+
+#+begin_example
+Lista  -> '[' Lista2          {'['}
+
+Lista2 -> ']'                 {']'}
+        | LCont ']'           {num}
+
+LCont  -> num Lcont2          {num}
+
+LCont2 -> E (epsilon)         {']'}
+       | ',' num LCont2       {','}
+#+end_example
+
+** Exercicio
+
+#+begin_example
+S -> '(' S ')' S
+   |
+#+end_example
+
+Aqui temos q aumentar a gramatica, pois nao conseguimos calcular o locked da expressao S (no 2 parametro)
+
+Por exemplo:
+
+#+begin_example
+Z -> S '$'             {'(', '$', ')'}
+
+S -> '(' S ')' S       {'('}
+   |                   {'$',')'}
+#+end_example
+
+#+begin_src python
+def rec_S():
+    global prox_simb
+    if prox_simb.type == 'PA':
+        rec_term('PA')
+        rec_S()
+        rec_term('PF')
+        rec_S()
+    elif prox_simb.type == 'FIM' or prox_simb.type == 'PF':  # FIM = '$'  e PF =')'' e PA = '('
+        pass
+    else:
+        parseError("Error")
+
+#+end_src
