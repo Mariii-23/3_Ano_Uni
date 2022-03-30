@@ -354,3 +354,47 @@ def rec_S():
         parseError("Error")
 
 #+end_src
+
+
+* Aula 30 Março
+
+** ABin -> Arvore binaria
+
+()
+
+(67 () ())
+
+(67 (23 () ()) (234 () ()))
+
+*** Gramatica Concreta
+#+begin_example
+ABin ->  ()
+       | (num Abin Abin)
+#+end_example
+*** Gramatica Abstrata
+#+begin_example
+ABin ->  empty
+       | num Abin Abin
+#+end_example
+
+** Prioridade
+É muito importante
+
+#+begin_example
+Exp -> Exp '+' Exp
+     | Exp '*' Exp
+     | num
+#+end_example
+
+Ao desenvolver a arvore:
+~2 + 3 * 6~
+
+#+begin_example
+            Exp
+             |
+             +
+          /     \
+         2      '*'
+                / \
+                3  6
+#+end_example
