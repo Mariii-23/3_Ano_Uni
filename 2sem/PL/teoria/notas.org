@@ -392,9 +392,48 @@ Ao desenvolver a arvore:
 #+begin_example
             Exp
              |
-             +
+            '+'
           /     \
          2      '*'
                 / \
                 3  6
+#+end_example
+
+** Calculadora
+
+#+begin_example
+a = 23 * 7
+b = 2 + a
+! a
+! a*3+45
+? c
+| a/c
+!!
+#+end_example
+
+#+begin_example
+Programa -> Comandos FIM                   {id, '!', '?', FIM}
+
+Comandos ->                                {FIM}
+            | Comando Comandos             {id, '!','?'}
+
+Comando -> Atrib | Print | Read            {id}  {'!'}  {'?'}
+
+Atrib -> id '=' Exp                        {id}
+Print -> '!' Exp                           {'!'}
+Read -> '?' id                             {'?'}
+
+Exp -> Termo Exp2                          {num, id, '('}
+
+Exp2 ->                                    {'!', id ')', '?, FIM'}
+        | '+' Exp                          {'+'}
+        | '-' Exp                          {+-}
+
+Termo -> Fator Termo2                      {num, id, '('}
+
+Termo2 ->                                  {'!', id ')', '?, FIM', '+', '-'}
+          | '*' Termo                      {'*'}
+          | '/' Termo                      {'/'}
+
+Fator -> num | id | '(' Exp ')'            {num, id , '('}
 #+end_example
