@@ -1,0 +1,26 @@
+#+TITLE: Calculadora
+
+* Pl
+#+begin_example
+Calc -> Comandos
+
+Comandos -> Comandos Comando
+          | Comando
+
+Comando -> id '=' Exp
+         | '!' Exp
+         | '?' id
+         | Dump
+
+Exp -> Exp '+' Termo
+     | Exp '-' Termo
+     | Termo
+
+Termo -> Termo '*' Fator
+     | Termo '/' Fator
+     | Fator
+
+Fator -> '(' Exp ')'
+       | num
+       | id
+#+end_example
