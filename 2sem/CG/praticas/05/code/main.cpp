@@ -31,6 +31,7 @@ static const int ni = 10;
 static const int nc = 5;
 
 static float rotate = 0;
+static float speed = 0.1;
 
 void changeSize(int w, int h) {
 
@@ -58,6 +59,8 @@ void changeSize(int w, int h) {
 }
 
 void renderScene(void) {
+
+  srand(3);
 
   // clear buffers
   glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
@@ -91,7 +94,7 @@ void renderScene(void) {
     glPushMatrix();
     glColor3f(0.2f, 0.4f, 1.0f);
     glRotatef(-rotate + i * 360 / nc, 0, 1, 0);
-    glTranslated(rc, 1, 0);
+    glTranslated(rc, 2, 0);
     glutSolidTeapot(2);
     glPopMatrix();
   }
@@ -101,7 +104,7 @@ void renderScene(void) {
     glPushMatrix();
     glColor3f(0.2f, 0.44f, 0.54f);
     glRotatef(rotate + i * 360 / ni, 0, 1, 0);
-    glTranslated(ri, 1, 0);
+    glTranslated(ri, 2, 0);
     glutSolidTeapot(2);
     glPopMatrix();
   }
@@ -111,7 +114,7 @@ void renderScene(void) {
     // vamos garantir q as arvores sao criadas a um raio de pelo menos 50
     // x² + z² < r²
     double x = 0, z = 0;
-    srand(treeRand + i);
+    // srand(treeRand + i);
     while (pow(x, 2) + pow(z, 2) < pow(r, 2)) {
       x = (rand() % (r * 4)) - (r * 2);
       z = (rand() % (r * 4)) - (r * 2);
@@ -132,7 +135,7 @@ void renderScene(void) {
     glPopMatrix();
   }
 
-  rotate += 0.1;
+  rotate += speed;
   glutSwapBuffers();
   glutPostRedisplay();
 }
@@ -155,6 +158,14 @@ void processKeys(unsigned char c, int xx, int yy) {
 
   case '-':
     radius += 1.0f;
+    break;
+
+  case 'z':
+    speed += 0.1f;
+    break;
+
+  case 'x':
+    speed -= 0.1f;
     break;
   }
 
