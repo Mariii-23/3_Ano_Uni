@@ -437,3 +437,71 @@ Termo2 ->                                  {'!', id ')', '?, FIM', '+', '-'}
 
 Fator -> num | id | '(' Exp ')'            {num, id , '('}
 #+end_example
+
+* Aula 5 Abril
+** Autómatos LR
+
+#+begin_example
+S -> A a
+   | b
+
+A -> a A
+   | c
+#+end_example
+
+Algumas expressões:
++ b
++ ca
++ aca
+
+
+Para ser possível desenhar a gramática adicionamos um novo simbolo:
+
+#+begin_example
+Z -> S $
+
+S -> A a
+   | b
+
+A -> a A
+   | c
+#+end_example
+
+*** Exemplo -> aca
+
+Colocar todos os símbolos numa stack:
+
++ a :: (não ha nenhum simbolo q preenche a stack)
++ ac :: (detetamos um ~c~ logo substituimos pela expressão)
++ aA :: -> (neste momento conseguimos substituir toda a expressão q temos para:)
++ A :: (Agora adicionamos o resto da expressão)
++ Aa :: (Substituir isto pela respetiva producao)
++ S$ :: (Sabendo que agora chegamos ao fim da produção)
++ Z :: (logo é uma expressão válida)
+
+**** Tabela
+| Nº     | Tabela de ações    | Tabela de go tos |
+
+| Estado | $   | a  | b  | c  | $ A |
+|      0 |     | s5 | s4 | s7 | 1 2 |
+|      1 | ac. |    |    |    |     |
+|      2 |     |    |    |    |   3 |
+|      3 | r1  | r1 | r1 | r1 |     |
+|      4 | r2  | r2 | r2 | r2 |     |
+|      5 |     | s5 |    | s7 |   6 |
+|      6 | r3  | r3 | r3 | r3 |     |
+|      7 | r4  | r4 | r4 | r4 |     |
+
+Transição / Redução
+Shift / Reduce
+Redução / Redução
+Reduce / Reduce
+
+** Capicua
+#+begin_example
+Capicua -> 0
+         | 1
+         | 0 Capicua 0
+         | 1 Capicua 1
+         | empty
+#+end_example
