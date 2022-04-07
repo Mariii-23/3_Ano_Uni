@@ -1,0 +1,35 @@
+#+TITLE: IO
+
+* Modelos de Programação Linear
+[[https://github.com/Mariii-23/3_Ano_Uni/blob/main/2sem/IO/diapositivos1/1_programacao%20linear%20modelos%20e%20transformacoes%20basicas%20NEW.pdf][programacao linear modelos e transformacoes basicas NEW]]
+
+[[https://github.com/Mariii-23/3_Ano_Uni/blob/main/2sem/IO/diapositivos1/2_Programacao%20linear%20modelos%20TEXTO(1).pdf][Programacao linear modelos TEXTO
+]]
+* Metodo Grafico
+[[https://github.com/Mariii-23/3_Ano_Uni/blob/main/2sem/IO/diapositivos1/3_programacao%20linear%20resolucao%20grafica.pdf][programacao linear resolucao grafica.pdf]]
+
+* Poliedros e metodo simplex
+[[https://github.com/Mariii-23/3_Ano_Uni/blob/main/2sem/IO/diapositivos1/4_programacao%20linear%20geometria%20e%20algebra%20NEW.pdf][programacao linear geometria e algebra NEW.pdf]]
+
+*  Algoritmo simplex
+[[https://github.com/Mariii-23/3_Ano_Uni/blob/main/2sem/IO/diapositivos1/5_tutorial_eliminacao_Gauss.pdf][tutorial_eliminacao_Gauss.pdf]]
+
+[[https://github.com/Mariii-23/3_Ano_Uni/blob/main/2sem/IO/diapositivos1/6_programacao%20linear%20metodo%20simplex%20NEW.pdf][programacao linear metodo simplex NEW.pdf]]
+
+*  Algoritmo simplex - situacoes especiais
+[[https://github.com/Mariii-23/3_Ano_Uni/blob/main/2sem/IO/diapositivos1/7_programacao%20linear%20metodo%20simplex%20situacoes%20particulares%20NEW.pdf][programacao linear metodo simplex situacoes particulares NEW.pdf]]
+
+*  Representacoa matricial
+[[https://github.com/Mariii-23/3_Ano_Uni/blob/main/2sem/IO/diapositivos1/8_programacao%20linear%20representacao%20matricial%20NOVO.pdf][programacao linear representacao matricial NOVO.pdf]]
+
+* Analise de sensibilidade
+[[https://github.com/Mariii-23/3_Ano_Uni/blob/main/2sem/IO/diapositivos1/9_InterpretacaoDoSignificadoDosPrecosSombra.pdf][InterpretacaoDoSignificadoDosPrecosSombra.pdf]]
+
+[[https://github.com/Mariii-23/3_Ano_Uni/blob/main/2sem/IO/diapositivos1/9_programacao%20linear%20sensibilidade%20NOVO.pdf][programacao linear sensibilidade NOVO.pdf]]
+
+* Dualidade e metodo simplex dual
+[[https://github.com/Mariii-23/3_Ano_Uni/blob/main/2sem/IO/diapositivos1/10_programacao%20linear%20dualidade%20NEW(1).pdf][programacao linear dualidade NEW(1).pdf]]
+
+[[https://github.com/Mariii-23/3_Ano_Uni/blob/main/2sem/IO/diapositivos1/11_programacao%20linear%20metodo%20simplex%20dual%20NEW(2).pdf][programacao linear metodo simplex dual NEW(2).pdf]]
+
+[[https://github.com/Mariii-23/3_Ano_Uni/blob/main/2sem/IO/diapositivos1/12_programacao%20linear%20teoria%20de%20jogos%20NEW.pdf][programacao linear teoria de jogos NEW.pdf]]
