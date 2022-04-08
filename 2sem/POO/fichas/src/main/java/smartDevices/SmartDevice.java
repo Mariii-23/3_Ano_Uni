@@ -13,6 +13,8 @@ package smartDevices;
 /*********************************************************************************/
 
 
+import java.util.Objects;
+
 /**
  * A classe SmartDevice é um contactor simples.
  * Permite ligar ou desligar circuitos. 
@@ -64,5 +66,20 @@ public class SmartDevice {
 
     public SmartDevice clone() {
         return new SmartDevice(this);
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || !(o instanceof SmartDevice)) return false;
+        SmartDevice that = (SmartDevice) o;
+        System.out.println(on + "  " + that.on);
+        System.out.println(id + "  " + that.id);
+        return on == that.on && id.equals(that.id);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, on);
     }
 }

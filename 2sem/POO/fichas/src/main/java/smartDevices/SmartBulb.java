@@ -12,6 +12,8 @@ package smartDevices;
 /** conhecimentos de POO.                                                        */
 /*********************************************************************************/
 
+import java.util.Objects;
+
 /**
  * Uma SmartBulb é uma lâmpada inteligente que além de ligar e desligar (já que
  * é subclasse de SmartDevice) também permite escolher a intensidade da iluminação 
@@ -58,5 +60,17 @@ public class SmartBulb extends SmartDevice {
         return this.tone;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || !(o instanceof SmartDevice)) return false;
+        SmartBulb smartBulb = (SmartBulb) o;
+        return tone == smartBulb.tone;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(tone);
+    }
 }
 

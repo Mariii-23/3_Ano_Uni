@@ -13,6 +13,8 @@ package smartDevices;
 /** conhecimentos de POO.                                                        */
 /*********************************************************************************/
 
+import java.util.Objects;
+
 /**
  * Um SmartSpeaker é um SmartDevice que além de ligar e desligar permite também
  * reproduzir som.
@@ -28,7 +30,6 @@ public class SmartSpeaker extends SmartDevice {
     
     private int volume;
     private String channel;
-
 
     /**
      * Constructor for objects of class SmartSpeaker
@@ -71,4 +72,17 @@ public class SmartSpeaker extends SmartDevice {
     
     public void setChannel(String c) { this.channel =c;}
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || !(o instanceof SmartDevice)) return false;
+        if (!super.equals(o)) return false;
+        SmartSpeaker that = (SmartSpeaker) o;
+        return volume == that.volume && channel.equals(that.channel);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(super.hashCode(), volume, channel);
+    }
 }

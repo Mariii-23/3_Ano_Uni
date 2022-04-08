@@ -55,8 +55,7 @@ public class CasaInteligente {
     }
     
     public void addDevice(SmartDevice s) {
-        //this.devices.put(s.getID(), s.clone());
-        this.devices.put(s.getID(), s);
+        this.devices.put(s.getID(), s.clone());
     }
     
     public SmartDevice getDevice(String s) {return this.devices.get(s);}
@@ -98,7 +97,30 @@ public class CasaInteligente {
         if (o == null || getClass() != o.getClass()) return false;
         CasaInteligente that = (CasaInteligente) o;
 
-        return Objects.equals(morada, that.morada) && Objects.equals(devices, that.devices) && Objects.equals(locations, that.locations);
+        // see if all devices are equal
+        boolean devices = true;
+        for (var dev : this.devices.values()) {
+            if (devices) {
+                var elem = that.devices.get(dev.getID());
+                devices = elem != null && elem.equals(dev);
+            } else {
+                return false;
+            }
+        }
+
+        // see if all locations are equal
+        boolean locations = true;
+        for (var locales : this.locations.entrySet()) {
+            if (locations) {
+                var name = locales.getKey();
+                var that_local = that.locations.get(name);
+                locations = that_local != null && that_local.containsAll(locales.getValue());
+            } else {
+                return false;
+            }
+        }
+
+        return morada.equals(that.morada) && devices && locations;
     }
 
     @Override

@@ -79,7 +79,6 @@ public class CasaInteligenteTest {
         CasaInteligente casaInte1 = new CasaInteligente("Gualtar");
         SmartBulb smartBul1 = new SmartBulb("b1");
         casaInte1.addDevice(smartBul1);
-        //TODO fix equals in casaInteligente
         assertTrue(casaInte1.getDevice("b1").equals(smartBul1));
     }
 
