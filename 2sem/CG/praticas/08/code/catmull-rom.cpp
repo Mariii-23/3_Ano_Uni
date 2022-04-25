@@ -10,7 +10,8 @@
 
 static float POINTS = 100.0;
 static float TIME = 0;
-static float PASS_TIME = 0.001;
+static float PASS_TIME_ADD = 0.001;
+float PASS_TIME = 0.001;
 static float SIZE_TEAPOT = 0.25;
 
 float prev_y[3] = {0, -1, 0};
@@ -229,6 +230,10 @@ void processKeys(unsigned char key, int xx, int yy) {
   switch (key) {
   case 'q':
     exit(0);
+  case '+':
+    PASS_TIME += PASS_TIME_ADD * 2;
+  case '-':
+    PASS_TIME -= PASS_TIME_ADD;
   }
 }
 

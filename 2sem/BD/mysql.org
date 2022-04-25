@@ -1,0 +1,225 @@
+#+TITLE: Mysql
+
+* Create database
+#+begin_src sql
+CREATE DATABASE test;
+#+end_src
+
+* Delete database
+Delete all lines on database
+#+begin_src sql
+DROP DATABASE test;
+#+end_src
+
+* Use database and create table
+
+#+begin_src sql
+CREATE DATABASE record_company;
+USE record_company;
+
+CREATE TABLE test (
+    test_column INT
+);
+#+end_src
+
+* Alter table
+#+begin_src sql
+ALTER TABLE test
+ADD another_column VARCHAR(255);
+#+end_src
+
+* Create table more complex
+
+#+begin_src sql
+CREATE DATABASE record_company;
+USE record_company;
+
+CREATE TABLE bands (
+       id INT NOT NULL AUTO_INCREMENT,
+       name VARCHAR(255) NOT NULL,
+
+       PRIMARY KEY (id)
+);
+
+CREATE TABLE albums (
+       id INT NOT NULL AUTO_INCREMENT,
+       name VARCHAR(255) NOT NULL,
+       release_year INT,
+       band_id INT NOT NULL,
+
+       PRIMARY KEY (id),
+       FOREIGN KEY (band_id) REFERENCES band(id)
+);
+#+end_src
+
+* Insert values
+#+begin_src sql
+INSERT INTO bands (name)
+VALUES ('Iron Maiden');
+
+INSERT INTO bands (name)
+VALUES ('Deuce'), ('Avenged Sevenfold'), ('Ankor');
+
+
+INSERT INTO albums (name, release_year, band_id)
+VALUES ('The Number of the Beasts', 1985, 1),
+       ('Power Slave', 1984, 1),
+       ('Nightmare', 2018, 2),
+       ('Nightmare', 2010, 3),
+       ('Test Album', NULL, 3),
+#+end_src
+
+* Select values
+#+begin_src sql
+-- select all collumns
+SELECT * FROM bands;
+
+-- select
+SELECT * FROM bands LIMIT 2;
+
+-- select only ids
+SELECT id AS 'ID' FROM bands;
+
+-- show all by order name
+SELECT * FROM bands ORDER BY name;
+SELECT * FROM bands ORDER BY name DESC;
+SELECT * FROM bands ORDER BY name ASC;
+
+
+-- select all values
+SELECT * FROM albums;
+
+-- select all names without repetions
+SELECT DISTINCT name FROM albums;
+#+end_src
+
+* Update albums
+#+begin_src sql
+UPDATE albums
+       SET release_year = 1982
+       WHERE id = 1;
+#+end_src
+
+* LIKE
+
+#+begin_src sql
+-- select all lines where name is like .*er.*
+SELECT * FROM albums
+       WHERE name LIKE '%er%';
+#+end_src
+
+* OR and AND
+
+#+begin_src sql
+SELECT * FROM albums
+       WHERE name LIKE '%er%' OR band_id = 2;
+
+SELECT * FROM albums
+       WHERE release_year = 1984 AND band_id = 1;
+#+end_src
+
+
+* BETWEEN or IN
+
+#+begin_src sql
+SELECT * FROM albums
+       WHERE release_year BETWEEN 2000 AND 2008;
+
+SELECT * FROM albums
+       WHERE release_year in (2000, 2001, 2002, 2003,
+       2004,2005,2006,2007, 2008);
+#+end_src
+
+* IS NULL
+
+#+begin_src sql
+SELECT * FROM albums
+       WHERE release_year IS NULL;
+#+end_src
+
+* DELETE
+
+#+begin_src sql
+DELETE FROM albums
+       WHERE id = 5;
+
+DELETE FROM albums
+       WHERE release_year IS NULL;
+#+end_src
+
+* JOIN
+
+#+begin_src sql
+SELECT * FROM bands
+JOIN albums ON bands.id = albums.band_id;
+
+-- this is equal
+
+-- da so os valores q deram match
+SELECT * FROM bands
+INNER JOIN albums ON bands.id = albums.band_id;
+
+-- combine data
+-- devolve todas as linhas da tabela bands
+-- no caso de nao dar match as colunas da tabela albums
+-- apresentara essas mesma colunas sem nada
+SELECT * FROM bands
+LEFT JOIN albums ON bands.id = albums.band_id;
+
+-- mesma coisa, mas neste caso devolve todas as linhas da
+-- tabela albums
+SELECT * FROM bands
+RIGHT JOIN albums ON bands.id = albums.band_id;
+#+end_src
+
+* AVG
+Calcula a avg dessa coluna
+#+begin_src sql
+SELECT AVG(release_year) FROM albums;
+#+end_src
+
+* SUM
+Soma todas as linhas dessa coluna
+#+begin_src sql
+SELECT SUM(release_year) FROM albums;
+#+end_src
+
+
+* COUNT and GROUP BY
+#+begin_src sql
+SELECT band_id, COUNT(band_id) FROM albums
+       GROUP BY band_id;
+#+end_src
+
+* Complex queries
+
+Neste caso conta os 0 tambem
+
+#+begin_src sql
+SELECT b.name AS band_name, COUNT(a.id) AS num_albums
+FROM bands AS b
+LEFT JOIN albums AS a ON b.id = a.band_id
+GROUP BY b.id;
+#+end_src
+
+* FILTER
+
+Isto nao vai funcionar... porque o num_albums so vai ser calculado no final do group by
+
+#+begin_src sql
+SELECT b.name AS band_name, COUNT(a.id) AS num_albums
+FROM bands AS b
+LEFT JOIN albums AS a ON b.id = a.band_id
+WHERE num_albums = 1
+GROUP BY b.id;
+#+end_src
+
+Pelo q teremos q fazer o seguinte:
+
+#+begin_src sql
+SELECT b.name AS band_name, COUNT(a.id) AS num_albums
+FROM bands AS b
+LEFT JOIN albums AS a ON b.id = a.band_id
+GROUP BY b.id
+HAVING num_albums = 1;
+#+end_src

@@ -1,0 +1,121 @@
+#+TITLE: Questoes Sql Parte1
+
+1. Apresentar o nome funcionário e respetiva categoria (descricao).
+
+#+begin_example
+select nome"Nome do funcionário", descricao from funcionario
+    inner join categoria on id = id_categoria;
+#+end_example
+
+2. Apresentar o nome funcionário e respetiva categoria (id + descricao).
+
+#+begin_example
+select nome"Nome do funcionário", concat(id," - ", descricao) from funcionario
+    inner join categoria on id = id_categoria;
+#+end_example
+
+3. Apresentar o nome funcionário e respetiva categoria (id + descricao) nascidos depois do ano 1990.
+
+ #+begin_example
+ select nome"Nome do funcionário", concat(id," - ", descricao) from funcionario
+   inner join categoria on id = id_categoria
+   where YEAR(data_nascimento) > 1990;
+ #+end_example
+
+ Adicionar o ano
+ #+begin_example
+ select nome"Nome do funcionário", concat(id," - ", descricao), year(data_nascimento) from funcionario
+   inner join categoria on id = id_categoria
+   where YEAR(data_nascimento) > 1990;
+ #+end_example
+
+4. Apresentar o nome funcionário cuja descriçao da categoria é "Segurança".
+
+#+begin_example
+select nome from funcionario
+    inner join categoria on id = id_categoria
+    where categoria = "segurança";
+#+end_example
+
+mais eficiente:
+
+#+begin_example
+select nome from funcionario
+    where id_categoria in (select id from descricao where categoria = "Segurança");
+#+end_example
+
+5. Qual a descrição da categoria dos funcionários nascidos até 1990.
+
+#+begin_example
+select descricao from funcionario
+    inner join categoria on id = id_categoria
+    where YEAR(data_nascimento) > 1990;
+#+end_example
+
+mais eficiente:
+
+#+begin_example
+select descricao from funcionario
+    where id in (select id_categoria from categoria
+    where YEAR(data_nascimento) <= 1990);
+#+end_example
+
+6. Qual a descrição da categoria dos funcionários nascidos entre 1980 e 1990.
+
+and
+
+#+begin_example
+select descricao from funcionario
+    where id in (select id_categoria from categoria
+    where YEAR(data_nascimento) < 1990 AND YEAR(data_nascimento) > 1980);
+#+end_example
+
+between
+
+#+begin_example
+select descricao from funcionario
+    where id in (select id_categoria from categoria
+    where YEAR(data_nascimento) between 1980  and 1990 )
+#+end_example
+
+in
+
+#+begin_example
+select descricao from funcionario
+    where id in (select id_categoria from categoria
+    where YEAR(data_nascimento) in (1980,1981, 1982, 1983, 1984,1985,1986,1987,1988,1989,1990)
+#+end_example
+
+7. Indique o nome e categoria dos funcionarios que são responsáveis de ramo alimentar no Centro Comercial do Norte.
+
+  #+begin_example
+  select funcionario.nome as "Nome funcionario", concat(id, '-', descricao)"Categoria" from funcionario
+    inner join categoria on id = id_categoria
+    inner join diretor_ramo on id_func = numero
+    inner join centro_comercial on centro_comercial = id_cc
+    inner join ramo_atividade on ramo_atividade.id_ramo = diretor_ramo.id_ramo
+    where ramo = "Ramo Alimentar" and centro_comercial.nome = "Centro Comercial do Norte";
+  #+end_example
+
+  ou:
+
+  #+begin_example
+  select funcionario.nome as "Nome funcionario", concat(id, '-', descricao)"Categoria" from funcionario
+    inner join categoria on id = id_categoria
+    inner join diretor_ramo on id_func = numero
+    inner join ( select id from centro_comercial where centro_comercial="Centro Comercial do Norte)cc on centro_comercial = id_cc
+    inner join (select id_ramo from ramo_atividade where ramo="Ramo Alimentar") ra on ra.id_ramo = diretor_ramo.id_ramo)
+  #+end_example
+
+8. Indique o nome e categoria dos funcionarios que não são responsáveis de ramo no Centro Comercial do Norte.
+
+  #+begin_example
+  select funcionario.nome as "Nome funcionario", concat(id, '-', descricao)"Categoria" from funcionario
+    inner join categoria on id = id_categoria
+    inner join diretor_ramo on id_func = numero
+    inner join centro_comercial on centro_comercial = id_cc
+    inner join ramo_atividade on ramo_atividade.id_ramo = diretor_ramo.id_ramo
+    where ramo is not "Ramo Alimentar" and centro_comercial.nome <> "Centro Comercial do Norte";
+  #+end_example
+
+9. Indique o nome e categoria dos funcionarios e o nome do seu supervisor.

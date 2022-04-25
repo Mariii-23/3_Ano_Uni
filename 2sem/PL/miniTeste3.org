@@ -1,0 +1,9 @@
+#+TITLE: Mini Teste3
+
+duvidas: 39, 46, 54
+
+- 36 :: c, d
+- 37 :: a
+- 41 :: a, c, d
+- 53 :: a,b
+- 53 :: a
