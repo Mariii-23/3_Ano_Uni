@@ -10,15 +10,15 @@
         "wrappedNodes": {
         }
     },
-    "uptime": 24942,
+    "uptime": 77764,
     "workflowsOpened": 0,
     "remoteWorkflowsOpened": 0,
     "columnarStorageWorkflowsOpened": 0,
     "workflowsImported": 0,
     "workflowsExported": 0,
-    "launches": 1,
+    "launches": 2,
     "lastApplicationID": "org.knime.product.KNIME_APPLICATION",
-    "timeSinceLastStart": 24943,
+    "timeSinceLastStart": 130588,
     "crashes": 0,
     "properlyShutDown": true
 }

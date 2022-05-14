@@ -1,0 +1,34 @@
+#+TITLE: Teste Modelo
+
+* Grupo 1
+1. Caracterize um sistema de aprendizagem automatica no que se respeita a:
+   a) Paradigmas de aprendizagem
+   b) Tecnicas de aprendizagem
+
+2. Tome em consideracao o dataset escolhido no trabalho pratico:
+   a) Enuncie as tecninas usadas para criar modelos de aprendizagem
+   b) Descreva
+   c) Justifique
+
+3. A fig seguinte representa a janela de configuracao do nodo knime "~Partitioning~"
+   Descreva cada uma das opcoes
+
+* Grupo 2
+
+(Estas perguntas vao ser as mais importantes, se houver muitos erros nestas o stor nao corrige o resto)
+
+1. Redes Neuronais Aritificiais sao uma tecninca de aprendizagem automatica definida por uma estrutura ______ de unidades computacionais denominados ______.
+
+2. Aprendizagem com supervisao é um paradigma de aprendizagem em que os casos que  se usam para aprender contem informacao acerca dos resultados pretendidos, sendo possivel estabelecer uma relacao entre os valores pretendidos e os valores produzidos pelo sistema.
+
+
+    Isto foi copiado dos slides, logo o mais certo é este tipo de perguntas virem dai e serem retiradas palavras.
+
+* Grupo 3
+verdadeiros e falsos (corrigir a porra toda=
+
+1. Uma metodologia para analise de dados descreve e creia um conjunto de passos pelos quais devera passar o desenvolvimento de um projeto de aprendizagem automatica (Machine Learning) para a resolucao de problemas
+2. knime é uma linguagem de programacao funcional
+
+* Grupo 4
+Selecionar as verdadeiras -> aqui é normal uma resposta incorreta a nular uma correta

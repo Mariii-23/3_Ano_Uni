@@ -39,10 +39,11 @@
           <tags>persp.newWizSC:org.knime.workbench.explorer.view.actions.NewWorkflowWizard</tags>
           <tags>persp.newWizSC:org.knime.workbench.explorer.view.actions.NewWorkflowGroupWizard</tags>
           <tags>persp.viewSC:com.knime.workbench.hubview</tags>
-          <children xsi:type="basic:PartSashContainer" xmi:id="_PGtgsZvHEeyK7LuAFucZJg" selectedElement="_PGtgspvHEeyK7LuAFucZJg" horizontal="true">
+          <tags>persp.actionSet:org.eclipse.ui.edit.text.actionSet.convertLineDelimitersTo</tags>
+          <tags>persp.actionSet:org.eclipse.ui.actionSet.openFiles</tags>
+          <children xsi:type="basic:PartSashContainer" xmi:id="_PGtgsZvHEeyK7LuAFucZJg" selectedElement="_PGtgupvHEeyK7LuAFucZJg" horizontal="true">
             <children xsi:type="basic:PartSashContainer" xmi:id="_PGtgspvHEeyK7LuAFucZJg" containerData="3000" selectedElement="_PGtgs5vHEeyK7LuAFucZJg">
               <children xsi:type="basic:PartStack" xmi:id="_PGtgs5vHEeyK7LuAFucZJg" elementId="org.knime.workbench.explorer.viewMStack" containerData="3000" selectedElement="_PGtgtJvHEeyK7LuAFucZJg">
-                <tags>active</tags>
                 <children xsi:type="advanced:Placeholder" xmi:id="_PGtgtJvHEeyK7LuAFucZJg" elementId="org.knime.workbench.explorer.view" ref="_PGooMJvHEeyK7LuAFucZJg" closeable="true">
                   <tags>View</tags>
                   <tags>categoryTag:KNIME Views</tags>
@@ -64,7 +65,7 @@
                 </children>
               </children>
             </children>
-            <children xsi:type="basic:PartSashContainer" xmi:id="_PGtgupvHEeyK7LuAFucZJg" containerData="7000" selectedElement="_PGtgu5vHEeyK7LuAFucZJg">
+            <children xsi:type="basic:PartSashContainer" xmi:id="_PGtgupvHEeyK7LuAFucZJg" containerData="7000" selectedElement="_PGtgwJvHEeyK7LuAFucZJg">
               <children xsi:type="basic:PartSashContainer" xmi:id="_PGtgu5vHEeyK7LuAFucZJg" containerData="7000" selectedElement="_PGtgvJvHEeyK7LuAFucZJg" horizontal="true">
                 <children xsi:type="advanced:Placeholder" xmi:id="_PGtgvJvHEeyK7LuAFucZJg" elementId="org.eclipse.ui.editorss" containerData="7000" ref="_PGmzAJvHEeyK7LuAFucZJg"/>
                 <children xsi:type="basic:PartStack" xmi:id="_PGtgvZvHEeyK7LuAFucZJg" elementId="org.knime.workbench.helpviewMStack" containerData="3000" selectedElement="_PGtgvpvHEeyK7LuAFucZJg">
@@ -78,7 +79,7 @@
                   </children>
                 </children>
               </children>
-              <children xsi:type="basic:PartSashContainer" xmi:id="_PGtgwJvHEeyK7LuAFucZJg" containerData="3000" horizontal="true">
+              <children xsi:type="basic:PartSashContainer" xmi:id="_PGtgwJvHEeyK7LuAFucZJg" containerData="3000" selectedElement="_PGtgw5vHEeyK7LuAFucZJg" horizontal="true">
                 <children xsi:type="basic:PartStack" xmi:id="_PGtgwZvHEeyK7LuAFucZJg" elementId="org.eclipse.ui.views.ContentOutlineMStack" containerData="3000" selectedElement="_PGtgwpvHEeyK7LuAFucZJg">
                   <children xsi:type="advanced:Placeholder" xmi:id="_PGtgwpvHEeyK7LuAFucZJg" elementId="org.eclipse.ui.views.ContentOutline" ref="_PGrEcZvHEeyK7LuAFucZJg" closeable="true">
                     <tags>View</tags>
@@ -86,6 +87,8 @@
                   </children>
                 </children>
                 <children xsi:type="basic:PartStack" xmi:id="_PGtgw5vHEeyK7LuAFucZJg" elementId="org.eclipse.ui.console.ConsoleViewMStack" containerData="7000" selectedElement="_PGtgxJvHEeyK7LuAFucZJg">
+                  <tags>active</tags>
+                  <tags>noFocus</tags>
                   <children xsi:type="advanced:Placeholder" xmi:id="_PGtgxJvHEeyK7LuAFucZJg" elementId="org.eclipse.ui.console.ConsoleView" ref="_PGrEcJvHEeyK7LuAFucZJg" closeable="true">
                     <tags>View</tags>
                     <tags>categoryTag:General</tags>
@@ -146,7 +149,6 @@
       <persistedState key="memento" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xA;&lt;view>&#xA;&lt;content expandedElements=&quot;&quot;/>&#xA;&lt;/view>"/>
       <tags>View</tags>
       <tags>categoryTag:KNIME Views</tags>
-      <tags>active</tags>
       <tags>activeOnClose</tags>
       <menus xmi:id="_PJM0AJvHEeyK7LuAFucZJg" elementId="org.knime.workbench.explorer.view">
         <tags>ViewMenu</tags>
@@ -172,6 +174,8 @@
       <persistedState key="memento" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xA;&lt;view/>"/>
       <tags>View</tags>
       <tags>categoryTag:General</tags>
+      <tags>active</tags>
+      <tags>activeOnClose</tags>
       <menus xmi:id="_PQsjIJvHEeyK7LuAFucZJg" elementId="org.eclipse.ui.console.ConsoleView">
         <tags>ViewMenu</tags>
         <tags>menuContribution:menu</tags>
@@ -1271,7 +1275,7 @@
   <addons xmi:id="_O5mR1pvHEeyK7LuAFucZJg" elementId="MinMax Addon" contributorURI="platform:/plugin/org.eclipse.ui.workbench" contributionURI="bundleclass://org.eclipse.e4.ui.workbench.addons.swt/org.eclipse.e4.ui.workbench.addons.minmax.MinMaxAddon"/>
   <addons xmi:id="_O5mR15vHEeyK7LuAFucZJg" elementId="org.eclipse.ui.workbench.addon.0" contributorURI="platform:/plugin/org.eclipse.ui.workbench" contributionURI="bundleclass://org.eclipse.e4.ui.workbench/org.eclipse.e4.ui.internal.workbench.addons.HandlerProcessingAddon"/>
   <addons xmi:id="_O5rxUJvHEeyK7LuAFucZJg" elementId="SplitterAddon" contributionURI="bundleclass://org.eclipse.e4.ui.workbench.addons.swt/org.eclipse.e4.ui.workbench.addons.splitteraddon.SplitterAddon"/>
-  <addons xmi:id="_IYS0IKimEeS11vbz3f9ezw" elementId="org.eclipse.ui.ide.addon.0" contributorURI="platform:/plugin/org.eclipse.ui.ide" contributionURI="bundleclass://org.eclipse.ui.ide/org.eclipse.ui.internal.ide.addons.SaveAllDirtyPartsAddon"/>
+  <addons xmi:id="_a4C2Acx1EeyvJNkLd9KueA" elementId="org.eclipse.ui.ide.addon.0" contributionURI="bundleclass://org.eclipse.ui.ide/org.eclipse.ui.internal.ide.addons.SaveAllDirtyPartsAddon"/>
   <addons xmi:id="_dz0JgGOlEeSMMaPQU2nlzw" elementId="org.eclipse.ui.ide.application.addon.0" contributorURI="platform:/plugin/org.eclipse.ui.ide.application" contributionURI="bundleclass://org.eclipse.ui.ide.application/org.eclipse.ui.internal.ide.application.addons.ModelCleanupAddon"/>
   <addons xmi:id="_O6fpoJvHEeyK7LuAFucZJg" elementId="org.knime.product.addon.0" contributorURI="platform:/plugin/org.knime.product" contributionURI="bundleclass://org.knime.product/org.knime.product.rcp.addons.PerspectiveFixAddon"/>
   <addons xmi:id="_O6fpoZvHEeyK7LuAFucZJg" elementId="org.knime.product.addon.1" contributorURI="platform:/plugin/org.knime.product" contributionURI="bundleclass://org.knime.product/org.knime.product.rcp.addons.MenuFixesAddon"/>
