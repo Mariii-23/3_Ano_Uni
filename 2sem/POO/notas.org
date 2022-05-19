@@ -1,0 +1,120 @@
+#+TITLE: Notas
+
+
+* Clone
+#+begin_src java
+public Classe clone() {
+   return new Classe(this);
+}
+#+end_src
+
+Duas abordagens:
+    - shallow clone :: Cópia parcial que deixa enderecos partilhados(cria as estruturas de dados mas partilha os conteudos)
+    - deep clone :: cópia em que nenhum objeto partilha endereços com outro
+
+Por defeito o clone existente +e sempre ~shallow~
+
+* Equal
+Tem que ser:
+    + reflexivo :: x.equals(x) == true (x nao nulo)
+    + simetrico :: x.equals(y) == y.equals(x)
+    + transitivo :: x.equals(y) == T & y.equals(z) == T => x.equals(z) == T
+    + consistente ::  x.equals(y) == y.equals(x) da sempre o mesmo resultado
+    + valores nulos :: a comparcao com x, nao nulo, da como resultado false.
+
+#+begin_src java
+public boolena equals(Object o) {
+    if (this == 0)
+        return true;
+    if( o==null || this.getClass() != o.getClass() )
+        return false;
+
+    <Classe> that = (<Classe> o);
+
+    return (<condicoes de igualdade>);
+}
+#+end_src
+
+
+* Iteradores externos
+
+** Iterator
+
+#+begin_src java
+boolena algo = false;
+Iterator<Classe> it  = cena.iterator();
+Classe a;
+
+while( it.hasNext () && !algo) {
+    a = it.next();
+
+    algo = a.coisa_a_fazer();
+    // no caso de ser remover
+    it.remove()
+}
+
+return algo;
+#+end_src
+
+* Iteradores internos
++ forEach()
+
+* Metodo hachCode()
++ Sempre que se define o método equals, deve definir-se também o método hashCode()
++ objs iguais => mesmo hash code
+
+* CompareTO()
++ iguais :: 0
++ obj recetor maior :: > 0
++ obj recetor menor :: < 0
+
+Implementam o método int compare(E e1, E e2)
+
+Comparable<T> e Comparator<T> são interfaces
+
+Criar um TreeSet definido o comparator do mesmo na invocação (via classe anónima).
+
+#+begin_src java
+TreeSet<Aluno> teoricas = new TreeSet<>(
+         new Comparator<Aluno>() {
+             public int compare(Aluno a1, Aluno a2) {
+                 return a1.getNome().compareTo(a2.getNome());
+             }
+         }
+)
+
+// ou atraves de lambda
+
+TreeSet<Aluno> teoricas = new TreeSet<>(
+        (a1, a2) -> a1.getNome().compareTo(a2.getNome())
+)
+#+end_src
+
+
+* Coisas fixes
+#+begin_src java
+public TreeMap<Double, Set<String>> nomePorNota() {
+    return alunos.values()
+        .stream()
+        .collect(groupingBy(Aluno::getNota,
+                            TreeMap::new,
+                            mapping(Aluno::getNome, toSet())));
+}
+#+end_src
+
+* Coisas a nao esquecer
+
+
+#+begin_src java
+List<? extends Class>
+List<? super Class>
+#+end_src
+
+* Model, View, Controller
+- View :: interacao com o utilizador
+- Model :: codigo que assegura a parte das regras e camada computacional
+- Controller :: liga a view e o model
+
+
++ O controller recebe os pedidos da View e encaminha para o Model
++ As respostas do Model sao enviadas para a view, sendo mediadas pelo controller

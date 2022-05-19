@@ -1,0 +1,388 @@
+Created by PLY version 3.11 (http://www.dabeaz.com/ply)
+
+Unused terminals:
+
+    STR
+
+Grammar
+
+Rule 0     S' -> Program
+Rule 1     Program -> Declarations Statements
+Rule 2     Declarations -> Declarations Declaration
+Rule 3     Declarations -> <empty>
+Rule 4     Declaration -> Type IdList
+Rule 5     Type -> INT
+Rule 6     IdList -> IdList , id
+Rule 7     IdList -> id
+Rule 8     Statements -> Statements Statement
+Rule 9     Statements -> Statement
+Rule 10    Statement -> id = Exp
+Rule 11    Statement -> PRINT ( PrintArgs )
+Rule 12    PrintArgs -> PrintArgs , PrintArg
+Rule 13    PrintArgs -> PrintArg
+Rule 14    PrintArg -> id
+Rule 15    PrintArg -> str
+Rule 16    PrintArg -> Exp
+Rule 17    Exp -> INT ( Exp )
+Rule 18    Exp -> INPUT ( str )
+
+Terminals, with rules where they appear
+
+(                    : 11 17 18
+)                    : 11 17 18
+,                    : 6 12
+=                    : 10
+INPUT                : 18
+INT                  : 5 17
+PRINT                : 11
+STR                  : 
+error                : 
+id                   : 6 7 10 14
+str                  : 15 18
+
+Nonterminals, with rules where they appear
+
+Declaration          : 2
+Declarations         : 1 2
+Exp                  : 10 16 17
+IdList               : 4 6
+PrintArg             : 12 13
+PrintArgs            : 11 12
+Program              : 0
+Statement            : 8 9
+Statements           : 1 8
+Type                 : 4
+
+Parsing method: LALR
+
+state 0
+
+    (0) S' -> . Program
+    (1) Program -> . Declarations Statements
+    (2) Declarations -> . Declarations Declaration
+    (3) Declarations -> .
+
+    id              reduce using rule 3 (Declarations -> .)
+    PRINT           reduce using rule 3 (Declarations -> .)
+    INT             reduce using rule 3 (Declarations -> .)
+
+    Program                        shift and go to state 1
+    Declarations                   shift and go to state 2
+
+state 1
+
+    (0) S' -> Program .
+
+
+
+state 2
+
+    (1) Program -> Declarations . Statements
+    (2) Declarations -> Declarations . Declaration
+    (8) Statements -> . Statements Statement
+    (9) Statements -> . Statement
+    (4) Declaration -> . Type IdList
+    (10) Statement -> . id = Exp
+    (11) Statement -> . PRINT ( PrintArgs )
+    (5) Type -> . INT
+
+    id              shift and go to state 7
+    PRINT           shift and go to state 8
+    INT             shift and go to state 9
+
+    Statements                     shift and go to state 3
+    Declaration                    shift and go to state 4
+    Statement                      shift and go to state 5
+    Type                           shift and go to state 6
+
+state 3
+
+    (1) Program -> Declarations Statements .
+    (8) Statements -> Statements . Statement
+    (10) Statement -> . id = Exp
+    (11) Statement -> . PRINT ( PrintArgs )
+
+    $end            reduce using rule 1 (Program -> Declarations Statements .)
+    id              shift and go to state 7
+    PRINT           shift and go to state 8
+
+    Statement                      shift and go to state 10
+
+state 4
+
+    (2) Declarations -> Declarations Declaration .
+
+    id              reduce using rule 2 (Declarations -> Declarations Declaration .)
+    PRINT           reduce using rule 2 (Declarations -> Declarations Declaration .)
+    INT             reduce using rule 2 (Declarations -> Declarations Declaration .)
+
+
+state 5
+
+    (9) Statements -> Statement .
+
+    id              reduce using rule 9 (Statements -> Statement .)
+    PRINT           reduce using rule 9 (Statements -> Statement .)
+    $end            reduce using rule 9 (Statements -> Statement .)
+
+
+state 6
+
+    (4) Declaration -> Type . IdList
+    (6) IdList -> . IdList , id
+    (7) IdList -> . id
+
+    id              shift and go to state 12
+
+    IdList                         shift and go to state 11
+
+state 7
+
+    (10) Statement -> id . = Exp
+
+    =               shift and go to state 13
+
+
+state 8
+
+    (11) Statement -> PRINT . ( PrintArgs )
+
+    (               shift and go to state 14
+
+
+state 9
+
+    (5) Type -> INT .
+
+    id              reduce using rule 5 (Type -> INT .)
+
+
+state 10
+
+    (8) Statements -> Statements Statement .
+
+    id              reduce using rule 8 (Statements -> Statements Statement .)
+    PRINT           reduce using rule 8 (Statements -> Statements Statement .)
+    $end            reduce using rule 8 (Statements -> Statements Statement .)
+
+
+state 11
+
+    (4) Declaration -> Type IdList .
+    (6) IdList -> IdList . , id
+
+    id              reduce using rule 4 (Declaration -> Type IdList .)
+    PRINT           reduce using rule 4 (Declaration -> Type IdList .)
+    INT             reduce using rule 4 (Declaration -> Type IdList .)
+    ,               shift and go to state 15
+
+
+state 12
+
+    (7) IdList -> id .
+
+    ,               reduce using rule 7 (IdList -> id .)
+    id              reduce using rule 7 (IdList -> id .)
+    PRINT           reduce using rule 7 (IdList -> id .)
+    INT             reduce using rule 7 (IdList -> id .)
+
+
+state 13
+
+    (10) Statement -> id = . Exp
+    (17) Exp -> . INT ( Exp )
+    (18) Exp -> . INPUT ( str )
+
+    INT             shift and go to state 17
+    INPUT           shift and go to state 18
+
+    Exp                            shift and go to state 16
+
+state 14
+
+    (11) Statement -> PRINT ( . PrintArgs )
+    (12) PrintArgs -> . PrintArgs , PrintArg
+    (13) PrintArgs -> . PrintArg
+    (14) PrintArg -> . id
+    (15) PrintArg -> . str
+    (16) PrintArg -> . Exp
+    (17) Exp -> . INT ( Exp )
+    (18) Exp -> . INPUT ( str )
+
+    id              shift and go to state 21
+    str             shift and go to state 22
+    INT             shift and go to state 17
+    INPUT           shift and go to state 18
+
+    PrintArgs                      shift and go to state 19
+    PrintArg                       shift and go to state 20
+    Exp                            shift and go to state 23
+
+state 15
+
+    (6) IdList -> IdList , . id
+
+    id              shift and go to state 24
+
+
+state 16
+
+    (10) Statement -> id = Exp .
+
+    id              reduce using rule 10 (Statement -> id = Exp .)
+    PRINT           reduce using rule 10 (Statement -> id = Exp .)
+    $end            reduce using rule 10 (Statement -> id = Exp .)
+
+
+state 17
+
+    (17) Exp -> INT . ( Exp )
+
+    (               shift and go to state 25
+
+
+state 18
+
+    (18) Exp -> INPUT . ( str )
+
+    (               shift and go to state 26
+
+
+state 19
+
+    (11) Statement -> PRINT ( PrintArgs . )
+    (12) PrintArgs -> PrintArgs . , PrintArg
+
+    )               shift and go to state 27
+    ,               shift and go to state 28
+
+
+state 20
+
+    (13) PrintArgs -> PrintArg .
+
+    )               reduce using rule 13 (PrintArgs -> PrintArg .)
+    ,               reduce using rule 13 (PrintArgs -> PrintArg .)
+
+
+state 21
+
+    (14) PrintArg -> id .
+
+    )               reduce using rule 14 (PrintArg -> id .)
+    ,               reduce using rule 14 (PrintArg -> id .)
+
+
+state 22
+
+    (15) PrintArg -> str .
+
+    )               reduce using rule 15 (PrintArg -> str .)
+    ,               reduce using rule 15 (PrintArg -> str .)
+
+
+state 23
+
+    (16) PrintArg -> Exp .
+
+    )               reduce using rule 16 (PrintArg -> Exp .)
+    ,               reduce using rule 16 (PrintArg -> Exp .)
+
+
+state 24
+
+    (6) IdList -> IdList , id .
+
+    ,               reduce using rule 6 (IdList -> IdList , id .)
+    id              reduce using rule 6 (IdList -> IdList , id .)
+    PRINT           reduce using rule 6 (IdList -> IdList , id .)
+    INT             reduce using rule 6 (IdList -> IdList , id .)
+
+
+state 25
+
+    (17) Exp -> INT ( . Exp )
+    (17) Exp -> . INT ( Exp )
+    (18) Exp -> . INPUT ( str )
+
+    INT             shift and go to state 17
+    INPUT           shift and go to state 18
+
+    Exp                            shift and go to state 29
+
+state 26
+
+    (18) Exp -> INPUT ( . str )
+
+    str             shift and go to state 30
+
+
+state 27
+
+    (11) Statement -> PRINT ( PrintArgs ) .
+
+    id              reduce using rule 11 (Statement -> PRINT ( PrintArgs ) .)
+    PRINT           reduce using rule 11 (Statement -> PRINT ( PrintArgs ) .)
+    $end            reduce using rule 11 (Statement -> PRINT ( PrintArgs ) .)
+
+
+state 28
+
+    (12) PrintArgs -> PrintArgs , . PrintArg
+    (14) PrintArg -> . id
+    (15) PrintArg -> . str
+    (16) PrintArg -> . Exp
+    (17) Exp -> . INT ( Exp )
+    (18) Exp -> . INPUT ( str )
+
+    id              shift and go to state 21
+    str             shift and go to state 22
+    INT             shift and go to state 17
+    INPUT           shift and go to state 18
+
+    PrintArg                       shift and go to state 31
+    Exp                            shift and go to state 23
+
+state 29
+
+    (17) Exp -> INT ( Exp . )
+
+    )               shift and go to state 32
+
+
+state 30
+
+    (18) Exp -> INPUT ( str . )
+
+    )               shift and go to state 33
+
+
+state 31
+
+    (12) PrintArgs -> PrintArgs , PrintArg .
+
+    )               reduce using rule 12 (PrintArgs -> PrintArgs , PrintArg .)
+    ,               reduce using rule 12 (PrintArgs -> PrintArgs , PrintArg .)
+
+
+state 32
+
+    (17) Exp -> INT ( Exp ) .
+
+    id              reduce using rule 17 (Exp -> INT ( Exp ) .)
+    PRINT           reduce using rule 17 (Exp -> INT ( Exp ) .)
+    $end            reduce using rule 17 (Exp -> INT ( Exp ) .)
+    )               reduce using rule 17 (Exp -> INT ( Exp ) .)
+    ,               reduce using rule 17 (Exp -> INT ( Exp ) .)
+
+
+state 33
+
+    (18) Exp -> INPUT ( str ) .
+
+    id              reduce using rule 18 (Exp -> INPUT ( str ) .)
+    PRINT           reduce using rule 18 (Exp -> INPUT ( str ) .)
+    $end            reduce using rule 18 (Exp -> INPUT ( str ) .)
+    )               reduce using rule 18 (Exp -> INPUT ( str ) .)
+    ,               reduce using rule 18 (Exp -> INPUT ( str ) .)
+

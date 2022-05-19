@@ -1,0 +1,8 @@
+ print("Hello")
+
+ int idade
+ str nome
+
+ idade = int(input("Introduza..."))
+ nome = input
+ print("Introduziste: ", idade, "e", nome)

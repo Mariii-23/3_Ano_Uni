@@ -1,0 +1,71 @@
+#+TITLE: Programas
+
+O programa deve ser capaz de detetar/reconher 3 programas :
+
++ print ::
+ #+begin_example
+ print("Hello")
+ #+end_example
+
++ read and print ::
+ #+begin_example
+ int idade
+ str nome
+
+ idade = int(input("Introduza..."))
+ nome = input
+ print("Introduziste: ", idade, "e", nome)
+ #+end_example
+
++ read, print, ... ::
+ #+begin_example
+ int n1, n2
+
+ n1=int(input("Introduza 1 inteiro:"))
+ n2 = "
+
+ if(n1 > n2)
+ print("O maior é:",n1)
+ else
+ print(("O maior é:",n2)) #+end_example
+#+end_example
+
+* Quais os símbolos terminais da linguagem?
+
+#+begin_example
+T={INT , STR , id , INPUT , PRINT , str , '=' , '(' , ')' , ','}
+#+end_example
+
+* Programa
+
+#+begin_example
+Program -> Declarations Statements
+
+Declarations -> Declarations Declaration
+               |
+
+Declaration -> Type IdList
+
+Type -> INT | STR
+
+IdList -> id
+        | IdList ',' id
+
+Statements -> Statements Statement
+            | Statment
+
+Statment -> Atrib
+           | Print
+
+Atrib -> id = Exp
+
+Print -> 'PRINT' '(' PrintArgs ')'
+
+PrintArgs -> PrintArgs ',' PrintArg
+            | PrintArg
+
+PrintArg -> id | STR | Exp
+
+Exp -> INPUT '(' str ')'
+     | INT '(' Exp ')'
+#+end_example
