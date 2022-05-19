@@ -13,6 +13,7 @@ package smartDevices;
 /*********************************************************************************/
 
 
+import java.util.Comparator;
 import java.util.Objects;
 
 /**
@@ -22,7 +23,7 @@ import java.util.Objects;
  * @author (your name)
  * @version (a version number or a date)
  */
-public class SmartDevice {
+public class SmartDevice implements Comparable<SmartDevice> {
 
     private String id;
     private boolean on;
@@ -81,5 +82,10 @@ public class SmartDevice {
     @Override
     public int hashCode() {
         return Objects.hash(id, on);
+    }
+
+    @Override
+    public int compareTo(SmartDevice o) {
+        return this.id.length() - o.id.length();
     }
 }

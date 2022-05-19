@@ -13,7 +13,9 @@ package smartDevices;
 /*********************************************************************************/
 
 import java.util.*;
-
+import java.util.function.Consumer;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 /**
  * A CasaInteligente faz a gestão dos SmartDevices que existem e dos 
@@ -45,7 +47,20 @@ public class CasaInteligente {
         this.locations = new HashMap();
     }
 
-    
+    public CasaInteligente(Collection<SmartDevice> devices) {
+        this.morada = "";
+        this.devices =  new HashMap<>();
+        devices.forEach(e -> this.devices.put(e.getID(), e.clone()));
+        //this.devices = devices.stream().collect(groupingBy(SmartDevice::getID,HashMap::new, mapping(SmartDevice::getID, toSet())));
+        this.locations = new HashMap();
+    }
+
+    public Consumer<SmartBulb> consumer = e -> e.setTone((int) (e.getTone()*0.25));
+
+    public void alteraInfo(Consumer<SmartBulb> bd){
+        this.devices.values().stream().filter(e -> e instanceof SmartBulb).forEach(elem -> bd.accept((SmartBulb) elem));
+    }
+
     public void setDeviceOn(String devCode) {
         this.devices.get(devCode).turnOn();
     }
@@ -89,6 +104,37 @@ public class CasaInteligente {
     }
     
     public boolean roomHasDevice (String s1, String s2) {return hasRoom(s1) && this.locations.get(s1).contains(s2);}
+
+    public class DeviceNotFound extends Exception {
+        public DeviceNotFound() {}
+        public DeviceNotFound(String message) {
+            super(message);
+        }
+    }
+
+    public void remove(String id) throws DeviceNotFound {
+        if (this.devices.remove(id) == null)
+            throw new DeviceNotFound();
+
+        Iterator<Map.Entry<String, List<String>>> it = this.locations.entrySet().iterator();
+        List<String> devices;
+        boolean found = false;
+
+        while( it.hasNext() && !found) {
+            devices = it.next().getValue();
+            found = devices.remove(id);
+        }
+    }
+
+    public Iterator<SmartDevice> devicesPorConsumoCrescente() {
+        Set<SmartDevice> aux = new HashSet<>(this.devices.values());
+        return aux.iterator();
+    }
+
+    //TODO tou fucking confusa
+    public String divisaoMaisEconomica() {
+        return "welelel"   ;
+    }
 
     //TODO
     @Override
