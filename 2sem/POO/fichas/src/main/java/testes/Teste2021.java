@@ -14,7 +14,7 @@ public class Teste2021 {
     // 5. d
 
     public static class Parte2 {
-        public class SmartDevice implements Comparable<SmartDevice> {
+        public class SmartDevice implements Comparable<SmartDevice>  {
             private String id;
             private boolean on;
             private double consumoPorHora;
