@@ -1,0 +1,126 @@
+#+TITLE: Teorico Pratico2021 2022
+
+* Definicao do sistema de bases de dados, sua contextualização, fundamentação e viabilidade.
+
+   - Contextualização :: A "Combater-Crime" é uma agência de detetives com sede em Braga, que está no mercado da investigacao criminal desde 2018. Esta tem a trabalhar para si dez investigadores, cada um deles associado a uma área mais específica da investigação (crime, fraude, rapto,...).
+     O Joaquim, capitão da "Combater-Crime" convidou a eng. Leonor da Empresa "Sábios", uma empresa de IT portuguesa com sede nas Taipas, a desenvolver um sistema de base de dados para a sua empresa.
+     Como a empresa "Sábios" é grande, tendo um número elevado de colaboradores, atribui ao desenvolvimento da BS da agencia uma equipa de 5 especialistas.
+
+   - Fundamentação :: As bases de dados são cruciais para um bom funcionamento de qualquer organização, principalmente em áreas cruciais, como é o caso da investigaçao, nas quais a rapidez da procura de informação pode salvar vidas e prevenir o acontecimento de crimes.
+
+     Devido ao aparecimento de um número elevado de casos de crime nos ultimos meses, a agência tem se deparado com uma limitacao de recursos físicos e humanos, assim como a rápida intervenção na ocorrência de um crime, ou a rápida procura de informação que se encontre na organização.
+
+     Nesse sentido, decidiu contactar a empresa "Sábios" de modo a implementar sistemas de informação que fossem uteis para a agencia, a "Sábios" antes de implementar esses sistemas necessita de definir e modelar toda a estrutura de dados da agencia, garantindo um bom funcionamento diario.
+
+     (nota: estado de cada dossie e o q cada investigador investiga)
+
+   - Viabilidade :: A Agencia acredita que se tiver um meio mais eficiente de guardar toda a sua informação conseguira:
+     + procurar uma dada informação de um modo mais rápido
+
+     + minimizar o tempo de procura de um dado processo ou dossier
+
+     + determinar o que cada um dos seus investigadores encontra-se a investigar
+
+     + garantir o registo de toda a informação de investigação associada a um dado crime
+
+     + tracar o perfil do investigador, de modo a saber qual crime seria o mais indicado para este realizar
+
+* Levantamento, analise e organização dos requisitos de descricao, manipulaçao e controlo
+
+   a) Descrição
+
+   | nº | hora | descricao                                                                                                                                | Area/vista   | Fonte   | Analista |
+   |  1 |      | Todos os dossiers da agencia devem ser registados  com o seu numero sequencial                                                           | Crime        | Joaquim | Leonor   |
+   |  2 |      | Um investigador deve conter associado a ele um nome, data de nascimento, nº profissional, mails, telemoveis e a sua area de investigação | Investigador | Joaquim | Leonor   |
+   |    |      |                                                                                                                                          |              |         |          |
+
+
+   b) Manipulacao
+   | nº | hora | descricao                                                                       | Area/vista         | Fonte   | Analista |
+   |  1 |      | Deve ser possivel a cada momento obter a informacao de todos os dossiers        | Investigacao/Crime | Joaquim | Leonor   |
+   |  2 |      | Deve ser possivel aceder a todos os dossiers de uma dada especialidade criminal | Investigacao/Crime | Joaquim | Leonor   |
+
+   c) Controlo
+      | nº | hora | descricao                                                                     | Area/vista     | Fonte   | Analista |
+      |  1 |      | Os investigadores não devem ter acesso a informação dos outros investigadores | Investigadores | Joaquim | Leonor   |
+
+* Concecao e desenvolvimento do modelo conceptual da base de dados.
+
+* Concecao e desenvolvimento do modelo lógico da base de dados.
+
+* Implementação fisica da base de dados
+
+#+begin_src sql
+create schema if not exists `agencia`;
+USE `agencia`;
+
+Create table if not exists `area_investigacao` (
+    num int not null unique AUTO_INCREMENT,
+    nome VARCHAR(30) not null,
+    Primary key (num)
+       );
+
+Create table if not exists `investigador` (
+    num_profissional int not null unique AUTO_INCREMENT,
+    area_investigacao int Not null,
+    nome VARCHAR(1024) not null,
+    data_nascimento DATE not null,
+
+    Primary key (num_profissional),
+    Foreign key (area_investigacao) references `area_investigacao` (num)
+       );
+
+Create table if not exists `telemovel` (
+    telemovel int(9) not null unique,
+    investigador int not null,
+
+    Primary key (telemovel),
+    Foreign key (investigador) references `investigador` (num_profissional)
+       );
+
+Create table if not exists `email` (
+    email varchar(1024) not null unique,
+    investigador int not null,
+
+    Primary key (email),
+    Foreign key (investigador) references `investigador` (num_investigador)
+           );
+#+end_src
+
+* Povoamento e exploracao da base de dados
+
+a) Fazer o povoamento de duas tabelas que estejam relacionadas entre si
+
+  #+begin_src sql
+  insert into `area_investigacao` (nome)
+  Values ('crime'), ('fraude'), ('rapto');
+
+insert into `investigador` (area_investigacao, nome, data_nascimento)
+  Values (1,'Alberto Rodrigues', '2002-02-12'),
+         (2,'Leonor Pereira', '1999-12-12');
+  insert into `telemovel` (telemovel, investigador)
+  Values (253123345, 1), (921123123, 1),
+         (245678678, 2), (912123123, 2);
+  #+end_src
+
+b) Queries:
+
+  Apresentar a informacao de todos os investigadores, mostrando o seu nome, data de nascimento e nome da area de investigacao .
+ #+begin_src sql
+Select i.nome, i.data_nascimento, area.nome as `area` from `investigador` as i
+       inner join `area_investigacao` as area
+       where i.area_investigacao = area.numero
+
+    order by nome asc;
+ #+end_src
+
+
+Determinar o numero de investigadores por area existente:
+
+#+begin_src sql
+select area.nome, count(i.num_profissional)  as 'número de investigadores' from `investigador` as i
+       inner join `area_investigacao` as area
+	   where i.area = area.num
+       group by area.nome
+       ;
+#+end_src
