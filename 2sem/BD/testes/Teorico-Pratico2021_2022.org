@@ -46,7 +46,11 @@
 
 * Concecao e desenvolvimento do modelo conceptual da base de dados.
 
+Imagem 3.
+
 * Concecao e desenvolvimento do modelo lógico da base de dados.
+
+Imagem 4.
 
 * Implementação fisica da base de dados
 

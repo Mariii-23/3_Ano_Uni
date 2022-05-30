@@ -1,0 +1,61 @@
+#+TITLE: Teste
+
+
+* Definicao do sistema de bases de dados, sua contextualização, fundamentação e viabilidade.
+ - contextualizacao :: A federacao portuguesa de futebol, localizada em lisboa, perante o sucesso da liga 3 de futebol decidiu que pretendia criar a 4 liga. Esta liga será composta por 10 equipas de futebol dividida por 2 series.
+
+   De modo a criar uma infraestrutura informática para tal objetivo, decidiu contactar a empresa "Sábios", uma empresa de It portuguesa com sede nas taipas, através da eng. Leonor.
+
+   Tendo a empresa aceitado e sendo grande, tendo um numero elevado de colaboradores, atribui uma equipa de 5 especialistas para o desenvolvimento de um sistema de base de dados.
+
+   - fundamentacao :: As bases de dados sao cruciais para um bom funcionamento de qualquer organização, deste modo a federacao consegue armazenar e organizar toda a informacao necessaria para o sucesso da 4 liga.
+
+     Devido ao numero elevado de equipas, e ao numero de jogos a efetuar, a federacao tem se deparado com uma limitacao de recursos fisicos e humanos, assim como a rapida atribuicao de pontos perante os jogos realizados, bem como a gestao da equipa de arbitagem pelos jogos a serem realizados.
+
+     Nesse sentido decidiu contactar a empresa "Sabios" de modo a implementar um sistema de informacao que fosse util.
+     A "Sabios" antes de qualquer implementacao desse sistema necessita de definir e modelar toda a informacao e estrutura de dados da federacao.
+
+     - viabilidade :: A federacao acredita que se tiver um meio mais eficiente de guardar toda a informacao necessaria conseguira ::
+       + efetuar a contagem de pontos de uma forma muito mais eficaz e rapida
+
+       + visualizar a toda a informacao de um dado jogador de um modo mais rapido
+
+       + uma gestao da equipa de arbitagem de um modo mais eficaz e menos custoso
+
+       + garantir o registo de toda a informacao acerca um jogo
+
+
+* Levantamento, analise e organização dos requisitos de descricao, manipulaçao e controlo
+
+Para o levantamento dos registos foram efetuados diversos inqueritos tanto as equipas, arbitos, adeptos, de modo a ser possivel obter um sistema eficiente e com base nas necessidades cruciais.
+
+Apos uma analise desses mesmos inqueritos, fez se uma organizacao por registos de descricao, manipulacao e controlo:
+
+
++ descricao
+
+   | nº | descricao                                                        | Area/vista | Fonte   | Analista |
+   |  1 | Todos os jogadores devem ser registados com um numero sequencial | Jogadores  | Joaquim | Leonor   |
+   |  2 | Um jogador deve ter associado a ele um nome, idade, posicao...   | Jogadores  | Joaquim | Leonor   |
+
++ Manipulacao:
+
+   | nº | descricao                                                      | Area/vista       | Fonte   | Analista |
+   |  1 | Os arbitos devem conseguir criar jogos                         | Arbitagem        | Joaquim | Leonor   |
+   |  2 | Deve ser possivel obter todos os jogadores de uma dada equipa  | Jogadores/Equipa | Joaquim | Leonor   |
+   |  3 | Deve ser possivel aceder a equipa de arbitagem de um dado jogo | Arbitagem/Jogo   | Joaquim | Leonor   |
+
++ Controlo:
+
+   | nº | hora | descricao                                                                                    | Area/vista | Fonte   | Analista |
+   |  1 |      | Os jogadores nao tem acesso a ficha dos outros jogadores                                     | Jogadores  | Joaquim | Leonor   |
+   |  2 |      | A equipa de arbitagem devera conseguir a qualquer momento ter acesso as fichas dos jogadores | Arbitagem  | Joaquim | Leonor   |
+
+* Concecao e desenvolvimento do modelo conceptual da base de dados.
+Imagens a parte. (3)
+
+* Concecao e desenvolvimento do modelo lógico da base de dados.
+Imagens a parte. (4)
+
+
+* Implementação fisica da base de dados
